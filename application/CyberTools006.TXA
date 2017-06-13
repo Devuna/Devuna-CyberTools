@@ -1,0 +1,139 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+MODIFIED '2017/06/09' '22:10:39'
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME C3ResizeControls
+PROTOTYPE '(SHORT AnchorCTL, SHORT Resize:CWidth, SHORT Resize:CHeight)'
+PARAMETERS '(SHORT AnchorCTL, SHORT Resize:CWidth, SHORT Resize:CHeight)'
+[COMMON]
+DESCRIPTION 'Resize Controls On Window'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:50:11'
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+DeltaX          SHORT,AUTO               ! Change in X coordinate
+DeltaY          SHORT,AUTO               ! Change in Y coordinate
+AnchorX         SHORT,AUTO               ! Coordinates of Anchor
+AnchorY         SHORT,AUTO
+AnchorWidth     SHORT,AUTO               ! Width and height of anchor
+AnchorHeight    SHORT,AUTO
+Ctl             SHORT,AUTO               ! Control being processed
+CtlX            SHORT,AUTO               ! Coordinates of control
+CtlY            SHORT,AUTO
+CtlWidth        SHORT,AUTO               ! Width and height of control
+CtlHeight       SHORT,AUTO
+ccode           LONG,AUTO
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ DeltaX = target{PROP:Width} - Resize:CWidth
+ DeltaY = target{PROP:Height} - Resize:CHeight
+ getposition(AnchorCtl,AnchorX,AnchorY,AnchorWidth,AnchorHeight)
+ loop Ctl = firstfield() to lastfield()
+     if Ctl{PROP:Type} = CREATE:Tab
+        cycle
+     end
+     getposition(Ctl,CtlX,CtlY,CtlWidth,CtlHeight)
+     if CtlX = AnchorX and CtlY = AnchorY
+        case Ctl{PROP:Type}
+        of   CREATE:List
+        orof CREATE:Sheet
+!             setposition(Ctl,CtlX,CtlY,CtlWidth+DeltaX,CtlHeight+DeltaY)
+             ctl{PROP:Width} = CtlWidth+DeltaX
+             ctl{PROP:Height} = CtlHeight+DeltaY
+        end
+     elsif CtlX >= AnchorX + AnchorWidth
+!           setposition(Ctl,CtlX+DeltaX,CtlY,CtlWidth,CtlHeight)
+           ctl{prop:xpos} = CtlX+DeltaX
+     elsif CtlX >= AnchorX and CtlY >= AnchorY
+           case Ctl{PROP:Type}
+           of   CREATE:List
+           orof CREATE:Sheet
+!            setposition(Ctl,CtlX,CtlY,CtlWidth+DeltaX,CtlHeight+DeltaY)
+             ctl{PROP:Width} = CtlWidth+DeltaX
+             ctl{PROP:Height} = CtlHeight+DeltaY
+           else
+!            setposition(Ctl,CtlX+DeltaX,CtlY+DeltaY,CtlWidth,CtlHeight)
+             ctl{prop:xpos} = CtlX+DeltaX
+             ctl{prop:ypos} = CtlY+DeltaY
+           end
+     elsif Ctl{PROP:Type} = CREATE:Sheet
+!           setposition(Ctl,CtlX,CtlY,CtlWidth+DeltaX,CtlHeight+DeltaY)
+           ctl{PROP:Width} = CtlWidth+DeltaX
+           ctl{PROP:Height} = CtlHeight+DeltaY
+     end
+end
+[END]
+[END]
+[END]

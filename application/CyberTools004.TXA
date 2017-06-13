@@ -1,0 +1,346 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+MODIFIED '2017/06/09' '22:10:22'
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME WAVControl
+PROTOTYPE '(STRING ControlType, USHORT DeviceID, ULONG CallingWindow, *CSTRING WAVFileName, <<*ULONG PassedPosition>),USHORT'
+PARAMETERS '(STRING ControlType, USHORT DeviceID, ULONG CallingWindow, *CSTRING WAVFileName, <<*ULONG PassedPosition>) !,USHORT'
+[COMMON]
+DESCRIPTION 'Control WAV File'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:59:40'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Return Value:'),USE(?ReturnValue:Prompt)
+! ENTRY(@n6),USE(ReturnValue)
+[REPORTCONTROLS]
+! STRING(@n6),USE(ReturnValue)
+ReturnValue              USHORT !Return Value
+!!> GUID('41fc97c0-e7f7-4094-bb58-ebe112b429a0'),PROMPT('Return Value:'),HEADER('Return Value'),PICTURE(@n6)
+[PROMPTS]
+%ReturnValue FIELD  (ReturnValue)
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+MCIRequest                  cstring(128)        !MCI String Request
+MCIReturnValue              cstring(128)        !MCI Return Value
+MCIErrorString              cstring(128)        !MCI Error String
+DeviceAlias                 cstring(21)         !MCI Alias
+DeviceType                  cstring(21)         !MCI Device Type
+WAVFileLength               ulong               !WAV File Length
+OMIT('FREDOMIT')
+AddressHolder               ulong               !Parameter Block Address Holder
+DeviceAlias                 cstring(20)         !MCI Alias
+DeviceType                  cstring(20)         !MCI Device Type
+Result                      ushort              !Result from function call
+SoundFileHandle             short               !Sound File Handle
+O_RDWR                      equate(2)           !Create Parameter
+! MCI command message identifiers
+MCI_OPEN                         equate(803H)
+MCI_CLOSE                        equate(804H)
+MCI_ESCAPE                       equate(805H)
+MCI_PLAY                         equate(806H)
+MCI_SEEK                         equate(807H)
+MCI_STOP                         equate(808H)
+MCI_PAUSE                        equate(809H)
+MCI_INFO                         equate(80AH)
+MCI_GETDEVCAPS                   equate(80BH)
+MCI_SPIN                         equate(80CH)
+MCI_SET                          equate(80DH)
+MCI_STEP                         equate(80EH)
+MCI_RECORD                       equate(80FH)
+MCI_SYSINFO                      equate(810H)
+MCI_BREAK                        equate(811H)
+MCI_SOUND                        equate(812H)
+MCI_SAVE                         equate(813H)
+MCI_STATUS                       equate(814H)
+MCI_CUE                          equate(830H)
+MCI_REALIZE                      equate(840H)
+MCI_WINDOW                       equate(841H)
+MCI_PUT                          equate(842H)
+MCI_WHERE                        equate(843H)
+MCI_FREEZE                       equate(844H)
+MCI_UNFREEZE                     equate(845H)
+MCI_LOAD                         equate(850H)
+MCI_CUT                          equate(851H)
+MCI_COPY                         equate(852H)
+MCI_PASTE                        equate(853H)
+MCI_UPDATE                       equate(854H)
+MCI_RESUME                       equate(855H)
+MCI_DELETE                       equate(856H)
+! Flags for dwFlags parameter of MCI_OPEN command message
+MCI_OPEN_SHAREABLE               equate(100H)
+MCI_OPEN_ELEMENT                 equate(200H)
+MCI_OPEN_ALIAS                   equate(400H)
+MCI_OPEN_ELEMENT_ID              equate(800H)
+MCI_OPEN_TYPE_ID                 equate(1000H)
+MCI_OPEN_TYPE                    equate(2000H)
+! Common flags for dwFlags parameter of MCI command messages
+MCI_NOTIFY                  equate(1H)
+MCI_WAIT                    equate(2H)
+MCI_FROM                    equate(4H)
+MCI_TO                      equate(8H)
+MCI_TRACK                   equate(10H)
+MCI_WAVE_OPEN_BUFFER        equate(10000h)
+! Common flags for dwFlags parameter of MCI_SEEK messages
+MCI_SEEK_TO_START           equate(100h)
+MCI_SEEK_TO_END             equate(200h)
+! Flags for dwFlags parameter of MCI_RECORD command message
+MCI_RECORD_INSERT           equate(100H)
+MCI_RECORD_OVERWRITE        equate(200H)
+! Flags for dwFlags parameter of MCI_SAVE command message
+MCI_SAVE_FILE               equate(100H)
+!Flags for dwFlags parameter of MCI_STATUS command message
+MCI_STATUS_ITEM             equate(100h)
+MCI_STATUS_START            equate(200h)
+!Flags for dwItem field of the MCI_STATUS_PARMS parameter block
+MCI_STATUS_LENGTH           equate(1H)
+MCI_STATUS_POSITION         equate(2H)
+MCI_STATUS_NUMBER_OF_TRACKS equate(3H)
+MCI_STATUS_MODE             equate(4H)
+MCI_STATUS_MEDIA_PRESENT    equate(5H)
+MCI_STATUS_TIME_FORMAT      equate(6H)
+MCI_STATUS_READY            equate(7H)
+MCI_STATUS_CURRENT_TRACK    equate(8H)
+MCIWaveOpenParams          group, pre(mop)
+Callback                      ulong
+DeviceID                      ushort
+Reserved0                     ushort
+DeviceType                    ulong
+ElementName                   ulong
+Alias                         ulong
+BufferSeconds                 ulong
+                           .
+MCIWavePlayParams          group, pre(mpp)
+Callback                     ulong
+PlayFrom                     ulong
+PlayTo                       ulong
+                           .
+MCIWaveSeekParams          group, pre(msp)
+Callback                     ulong
+SeekTo                       ulong
+                           .
+!Parameter block for MCI_RECORD command message
+MCIWaveRecordParams        group, pre(mrp)
+Callback                     ulong
+RecordFrom                   ulong
+RecordTo                     ulong
+                           .
+!Parameter block for MCI_SAVE command message
+MCIWaveSaveParams           group, pre(map)
+Callback                      ulong
+Filename                      ulong
+                            .
+!Parameter block for MCI_STATUS command message
+MCIWaveStatusParams         group,pre(mst)
+Callback                      ulong
+FunctionReturn                ulong
+Item                          ulong
+Track                         ulong
+                            .
+!Generic parameter block for MCI command messages with no special parameters
+MCIWaveGenericParams        group,pre(mgp)
+Callback                      ulong
+                            .
+! FREDOMIT
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ ReturnValue = 0
+ DeviceAlias = 'TRIMWAVE'
+ DeviceType = 'waveaudio'
+ clear( MCIErrorString )
+ clear( MCIReturnValue )
+ case upper(clip(left( ControlType )))
+      of 'OPEN'
+         MCIRequest = 'open ' & clip(left( WAVFileName ))
+         MCIErrorString = MCISendString( MCIRequest, MCIReturnValue, 128, CallingWindow )
+      of 'PLAY'
+         if ~omitted(5)
+            MCIRequest = 'play ' & clip(left( WAVFileName )) & ' from ' & PassedPosition
+         else
+            MCIRequest = 'play ' & clip(left( WAVFileName ))
+         .
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+      of 'POSITION'
+         MCIRequest = 'status ' & clip(left( WAVFileName )) & ' position'
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+         if ~omitted(5)
+            PassedPosition = mciReturnValue
+         .
+      of 'SEEK'
+         if ~omitted(5)
+            MCIRequest = 'seek ' & clip(left( WAVFileName )) & ' to ' & PassedPosition
+         else
+            MCIRequest = 'seek ' & clip(left( WAVFileName )) & ' to 1'
+         .
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+      of 'REWIND'
+         MCIRequest = 'status ' & clip(left( WAVFileName )) & ' position'
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+         if mciReturnValue - 5000 <= 0 then
+            mciReturnValue = 1
+         else
+            mciReturnValue = mciReturnValue - 5000
+         .
+         MCIRequest = 'seek ' & clip(left( WAVFileName )) & ' to ' & mciReturnValue
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+      of 'FAST FORWARD'
+         MCIRequest = 'status ' & clip(left( WAVFileName )) & ' length'
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+         WAVFileLength = mciReturnValue
+         MCIRequest = 'status ' & clip(left( WAVFileName )) & ' position'
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+         if mciReturnValue + 5000 >= WAVFileLength then
+            mciReturnValue = WAVFileLength
+         else
+            mciReturnValue = mciReturnValue + 5000
+         .
+         MCIRequest = 'seek ' & clip(left( WAVFileName )) & ' to ' & mciReturnValue
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+      of 'TO TOP'
+         MCIRequest = 'seek ' & clip(left( WAVFileName )) & ' to 1'
+         MCIErrorString = MCISendString( MCIRequest, MCIReturnValue, 128, CallingWindow )
+      of 'TO END'
+         MCIRequest = 'seek ' & clip(left( WAVFileName )) & ' to end'
+         MCIErrorString = MCISendString( MCIRequest, MCIReturnValue, 128, CallingWindow )
+      of 'RECORD'
+         MCIRequest = 'record ' & clip(left( WAVFileName )) & ' overwrite'
+         MCIErrorString = MCISendString( MCIRequest, MCIReturnValue, 128, CallingWindow )
+ OMIT('FREDOMIT')
+         clear(MCIWaveRecordParams)
+         mrp:CallBack = CallingWindow
+         AddressHolder = address( MCIWaveRecordParams )
+         Result = mciSendCommand( DeviceId, MCI_RECORD, MCI_NOTIFY, AddressHolder )
+         if Result <> 0
+            x# = MESSAGE('MCI unable to record WAV file.  '|
+                 &'Errorcode ' & Result & '.  Press Ok to continue.',|
+                 'MCI Record Error',Icon:Exclamation,Button:OK,Button:OK,0)
+         .
+         ReturnValue = DeviceId
+! FREDOMIT
+      of 'SAVE'
+         MCIRequest = 'save ' & clip(left( WAVFileName ))
+         MCIErrorString = MCISendString( MCIRequest, MCIReturnValue, 128, CallingWindow )
+ OMIT('FREDOMIT')
+         clear(MCIWaveSaveParams)
+         map:CallBack = CallingWindow
+         map:FileName = address(WAVFileName)
+         AddressHolder = address( MCIWaveSaveParams )
+         Result = mciSendCommand( DeviceId, MCI_SAVE, MCI_SAVE_FILE + MCI_WAIT, AddressHolder )
+         if Result <> 0
+            x# = MESSAGE('MCI unable to save WAV file.  '|
+                 &'Errorcode ' & Result & '.  Press Ok to continue.',|
+                 'MCI Save Error',Icon:Exclamation,Button:OK,Button:OK,0)
+         .
+         ReturnValue = DeviceId
+! FREDOMIT
+      of 'PAUSE'
+         MCIRequest = 'pause ' & clip(left( WAVFileName ))
+         MCIErrorString = MCISendString( MCIRequest, MCIReturnValue, 128, CallingWindow )
+      of 'RESUME'
+         MCIRequest = 'resume ' & clip(left( WAVFileName ))
+         MCIErrorString = MCISendString( MCIRequest, MCIReturnValue, 128, CallingWindow )
+      of 'CLOSE'
+         MCIRequest = 'close ' & clip(left( WAVFileName ))
+         mciErrorString = mciSendString( mciRequest, mciReturnValue, 128, CallingWindow )
+      of 'STOP'
+         MCIRequest = 'stop ' & clip(left( WAVFileName ))
+         MCIErrorString = MCISendString( MCIRequest, MCIReturnValue, 128, CallingWindow )
+ .
+ if MCIErrorString <> '0' and clip(left(MCIErrorString)) <> ''
+    if MCIErrorString = '263' or MCIErrorString = '265' or MCIErrorString = '282' or MCIErrorString = '302'
+       ReturnValue = 1
+    else
+       ReturnValue = 0
+       x# = MESSAGE('MCI Error: ' & MCIErrorString |
+            & '.  Press Ok to continue.',|
+            'MCI Error',Icon:Exclamation,Button:OK,Button:OK,0)
+    .
+ else
+    case clip(left( MCIReturnValue ))
+         of 'true'
+            ReturnValue = 1
+         of 'false'
+            ReturnValue = 0
+         of ''
+         orof '0'
+         orof '1'
+         orof '2'
+              ReturnValue = 1
+         else
+            ReturnValue = MCIReturnValue
+    .
+ .
+ RETURN Level:Fatal
+[END]
+[END]
+[END]

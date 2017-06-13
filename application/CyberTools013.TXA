@@ -1,0 +1,223 @@
+[MODULE]
+[COMMON]
+DESCRIPTION 'Generated Source Module'
+FROM ABC GENERATED
+MODIFIED '2017/06/09' '22:12:15'
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME StdDev
+PROTOTYPE '(*QUEUE pQueue, *DECIMAL pValue, *DECIMAL pStdDev)'
+PARAMETERS '(*QUEUE pQueue, *DECIMAL pValue, *DECIMAL pStdDev)'
+[COMMON]
+DESCRIPTION 'Standard Deviation'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:58:52'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('I:'),USE(?I:Prompt)
+! ENTRY(@n-13),USE(I)
+[REPORTCONTROLS]
+! STRING(@n-13),USE(I)
+I                        LONG
+!!> GUID('340bc38c-0120-41d1-a345-200d70792676'),PROMPT('I:'),HEADER('I'),PICTURE(@n-13)
+[SCREENCONTROLS]
+! PROMPT('Count:'),USE(?Count:Prompt)
+! ENTRY(@n-13),USE(Count)
+[REPORTCONTROLS]
+! STRING(@n-13),USE(Count)
+Count                    LONG
+!!> GUID('3b670ba0-7bf6-44fe-9204-fafdc5f1953d'),PROMPT('Count:'),HEADER('Count'),PICTURE(@n-13)
+[SCREENCONTROLS]
+! PROMPT('Total:'),USE(?Total:Prompt)
+! ENTRY(@n10.2),USE(Total)
+[REPORTCONTROLS]
+! STRING(@n10.2),USE(Total)
+Total                    REAL
+!!> GUID('f8acf1ad-730f-4aa0-8982-466b0b5e171e'),PROMPT('Total:'),HEADER('Total'),PICTURE(@n10.2)
+[SCREENCONTROLS]
+! PROMPT('Mean:'),USE(?Mean:Prompt)
+! ENTRY(@n10.2),USE(Mean)
+[REPORTCONTROLS]
+! STRING(@n10.2),USE(Mean)
+Mean                     REAL
+!!> GUID('5b8d8612-b940-4261-83ad-cb3d68e08612'),PROMPT('Mean:'),HEADER('Mean'),PICTURE(@n10.2)
+[SCREENCONTROLS]
+! PROMPT('Variance:'),USE(?Variance:Prompt)
+! ENTRY(@n10.2),USE(Variance)
+[REPORTCONTROLS]
+! STRING(@n10.2),USE(Variance)
+Variance                 REAL
+!!> GUID('412449b0-ff4f-469f-9278-7d0d0535e6f2'),PROMPT('Variance:'),HEADER('Variance'),PICTURE(@n10.2)
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ Total = 0
+ Variance = 0
+ Count = RECORDS(pQueue)
+ LOOP I = 1 TO Count
+  GET(pQueue,I)
+  Total += pValue
+ END
+ Mean = Total / Count
+ LOOP I = 1 TO Count
+  GET(pQueue,I)
+  Variance += (Mean - pValue) * (Mean - pValue)
+ END
+ pStdDev = SQRT(Variance)
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME GetDiskFreeSpace
+PROTOTYPE '(*CSTRING szDirectoryName, *DECIMAL nFreeBytesAvail, *DECIMAL nTotalNumberOfBytes, *DECIMAL nTotalNumberOfFreeBytes),BYTE'
+PARAMETERS '(*CSTRING szDirectoryName, *DECIMAL nFreeBytesAvail, *DECIMAL nTotalNumberOfBytes, *DECIMAL nTotalNumberOfFreeBytes)'
+[COMMON]
+FROM ABC Source
+MODIFIED '2017/06/09' '22:53:53'
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3500
+PROPERTY:END
+! Created to support 64 bit integers in Clarion
+ULARGE_INTEGER          GROUP,TYPE
+LowBit                    ULONG
+HighBit                   ULONG
+                        END
+MY_LONGSHIFT            EQUATE(4294967295)  !2^32
+
+FreeBytesAvail          LIKE(ULARGE_INTEGER)
+TotalNumberOfBytes      LIKE(ULARGE_INTEGER)
+TotalNumberOfFreeBytes  LIKE(ULARGE_INTEGER)
+
+dwSectPerClust          LONG
+dwBytesPerSect          LONG
+dwFreeClusters          LONG
+dwTotalClusters         LONG
+
+retVal                  BYTE(0)
+
+szModuleName            CSTRING('kernel32.dll')
+szProcName              CSTRING('GetDiskFreeSpaceExA')
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  IF GetProcAddress(GetModuleHandle(szModuleName),szProcName)
+     RetVal = GetDiskFreeSpaceEx(szDirectoryName, FreeBytesAvail, TotalNumberOfBytes, TotalNumberOfFreeBytes)
+     IF RetVal
+        nFreeBytesAvail = (FreeBytesAvail.HighBit * MY_LONGSHIFT) + FreeBytesAvail.LowBit
+        nTotalNumberOfBytes = (TotalNumberOfBytes.HighBit * MY_LONGSHIFT) + TotalNumberOfBytes.LowBit
+        nTotalNumberOfFreeBytes = (TotalNumberOfFreeBytes.HighBit * MY_LONGSHIFT) + TotalNumberOfFreeBytes.LowBit
+     END
+  ELSE
+     RetVal = GetDiskFreeSpace(szDirectoryName, dwSectPerClust, dwBytesPerSect, dwFreeClusters, dwTotalClusters)
+     IF RetVal
+        nFreeBytesAvail = dwFreeClusters * dwSectPerClust * dwBytesPerSect
+        nTotalNumberOfBytes = dwTotalClusters * dwSectPerClust * dwBytesPerSect
+        nTotalNumberOfFreeBytes = nFreeBytesAvail
+     END
+  END
+  RETURN RetVal
+[END]
+[END]
+[END]

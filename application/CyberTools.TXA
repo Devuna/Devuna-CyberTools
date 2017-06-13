@@ -1,0 +1,147 @@
+[PROGRAM]
+[COMMON]
+FROM ABC ABC
+MODIFIED '2017/06/09' '22:42:32'
+[EMBED]
+EMBED %AfterGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+   INCLUDE('Devuna.CLW','equates'),ONCE
+
+GlobalViewOnlyMode           BYTE(False)     !Keystone View Only Mode T/F
+GlobalLookupOverride         BYTE(False)     !Keystone Override Secondary Lookups T/F
+GlobalOracleTF               BYTE(False)     !Keystone ORACLE Flag T/F
+GlobalUserName               CSTRING(41)     !Keystone user resource Id
+GlobalVersion                CSTRING(26)     !Keystone program version
+GlobalUserSysId              LONG            !Keystone user system id
+GlobalSortOrder              BYTE            !Keystone sort order for vcr form
+GlobalBrowseBugsAllowed      BYTE(True)      !Keystone bug database access flag
+GlobalDefaultIcon            STRING(16)      !Keystone default program icon
+GlobalSecurityLogging        BYTE            !Keystone security logging flag
+ThreadQ    QUEUE,PRE(tq)
+Record       GROUP,PRE()
+Number         LONG(0)        !thread number         (returned by START)
+Name           STRING(30)     !procedure name        (e.g., MasterList)
+Instance       LONG(0)        !procedure instance
+MaxInstance    LONG(0)        !maximum procedure instance
+Param1         LONG(0)        !foreign key 1
+Param2         LONG(0)        !foreign key 2
+Param3         LONG(0)        !foreign key 3
+Param4         LONG(0)        !foreign key 4
+Buffer         STRING(256)    !data buffer
+             END
+           END
+[END]
+EMBED %GlobalMap
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3600
+PROPERTY:END
+INCLUDE('KCRAPIFNC.INC'),ONCE
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+INCLUDE('Devuna.clw','map')
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+   MODULE('RPCRT4.DLL')
+      kcr_RpcStringFree(*LONG lpszString),RPC_STATUS,RAW,PASCAL,NAME('RpcStringFreeA')
+      kcr_UuidCreate(*GUID Uuid),RPC_STATUS,RAW,PASCAL,NAME('UuidCreate')
+      kcr_UuidToString(*GUID Uuid,*LONG lpszString),RPC_STATUS,RAW,PASCAL,NAME('UuidToStringA')
+      kcr_UuidFromString(*CSTRING lpszString,*GUID Uuid),RPC_STATUS,RAW,PASCAL,NAME('UuidFromStringA')
+   END
+
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+    MODULE('Kernel32')
+        RegSetValueEx(UNSIGNED,*CSTRING,ULONG,ULONG,*DWORD,ULONG),LONG,RAW,PASCAL,NAME('RegSetValueExA'),PROC
+    END
+
+[END]
+EMBED %AfterFileDeclarations
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+REGISTRY            FILE,DRIVER('TOPSPEED'),NAME('REGISTRY.DAT'),CREATE,RECLAIM,PRE(REG)
+K1                    KEY(+REG:USERNAME,+REG:SECTIONNAME,+REG:TOKENLABEL),OPT,NOCASE,PRIMARY
+RECORD                RECORD
+USERNAME                STRING(10)
+SECTIONNAME             STRING(30)
+TOKENLABEL              STRING(30)
+TOKENVALUE              STRING(1000)
+                      END
+                    END
+
+[END]
+EMBED %BeforeGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3240
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3600
+PROPERTY:END
+    INCLUDE('svapi.inc'),ONCE
+
+!    INCLUDE('svcomdef.inc'),ONCE
+! Copied from svcomdef.inc to prevent duplcicates of other equates with Devuna.clw
+! KV 2008.03.17
+_GUID                   group,type
+Data1                     long
+Data2                     short
+Data3                     short
+Data4                     byte,dim(8)
+                        end
+
+_GUIDL                  group,type
+Data1                     long
+Data2                     long
+Data3                     long
+Data4                     long
+                        end
+
+GUID                    group(_GUID),type.
+_IID                    group(GUID),type.
+_CLSID                  group(GUID),type.
+!--------------------------------------------------------------------------------------
+
+RPC_STATUS  EQUATE(LONG)
+RPC_S_OK    EQUATE(0)
+
+[END]
+[END]
+[END]

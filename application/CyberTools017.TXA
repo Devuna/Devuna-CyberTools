@@ -1,0 +1,126 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+MODIFIED '2017/06/09' '22:12:56'
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME Word:SpellCheck
+PROTOTYPE '(*CSTRING p_TextToCheck, BYTE p_Quiet=0)'
+PARAMETERS '(*CSTRING p_TextToCheck, BYTE p_Quiet)'
+[COMMON]
+DESCRIPTION 'Spell Check using word'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:59:58'
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3500
+PROPERTY:END
+WordOle         LONG 
+saveClipboard   &CSTRING
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+    IF CLIP(p_TextToCheck) <> ''                                      !make sure something to check
+       WordOle = CREATE(0,CREATE:Ole)                                    !create an ole control
+       IF WordOle <> 0
+          SETCURSOR(CURSOR:WAIT)                                            !display hourglass cursor
+          WordOle{PROP:Create} = 'Word.Document'                            !in place activation of word
+          IF WordOle{PROP:Ole} = FALSE AND WordOle{PROP:Object} = ''        !if instantiation fails
+             DESTROY(WordOle)                                                  !destroy the control
+             MESSAGE('Could not locate MS Word on your computer. Request Cancelled!','Notification...', ICON:Exclamation,BUTTON:Cancel)   !message user
+          ELSE                                                              !intantiated ok
+             WordOle{'Application.Visible'} = False                            !Hide WORD From User
+             WordOle{'Application.Documents.Add'}                              !add a document
+             saveClipboard &= NEW CSTRING(LEN(CLIPBOARD())+1)                  !allocate storage to save current clipboard contents
+             saveClipboard = CLIPBOARD()                                       !save current clipboard contents
+             SETCLIPBOARD(p_TextToCheck)                                       !set the clipboard contents
+             WordOle{'Application.Selection.Paste'}                            !Paste Text Into WORD
+             WordOle{'Application.ActiveDocument.CheckGrammar'}                !Activate The Spell Checker
+             WordOle{'Application.Visible'} = False                            !Hide WORD From User
+             WordOle{'Application.ActiveDocument.Select'}                      !Select The Corrected Text
+             WordOle{'Application.Selection.Cut'}                              !Cut The Text To Clipboard
+             p_TextToCheck = CLIPBOARD()                                       !Assign Text to string
+             SETCLIPBOARD(saveClipboard)                                       !Restore clipboard contents
+             DISPOSE(saveClipboard)                                            !release storage
+             saveClipboard &= NULL                                             !clear reference
+             WordOle{'Application.ActiveDocument.Close(0)'}                    !Close & DO NOT Save Changes
+             WordOle{'Application.Quit'}                                       !Quit
+             WordOle{PROP:DeActivate}                                          !deactivate ole
+             DESTROY(WordOle)                                                  !destroy the control
+             IF ~p_Quiet                                                       !verbose mode
+                MESSAGE('The spelling and grammer check is complete','Microsoft Office Word', ICON:Exclamation,BUTTON:OK)   !message user
+             END
+          END                                                                  
+          SETCURSOR()                                                          !reset the cursor
+       ELSE
+          ASSERT(WordOle <> 0)                                           !something is wrong
+       END
+    END
+    RETURN
+[END]
+[END]
+[END]

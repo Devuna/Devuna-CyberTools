@@ -1,0 +1,110 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{4A35CAF6-0355-42F2-B180-2C28A0956CD2}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CyberTools</RootNamespace>
+    <AssemblyName>CyberTools</AssemblyName>
+    <OutputName>CyberTools</OutputName>
+    <CWOutputType>Exe</CWOutputType>
+    <DefineConstants>_ABCDllMode_=&gt;0%3b_ABCLinkMode_=&gt;1</DefineConstants>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <Model>Dll</Model>
+    <stack_size>16384</stack_size>
+    <CopyCore>True</CopyCore>
+    <ApplicationIcon>CyberTools.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <vid>full</vid>
+    <check_stack>True</check_stack>
+    <check_index>True</check_index>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <vid>off</vid>
+    <check_stack>False</check_stack>
+    <check_index>False</check_index>
+    <warnings>on</warnings>
+    <GenerateMap>True</GenerateMap>
+    <line_numbers>False</line_numbers>
+  </PropertyGroup>
+  <ItemGroup>
+    <FileDriver Include="ASCII" />
+    <FileDriver Include="DOS" />
+    <FileDriver Include="TOPSPEED" />
+    <Compile Include="CyberTools.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools001.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools002.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools003.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools004.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools005.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools006.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools007.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools008.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools009.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools010.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools011.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools012.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools013.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools014.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools015.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools016.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools017.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools018.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools019.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CYBERTOOLS_BC.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="CyberTools_BC0.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Library Include="rpcrt4.lib">
+      <CopyDllToOutputDirectory>Never</CopyDllToOutputDirectory>
+    </Library>
+  </ItemGroup>
+  <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
+</Project>

@@ -1,0 +1,728 @@
+[MODULE]
+[COMMON]
+DESCRIPTION 'Generated Source Module'
+FROM ABC GENERATED
+MODIFIED '2017/06/09' '22:11:05'
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME _AddThread
+PROTOTYPE '(LONG pThdNumber,STRING pThdName,<<LONG pThdMaxInstance>,<<LONG pThdParam1>,<<LONG pThdParam2>,<<LONG pThdParam3>,<<LONG pThdParam4>,<<STRING pThdBuffer>)'
+PARAMETERS '(LONG pThdNumber,STRING pThdName,<<LONG pThdMaxInstance>,<<LONG pThdParam1>,<<LONG pThdParam2>,<<LONG pThdParam3>,<<LONG pThdParam4>,<<STRING pThdBuffer>)'
+[COMMON]
+DESCRIPTION 'Add Thread Queue Entry'
+FROM ABC Source
+MODIFIED '2017/06/09' '23:00:33'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Instance Count:'),USE(?InstanceCount:Prompt)
+! ENTRY(@n-13),USE(InstanceCount),MSG('Current Number of Procedure Instances')
+[REPORTCONTROLS]
+! STRING(@n-13),USE(InstanceCount)
+InstanceCount            LONG !Current Number of Procedure Instances
+!!> GUID('25bf0c39-72b1-4c47-892c-4e8bd1078152'),PROMPT('Instance Count:'),HEADER('Instance Count'),MESSAGE('Current Number of Procedure Instances'),PICTURE(@n-13)
+[SCREENCONTROLS]
+! PROMPT('Max Instance:'),USE(?MaxInstance:Prompt)
+! ENTRY(@n-13),USE(MaxInstance),MSG('Maximum Number of Instances Allowed')
+[REPORTCONTROLS]
+! STRING(@n-13),USE(MaxInstance)
+MaxInstance              LONG !Maximum Number of Instances Allowed
+!!> GUID('5fcac8bd-9839-4df7-bd46-bf5710ea8925'),PROMPT('Max Instance:'),HEADER('Max Instance'),MESSAGE('Maximum Number of Instances Allowed'),PICTURE(@n-13)
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ pThdName = upper( pThdName )                   !Upper the thread name
+ InstanceCount = instances(pThdName)
+ if InstanceCount
+    sort(ThreadQ,+tq:Name,-tq:Instance)
+    tq:name = pThdName
+    get(ThreadQ,+tq:Name)
+    if errorcode()
+       message('Error getting thread queue entry for ' & clip(pThdName),'Thread Manager Error',ICON:hand)
+    else
+       MaxInstance = tq:MaxInstance
+       if InstanceCount < MaxInstance
+          DO AddThreadRoutine
+       else
+         message('Error maximum thread queue entry for ' & clip(pThdName) & ' exceeded.','Thread Manager Error',ICON:hand)
+       end
+    end
+ else
+   if ~omitted(3)
+      MaxInstance = pThdMaxInstance
+   else
+      MaxInstance = 1
+   end
+   DO AddThreadRoutine
+ end
+! RETURN Level:Fatal
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+AddThreadRoutine    ROUTINE
+ InstanceCount = tq:Instance
+ clear(THREADQ)
+ tq:Number=pThdNumber
+ tq:Name=pThdName
+ tq:Instance = InstanceCount+1
+ tq:MaxInstance = MaxInstance
+ if ~omitted(4)
+   tq:Param1=pThdParam1
+ end
+ if ~omitted(5)
+   tq:Param2=pThdParam2
+ end
+ if ~omitted(6)
+   tq:Param3=pThdParam3
+ end
+ if ~omitted(7)
+   tq:Param4=pThdParam4
+ end
+ if ~omitted(8)
+   tq:Buffer=pThdBuffer
+ end
+ add(THREADQ)
+ exit  !** Check EXIT allowed here **
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+Instances
+[PROCEDURE]
+NAME DeleteThread
+[COMMON]
+DESCRIPTION 'Delete Thread Queue Entry'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:52:37'
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ sort(THREADQ,tq:Number)
+ tq:Number=thread()
+ get(THREADQ,tq:Number)
+ if ~errorcode()
+   delete(THREADQ)
+ else
+   stop('WARNING: An attempt to delete an execution thread '&|
+        'has failed. As a result, '&|
+        'this program could be in an unstable state. If you have '&|
+        'saved recently, you should exit and reload the program.')
+ end
+ if ~records(THREADQ) then free(THREADQ).  !(probably not needed...)
+! RETURN Level:Fatal
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+Instances
+[PROCEDURE]
+NAME FindThread
+PROTOTYPE '(STRING pThdName,<<LONG pThdInstance>,*GROUP pThdRecord,<<STRING pThdOrdinal>)'
+PARAMETERS '(STRING pThdName,<<LONG pThdInstance>,*GROUP pThdRecord,<<STRING pThdOrdinal>)'
+[COMMON]
+DESCRIPTION 'Find Thread from Queue'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:53:05'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Ret Val:'),USE(?RetVal:Prompt)
+! ENTRY(@n-13),USE(RetVal),MSG('Function Return Value')
+[REPORTCONTROLS]
+! STRING(@n-13),USE(RetVal)
+RetVal                   LONG !Function Return Value
+!!> GUID('e440eaef-c4aa-4bd8-b5ce-d020de1d1971'),PROMPT('Ret Val:'),HEADER('Ret Val'),MESSAGE('Function Return Value'),PICTURE(@n-13)
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ pThdName = upper( pThdName )
+ clear(THREADQ)
+ sort(THREADQ,+tq:Name,+tq:Instance)
+ tq:Name=pThdName
+ if omitted(2)
+    if ~omitted(4)
+       if upper(pThdOrdinal) = 'LAST'
+          sort(THREADQ,+tq:Name,-tq:Instance)
+       end
+    end
+    get(THREADQ,+tq:Name)
+ else
+    tq:Instance = pThdInstance
+    get(THREADQ,+tq:Name,+tq:Instance)
+ end
+ if errorcode() or tq:Name <> pThdName
+    clear(THREADQ)
+ end
+ pThdRecord = tq:Record
+! RETURN Level:Fatal
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+Instances
+[PROCEDURE]
+NAME CloseThreads
+[COMMON]
+DESCRIPTION 'Close All Threads'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:50:46'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('i:'),USE(?i:Prompt)
+! ENTRY(@n-6),USE(i),MSG('loop control')
+[REPORTCONTROLS]
+! STRING(@n-6),USE(i)
+i                        SHORT !loop control
+!!> GUID('b4e4cf79-caf3-41b9-9950-2e1bed9bed3c'),PROMPT('i:'),HEADER('i'),MESSAGE('loop control'),PICTURE(@n-6)
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ sort(THREADQ,-tq:Number)
+ loop i=1 to records(THREADQ)
+   get(THREADQ,i)
+   post(EVENT:CloseDown,,tq:Number)
+   post(EVENT:CloseWindow,,tq:Number)
+ end
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+Instances
+[PROCEDURE]
+NAME Threads
+PROTOTYPE '(),BYTE'
+[COMMON]
+DESCRIPTION 'Get Number of Threads'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:59:04'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Ret Val:'),USE(?RetVal:Prompt)
+! ENTRY(@n3),USE(RetVal),MSG('Function Return Value')
+[REPORTCONTROLS]
+! STRING(@n3),USE(RetVal)
+RetVal                   BYTE !Function Return Value
+!!> GUID('87f0b29c-8609-4d1c-9f5c-0d9951462d1b'),PROMPT('Ret Val:'),HEADER('Ret Val'),MESSAGE('Function Return Value'),PICTURE(@n3)
+[PROMPTS]
+%ReturnValue FIELD  (RetVal)
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ RetVal=records(THREADQ)
+ RETURN RetVal
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+Instances
+[PROCEDURE]
+NAME Instances
+PROTOTYPE '(STRING pThdName),LONG'
+PARAMETERS '(STRING pThdName) !,LONG'
+[COMMON]
+DESCRIPTION 'Get Thread Instance Count'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:55:13'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Ret Val:'),USE(?RetVal:Prompt)
+! ENTRY(@n-13),USE(RetVal),MSG('Function Return Value')
+[REPORTCONTROLS]
+! STRING(@n-13),USE(RetVal)
+RetVal                   LONG !Function Return Value
+!!> GUID('d118bfe8-41d3-45c4-a11e-55c05e29c605'),PROMPT('Ret Val:'),HEADER('Ret Val'),MESSAGE('Function Return Value'),PICTURE(@n-13)
+[SCREENCONTROLS]
+! PROMPT('Index Var:'),USE(?IndexVar:Prompt)
+! ENTRY(@n-13),USE(IndexVar),MSG('Index Variable')
+[REPORTCONTROLS]
+! STRING(@n-13),USE(IndexVar)
+IndexVar                 LONG !Index Variable
+!!> GUID('81311b14-edf6-4fa0-8009-bbf89358af62'),PROMPT('Index Var:'),HEADER('Index Var'),MESSAGE('Index Variable'),PICTURE(@n-13)
+[PROMPTS]
+%ReturnValue FIELD  (RetVal)
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ pThdName = upper( pThdName )
+ RetVal = 0
+ LOOP IndexVar = 1 TO RECORDS(ThreadQ)
+   GET(ThreadQ,IndexVar)
+   IF ERRORCODE()
+      BREAK
+   END
+   IF tq:Name = pThdName
+      RetVal += 1
+   END
+ END
+ RETURN RetVal
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+Instances
+[PROCEDURE]
+NAME GetThread
+PROTOTYPE '(LONG,*GROUP)'
+PARAMETERS '(pThd,pThdRecord)'
+[COMMON]
+DESCRIPTION 'Get Thread from Queue'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:54:21'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Ret Val:'),USE(?RetVal:Prompt)
+! ENTRY(@n-13),USE(RetVal),MSG('Function Return Value')
+[REPORTCONTROLS]
+! STRING(@n-13),USE(RetVal)
+RetVal                   LONG !Function Return Value
+!!> GUID('4f51f2c2-7923-4518-9c26-bdb091d07db8'),PROMPT('Ret Val:'),HEADER('Ret Val'),MESSAGE('Function Return Value'),PICTURE(@n-13)
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ clear(THREADQ)
+ sort(THREADQ,tq:Number)
+ tq:Number=pThd
+ get(THREADQ,tq:Number)
+ if errorcode()
+    clear(THREADQ)
+ end
+ pThdRecord = tq:Record
+! RETURN Level:Fatal
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+Instances
+[PROCEDURE]
+NAME SendThread
+PROTOTYPE '(STRING pThdName, LONG pThdEvent)'
+PARAMETERS '(STRING pThdName, LONG pThdEvent)'
+[COMMON]
+DESCRIPTION 'Send Thread An Event'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:57:46'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Ret Val:'),USE(?RetVal:Prompt)
+! ENTRY(@n-13),USE(RetVal),MSG('Function Return Value')
+[REPORTCONTROLS]
+! STRING(@n-13),USE(RetVal)
+RetVal                   LONG !Function Return Value
+!!> GUID('9aaf05a2-6ef1-434e-b91e-468a016a7953'),PROMPT('Ret Val:'),HEADER('Ret Val'),MESSAGE('Function Return Value'),PICTURE(@n-13)
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ThreadQLoopCounter          short               !Thread Queue Loop Counter
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ pThdName = upper( pThdName )
+ if records( ThreadQ ) then
+    loop ThreadQLoopCounter = 1 to records( ThreadQ )
+         get( ThreadQ, ThreadQLoopCounter )
+         if upper(clip(left( pThdName ))) = 'ALL' then
+            post( pThdEvent,,tq:Number )
+         elsif upper(clip(left( pThdName ))) = upper(clip(left( tq:Name )))
+            post( pThdEvent,,tq:Number )
+         .
+    .
+ .
+! RETURN Level:Fatal
+[END]
+[END]
+[CALLS]
+Instances
+[PROCEDURE]
+NAME PutThread
+PROTOTYPE '(LONG pThd, *GROUP pThdRecord)'
+PARAMETERS '(LONG pThd, *GROUP pThdRecord)'
+[COMMON]
+DESCRIPTION 'Get Thread from Queue'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:57:07'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Ret Val:'),USE(?RetVal:Prompt)
+! ENTRY(@n-13),USE(RetVal),MSG('Function Return Value')
+[REPORTCONTROLS]
+! STRING(@n-13),USE(RetVal)
+RetVal                   LONG !Function Return Value
+!!> GUID('48fdfe22-c7e1-4a93-947c-e4a92224a301'),PROMPT('Ret Val:'),HEADER('Ret Val'),MESSAGE('Function Return Value'),PICTURE(@n-13)
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ clear(THREADQ)
+ sort(THREADQ,tq:Number)
+ tq:Number = pThd
+ get(THREADQ,tq:Number)
+ if ~errorcode()
+   tq:Record = pThdRecord
+   tq:Number = pThd
+   put(THREADQ,tq:Number)
+ end
+! RETURN Level:Fatal
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+Instances
+[END]

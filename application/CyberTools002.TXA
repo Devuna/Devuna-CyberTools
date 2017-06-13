@@ -1,0 +1,3434 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+MODIFIED '2017/06/09' '22:10:06'
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME CalendarOLD
+PROTOTYPE '(*? pDate)'
+PARAMETERS '(*? pDate)'
+[COMMON]
+DESCRIPTION 'Three Month Calendar'
+FROM ABC Window
+MODIFIED '2017/06/09' '22:15:36'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('LocalRequest:'),USE(?LocalRequest:Prompt)
+! ENTRY(@n-14),USE(LocalRequest)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(LocalRequest)
+LocalRequest             LONG
+!!> GUID('6a556be2-ed53-41e1-b0c7-0ef0c9ca978c'),PROMPT('LocalRequest:'),HEADER('LocalRequest'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('Scrn Month String:'),USE(?ScrnMonthString:Prompt)
+! ENTRY(@s17),USE(ScrnMonthString),MSG('Month 1 name'),UPR,READONLY
+[REPORTCONTROLS]
+! STRING(@s17),USE(ScrnMonthString)
+ScrnMonthString          STRING(17) !Month 1 name
+!!> GUID('1357dbf2-9fc0-4577-9c9d-1cc60734a252'),PROMPT('Scrn Month String:'),HEADER('Scrn Month String'),MESSAGE('Month 1 name'),PICTURE(@s17),CASE(UPPER),READONLY
+[SCREENCONTROLS]
+! PROMPT('Scrn Month String 2:'),USE(?ScrnMonthString2:Prompt)
+! ENTRY(@s17),USE(ScrnMonthString2),MSG('Month 2 Name'),UPR,READONLY
+[REPORTCONTROLS]
+! STRING(@s17),USE(ScrnMonthString2)
+ScrnMonthString2         STRING(17) !Month 2 Name
+!!> GUID('7eab51d4-dfd3-4d86-b958-376375bc236b'),PROMPT('Scrn Month String 2:'),HEADER('Scrn Month String 2'),MESSAGE('Month 2 Name'),PICTURE(@s17),CASE(UPPER),READONLY
+[SCREENCONTROLS]
+! PROMPT('Scrn Month String 3:'),USE(?ScrnMonthString3:Prompt)
+! ENTRY(@s17),USE(ScrnMonthString3),UPR,READONLY
+[REPORTCONTROLS]
+! STRING(@s17),USE(ScrnMonthString3)
+ScrnMonthString3         STRING(17)
+!!> GUID('2b4f0a3b-46d9-42f4-9d5b-97aa5e2eb964'),PROMPT('Scrn Month String 3:'),HEADER('Scrn Month String 3'),PICTURE(@s17),CASE(UPPER),READONLY
+[SCREENCONTROLS]
+! PROMPT('Jump String:'),USE(?JumpString:Prompt)
+! ENTRY(@s7),USE(JumpString),MSG('Jump STring'),CAP
+[REPORTCONTROLS]
+! STRING(@s7),USE(JumpString)
+JumpString               STRING(7) !Jump STring
+!!> GUID('edc15f7b-7b38-4c43-9d16-b5b39d8915ba'),PROMPT('Jump String:'),HEADER('Jump String'),MESSAGE('Jump STring'),PICTURE(@s7),CASE(CAPS)
+[SCREENCONTROLS]
+! PROMPT('Message Date:'),USE(?MessageDate:Prompt)
+! ENTRY(@s20),USE(MessageDate),MSG('Display the date on screen')
+[REPORTCONTROLS]
+! STRING(@s20),USE(MessageDate)
+MessageDate              STRING(20) !Display the date on screen
+!!> GUID('928db999-5e45-46eb-9c23-011cf55ef66d'),PROMPT('Message Date:'),HEADER('Message Date'),MESSAGE('Display the date on screen'),PICTURE(@s20)
+[SCREENCONTROLS]
+! PROMPT('NewThread:'),USE(?NewThread:Prompt)
+! ENTRY(@n-14),USE(NewThread)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(NewThread)
+NewThread                LONG,AUTO
+!!> GUID('adced6c1-1661-4b2e-b5e8-38600f38692a'),PROMPT('NewThread:'),HEADER('NewThread'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('ThreadCount:'),USE(?ThreadCount:Prompt)
+! ENTRY(@n-14),USE(ThreadCount)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(ThreadCount)
+ThreadCount              LONG,AUTO
+!!> GUID('cc09010e-664d-4ef5-88a2-e782b0f5a32d'),PROMPT('ThreadCount:'),HEADER('ThreadCount'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Record:'),USE(?loc:tq:Record:Prompt)
+! ENTRY(@s255),USE(loc:tq:Record)
+[REPORTCONTROLS]
+! STRING(@s255),USE(loc:tq:Record)
+loc:tq:Record            GROUP,PRE()
+!!> GUID('9de5f9d0-a33b-4e63-bc73-52778307f234'),PROMPT('loc:tq:Record:'),HEADER('loc:tq:Record'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Number:'),USE(?loc:tq:Number:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Number)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Number)
+loc:tq:Number              LONG !thread number         (returned by START)
+!!> GUID('1385e8f2-788c-4012-9daf-f36481be38c8'),INITIAL('0'),PROMPT('loc:tq:Number:'),HEADER('loc:tq:Number'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Name:'),USE(?loc:tq:Name:Prompt)
+! ENTRY(@s30),USE(loc:tq:Name)
+[REPORTCONTROLS]
+! STRING(@s30),USE(loc:tq:Name)
+loc:tq:Name                STRING(30) !procedure name        (e.g., MasterList)
+!!> GUID('ed410f18-9e8d-4683-8263-b1784ae45d8d'),PROMPT('loc:tq:Name:'),HEADER('loc:tq:Name'),PICTURE(@s30)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Instance:'),USE(?loc:tq:Instance:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Instance)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Instance)
+loc:tq:Instance            LONG !procedure instance
+!!> GUID('9e2da0d0-ad55-426e-8508-6c64035f881c'),INITIAL('0'),PROMPT('loc:tq:Instance:'),HEADER('loc:tq:Instance'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:MaxInstance:'),USE(?loc:tq:MaxInstance:Prompt)
+! ENTRY(@n-14),USE(loc:tq:MaxInstance)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:MaxInstance)
+loc:tq:MaxInstance         LONG !maximum procedure instance
+!!> GUID('a01026ca-3324-4fbe-b54d-3aca2e05d46c'),INITIAL('0'),PROMPT('loc:tq:MaxInstance:'),HEADER('loc:tq:MaxInstance'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param1:'),USE(?loc:tq:Param1:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param1)
+loc:tq:Param1              LONG !foreign key 1
+!!> GUID('44ead85a-e7d1-4ee0-bfa0-4cc9d2c64c6a'),INITIAL('0'),PROMPT('loc:tq:Param1:'),HEADER('loc:tq:Param1'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param2:'),USE(?loc:tq:Param2:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param2)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param2)
+loc:tq:Param2              LONG !foreign key 2
+!!> GUID('3ad8c255-e282-43b0-8a02-b896a8eda7a4'),INITIAL('0'),PROMPT('loc:tq:Param2:'),HEADER('loc:tq:Param2'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param3:'),USE(?loc:tq:Param3:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param3)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param3)
+loc:tq:Param3              LONG !foreign key 3
+!!> GUID('c98e7204-cf44-48b4-8b01-d60ab4049cb1'),INITIAL('0'),PROMPT('loc:tq:Param3:'),HEADER('loc:tq:Param3'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param4:'),USE(?loc:tq:Param4:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param4)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param4)
+loc:tq:Param4              LONG !foreign key 4
+!!> GUID('2efdebb3-f6b1-4774-96c3-ab2a9f89c43a'),INITIAL('0'),PROMPT('loc:tq:Param4:'),HEADER('loc:tq:Param4'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Buffer:'),USE(?loc:tq:Buffer:Prompt)
+! TEXT,USE(loc:tq:Buffer),BOXED
+[REPORTCONTROLS]
+! TEXT,USE(loc:tq:Buffer),BOXED
+loc:tq:Buffer              STRING(256) !data buffer
+!!> GUID('98e6f2d8-a220-47dd-8b66-b2dadefeb80c'),PROMPT('loc:tq:Buffer:'),HEADER('loc:tq:Buffer'),PICTURE(@s255)
+                         END
+!!> GUID('67bb17de-baa7-46aa-80b2-5f6ea753d0a7')
+[SCREENCONTROLS]
+! PROMPT('hWnd:'),USE(?hWnd:Prompt)
+! ENTRY(@n6),USE(hWnd)
+[REPORTCONTROLS]
+! STRING(@n6),USE(hWnd)
+hWnd                     USHORT,AUTO
+!!> GUID('5a7d73e4-da2e-4c6f-84ab-e2f34fe534b9'),PROMPT('hWnd:'),HEADER('hWnd'),PICTURE(@n6)
+[SCREENCONTROLS]
+! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('ece1f949-66f7-4cc0-ba02-3298e3a85ecd'),PROMPT('FilesOpened:'),HEADER('FilesOpened'),PICTURE(@n3)
+[PROMPTS]
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ButtonAction DEPEND %Control DEFAULT TIMES 84
+WHEN  ('?Button1_1') ('No Special Action')
+WHEN  ('?Button1_10') ('No Special Action')
+WHEN  ('?Button1_11') ('No Special Action')
+WHEN  ('?Button1_12') ('No Special Action')
+WHEN  ('?Button1_13') ('No Special Action')
+WHEN  ('?Button1_14') ('No Special Action')
+WHEN  ('?Button1_15') ('No Special Action')
+WHEN  ('?Button1_16') ('No Special Action')
+WHEN  ('?Button1_17') ('No Special Action')
+WHEN  ('?Button1_18') ('No Special Action')
+WHEN  ('?Button1_19') ('No Special Action')
+WHEN  ('?Button1_2') ('No Special Action')
+WHEN  ('?Button1_20') ('No Special Action')
+WHEN  ('?Button1_21') ('No Special Action')
+WHEN  ('?Button1_22') ('No Special Action')
+WHEN  ('?Button1_23') ('No Special Action')
+WHEN  ('?Button1_24') ('No Special Action')
+WHEN  ('?Button1_25') ('No Special Action')
+WHEN  ('?Button1_26') ('No Special Action')
+WHEN  ('?Button1_27') ('No Special Action')
+WHEN  ('?Button1_28') ('No Special Action')
+WHEN  ('?Button1_29') ('No Special Action')
+WHEN  ('?Button1_3') ('No Special Action')
+WHEN  ('?Button1_30') ('No Special Action')
+WHEN  ('?Button1_31') ('No Special Action')
+WHEN  ('?Button1_32') ('No Special Action')
+WHEN  ('?Button1_33') ('No Special Action')
+WHEN  ('?Button1_34') ('No Special Action')
+WHEN  ('?Button1_35') ('No Special Action')
+WHEN  ('?Button1_36') ('No Special Action')
+WHEN  ('?Button1_37') ('No Special Action')
+WHEN  ('?Button1_4') ('No Special Action')
+WHEN  ('?Button1_5') ('No Special Action')
+WHEN  ('?Button1_6') ('No Special Action')
+WHEN  ('?Button1_7') ('No Special Action')
+WHEN  ('?Button1_8') ('No Special Action')
+WHEN  ('?Button1_9') ('No Special Action')
+WHEN  ('?Button2_1') ('No Special Action')
+WHEN  ('?Button2_10') ('No Special Action')
+WHEN  ('?Button2_11') ('No Special Action')
+WHEN  ('?Button2_12') ('No Special Action')
+WHEN  ('?Button2_13') ('No Special Action')
+WHEN  ('?Button2_14') ('No Special Action')
+WHEN  ('?Button2_15') ('No Special Action')
+WHEN  ('?Button2_16') ('No Special Action')
+WHEN  ('?Button2_17') ('No Special Action')
+WHEN  ('?Button2_18') ('No Special Action')
+WHEN  ('?Button2_19') ('No Special Action')
+WHEN  ('?Button2_2') ('No Special Action')
+WHEN  ('?Button2_20') ('No Special Action')
+WHEN  ('?Button2_21') ('No Special Action')
+WHEN  ('?Button2_22') ('No Special Action')
+WHEN  ('?Button2_23') ('No Special Action')
+WHEN  ('?Button2_24') ('No Special Action')
+WHEN  ('?Button2_25') ('No Special Action')
+WHEN  ('?Button2_26') ('No Special Action')
+WHEN  ('?Button2_27') ('No Special Action')
+WHEN  ('?Button2_28') ('No Special Action')
+WHEN  ('?Button2_29') ('No Special Action')
+WHEN  ('?Button2_3') ('No Special Action')
+WHEN  ('?Button2_30') ('No Special Action')
+WHEN  ('?Button2_31') ('No Special Action')
+WHEN  ('?Button2_32') ('No Special Action')
+WHEN  ('?Button2_33') ('No Special Action')
+WHEN  ('?Button2_34') ('No Special Action')
+WHEN  ('?Button2_35') ('No Special Action')
+WHEN  ('?Button2_36') ('No Special Action')
+WHEN  ('?Button2_37') ('No Special Action')
+WHEN  ('?Button2_4') ('No Special Action')
+WHEN  ('?Button2_5') ('No Special Action')
+WHEN  ('?Button2_6') ('No Special Action')
+WHEN  ('?Button2_7') ('No Special Action')
+WHEN  ('?Button2_8') ('No Special Action')
+WHEN  ('?Button2_9') ('No Special Action')
+WHEN  ('?CloseWindow') ('No Special Action')
+WHEN  ('?Group2') ('No Special Action')
+WHEN  ('?JumpString') ('No Special Action')
+WHEN  ('?MinusOneMonth') ('No Special Action')
+WHEN  ('?MinusOneWeek') ('No Special Action')
+WHEN  ('?MinusOneYear') ('No Special Action')
+WHEN  ('?PlusOneMonth') ('No Special Action')
+WHEN  ('?PlusOneWeek') ('No Special Action')
+WHEN  ('?PlusOneYear') ('No Special Action')
+WHEN  ('?Select') ('No Special Action')
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 84
+WHEN  ('?Button1_1') ('25000')
+WHEN  ('?Button1_10') ('25000')
+WHEN  ('?Button1_11') ('25000')
+WHEN  ('?Button1_12') ('25000')
+WHEN  ('?Button1_13') ('25000')
+WHEN  ('?Button1_14') ('25000')
+WHEN  ('?Button1_15') ('25000')
+WHEN  ('?Button1_16') ('25000')
+WHEN  ('?Button1_17') ('25000')
+WHEN  ('?Button1_18') ('25000')
+WHEN  ('?Button1_19') ('25000')
+WHEN  ('?Button1_2') ('25000')
+WHEN  ('?Button1_20') ('25000')
+WHEN  ('?Button1_21') ('25000')
+WHEN  ('?Button1_22') ('25000')
+WHEN  ('?Button1_23') ('25000')
+WHEN  ('?Button1_24') ('25000')
+WHEN  ('?Button1_25') ('25000')
+WHEN  ('?Button1_26') ('25000')
+WHEN  ('?Button1_27') ('25000')
+WHEN  ('?Button1_28') ('25000')
+WHEN  ('?Button1_29') ('25000')
+WHEN  ('?Button1_3') ('25000')
+WHEN  ('?Button1_30') ('25000')
+WHEN  ('?Button1_31') ('25000')
+WHEN  ('?Button1_32') ('25000')
+WHEN  ('?Button1_33') ('25000')
+WHEN  ('?Button1_34') ('25000')
+WHEN  ('?Button1_35') ('25000')
+WHEN  ('?Button1_36') ('25000')
+WHEN  ('?Button1_37') ('25000')
+WHEN  ('?Button1_4') ('25000')
+WHEN  ('?Button1_5') ('25000')
+WHEN  ('?Button1_6') ('25000')
+WHEN  ('?Button1_7') ('25000')
+WHEN  ('?Button1_8') ('25000')
+WHEN  ('?Button1_9') ('25000')
+WHEN  ('?Button2_1') ('25000')
+WHEN  ('?Button2_10') ('25000')
+WHEN  ('?Button2_11') ('25000')
+WHEN  ('?Button2_12') ('25000')
+WHEN  ('?Button2_13') ('25000')
+WHEN  ('?Button2_14') ('25000')
+WHEN  ('?Button2_15') ('25000')
+WHEN  ('?Button2_16') ('25000')
+WHEN  ('?Button2_17') ('25000')
+WHEN  ('?Button2_18') ('25000')
+WHEN  ('?Button2_19') ('25000')
+WHEN  ('?Button2_2') ('25000')
+WHEN  ('?Button2_20') ('25000')
+WHEN  ('?Button2_21') ('25000')
+WHEN  ('?Button2_22') ('25000')
+WHEN  ('?Button2_23') ('25000')
+WHEN  ('?Button2_24') ('25000')
+WHEN  ('?Button2_25') ('25000')
+WHEN  ('?Button2_26') ('25000')
+WHEN  ('?Button2_27') ('25000')
+WHEN  ('?Button2_28') ('25000')
+WHEN  ('?Button2_29') ('25000')
+WHEN  ('?Button2_3') ('25000')
+WHEN  ('?Button2_30') ('25000')
+WHEN  ('?Button2_31') ('25000')
+WHEN  ('?Button2_32') ('25000')
+WHEN  ('?Button2_33') ('25000')
+WHEN  ('?Button2_34') ('25000')
+WHEN  ('?Button2_35') ('25000')
+WHEN  ('?Button2_36') ('25000')
+WHEN  ('?Button2_37') ('25000')
+WHEN  ('?Button2_4') ('25000')
+WHEN  ('?Button2_5') ('25000')
+WHEN  ('?Button2_6') ('25000')
+WHEN  ('?Button2_7') ('25000')
+WHEN  ('?Button2_8') ('25000')
+WHEN  ('?Button2_9') ('25000')
+WHEN  ('?CloseWindow') ('25000')
+WHEN  ('?Group2') ('25000')
+WHEN  ('?JumpString') ('25000')
+WHEN  ('?MinusOneMonth') ('25000')
+WHEN  ('?MinusOneWeek') ('25000')
+WHEN  ('?MinusOneYear') ('25000')
+WHEN  ('?PlusOneMonth') ('25000')
+WHEN  ('?PlusOneWeek') ('25000')
+WHEN  ('?PlusOneYear') ('25000')
+WHEN  ('?Select') ('25000')
+
+%ReturnValue FIELD  ()
+%ButtonRunName DEPEND %Control DEFAULT TIMES 83
+WHEN  ('?Button1_1') ('')
+WHEN  ('?Button1_10') ('')
+WHEN  ('?Button1_11') ('')
+WHEN  ('?Button1_12') ('')
+WHEN  ('?Button1_13') ('')
+WHEN  ('?Button1_14') ('')
+WHEN  ('?Button1_15') ('')
+WHEN  ('?Button1_16') ('')
+WHEN  ('?Button1_17') ('')
+WHEN  ('?Button1_18') ('')
+WHEN  ('?Button1_19') ('')
+WHEN  ('?Button1_2') ('')
+WHEN  ('?Button1_20') ('')
+WHEN  ('?Button1_21') ('')
+WHEN  ('?Button1_22') ('')
+WHEN  ('?Button1_23') ('')
+WHEN  ('?Button1_24') ('')
+WHEN  ('?Button1_25') ('')
+WHEN  ('?Button1_26') ('')
+WHEN  ('?Button1_27') ('')
+WHEN  ('?Button1_28') ('')
+WHEN  ('?Button1_29') ('')
+WHEN  ('?Button1_3') ('')
+WHEN  ('?Button1_30') ('')
+WHEN  ('?Button1_31') ('')
+WHEN  ('?Button1_32') ('')
+WHEN  ('?Button1_33') ('')
+WHEN  ('?Button1_34') ('')
+WHEN  ('?Button1_35') ('')
+WHEN  ('?Button1_36') ('')
+WHEN  ('?Button1_37') ('')
+WHEN  ('?Button1_4') ('')
+WHEN  ('?Button1_5') ('')
+WHEN  ('?Button1_6') ('')
+WHEN  ('?Button1_7') ('')
+WHEN  ('?Button1_8') ('')
+WHEN  ('?Button1_9') ('')
+WHEN  ('?Button2_1') ('')
+WHEN  ('?Button2_10') ('')
+WHEN  ('?Button2_11') ('')
+WHEN  ('?Button2_12') ('')
+WHEN  ('?Button2_13') ('')
+WHEN  ('?Button2_14') ('')
+WHEN  ('?Button2_15') ('')
+WHEN  ('?Button2_16') ('')
+WHEN  ('?Button2_17') ('')
+WHEN  ('?Button2_18') ('')
+WHEN  ('?Button2_19') ('')
+WHEN  ('?Button2_2') ('')
+WHEN  ('?Button2_20') ('')
+WHEN  ('?Button2_21') ('')
+WHEN  ('?Button2_22') ('')
+WHEN  ('?Button2_23') ('')
+WHEN  ('?Button2_24') ('')
+WHEN  ('?Button2_25') ('')
+WHEN  ('?Button2_26') ('')
+WHEN  ('?Button2_27') ('')
+WHEN  ('?Button2_28') ('')
+WHEN  ('?Button2_29') ('')
+WHEN  ('?Button2_3') ('')
+WHEN  ('?Button2_30') ('')
+WHEN  ('?Button2_31') ('')
+WHEN  ('?Button2_32') ('')
+WHEN  ('?Button2_33') ('')
+WHEN  ('?Button2_34') ('')
+WHEN  ('?Button2_35') ('')
+WHEN  ('?Button2_36') ('')
+WHEN  ('?Button2_37') ('')
+WHEN  ('?Button2_4') ('')
+WHEN  ('?Button2_5') ('')
+WHEN  ('?Button2_6') ('')
+WHEN  ('?Button2_7') ('')
+WHEN  ('?Button2_8') ('')
+WHEN  ('?Button2_9') ('')
+WHEN  ('?CloseWindow') ('')
+WHEN  ('?JumpString') ('')
+WHEN  ('?MinusOneMonth') ('')
+WHEN  ('?MinusOneWeek') ('')
+WHEN  ('?MinusOneYear') ('')
+WHEN  ('?PlusOneMonth') ('')
+WHEN  ('?PlusOneWeek') ('')
+WHEN  ('?PlusOneYear') ('')
+WHEN  ('?Select') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 83
+WHEN  ('?Button1_1') ('')
+WHEN  ('?Button1_10') ('')
+WHEN  ('?Button1_11') ('')
+WHEN  ('?Button1_12') ('')
+WHEN  ('?Button1_13') ('')
+WHEN  ('?Button1_14') ('')
+WHEN  ('?Button1_15') ('')
+WHEN  ('?Button1_16') ('')
+WHEN  ('?Button1_17') ('')
+WHEN  ('?Button1_18') ('')
+WHEN  ('?Button1_19') ('')
+WHEN  ('?Button1_2') ('')
+WHEN  ('?Button1_20') ('')
+WHEN  ('?Button1_21') ('')
+WHEN  ('?Button1_22') ('')
+WHEN  ('?Button1_23') ('')
+WHEN  ('?Button1_24') ('')
+WHEN  ('?Button1_25') ('')
+WHEN  ('?Button1_26') ('')
+WHEN  ('?Button1_27') ('')
+WHEN  ('?Button1_28') ('')
+WHEN  ('?Button1_29') ('')
+WHEN  ('?Button1_3') ('')
+WHEN  ('?Button1_30') ('')
+WHEN  ('?Button1_31') ('')
+WHEN  ('?Button1_32') ('')
+WHEN  ('?Button1_33') ('')
+WHEN  ('?Button1_34') ('')
+WHEN  ('?Button1_35') ('')
+WHEN  ('?Button1_36') ('')
+WHEN  ('?Button1_37') ('')
+WHEN  ('?Button1_4') ('')
+WHEN  ('?Button1_5') ('')
+WHEN  ('?Button1_6') ('')
+WHEN  ('?Button1_7') ('')
+WHEN  ('?Button1_8') ('')
+WHEN  ('?Button1_9') ('')
+WHEN  ('?Button2_1') ('')
+WHEN  ('?Button2_10') ('')
+WHEN  ('?Button2_11') ('')
+WHEN  ('?Button2_12') ('')
+WHEN  ('?Button2_13') ('')
+WHEN  ('?Button2_14') ('')
+WHEN  ('?Button2_15') ('')
+WHEN  ('?Button2_16') ('')
+WHEN  ('?Button2_17') ('')
+WHEN  ('?Button2_18') ('')
+WHEN  ('?Button2_19') ('')
+WHEN  ('?Button2_2') ('')
+WHEN  ('?Button2_20') ('')
+WHEN  ('?Button2_21') ('')
+WHEN  ('?Button2_22') ('')
+WHEN  ('?Button2_23') ('')
+WHEN  ('?Button2_24') ('')
+WHEN  ('?Button2_25') ('')
+WHEN  ('?Button2_26') ('')
+WHEN  ('?Button2_27') ('')
+WHEN  ('?Button2_28') ('')
+WHEN  ('?Button2_29') ('')
+WHEN  ('?Button2_3') ('')
+WHEN  ('?Button2_30') ('')
+WHEN  ('?Button2_31') ('')
+WHEN  ('?Button2_32') ('')
+WHEN  ('?Button2_33') ('')
+WHEN  ('?Button2_34') ('')
+WHEN  ('?Button2_35') ('')
+WHEN  ('?Button2_36') ('')
+WHEN  ('?Button2_37') ('')
+WHEN  ('?Button2_4') ('')
+WHEN  ('?Button2_5') ('')
+WHEN  ('?Button2_6') ('')
+WHEN  ('?Button2_7') ('')
+WHEN  ('?Button2_8') ('')
+WHEN  ('?Button2_9') ('')
+WHEN  ('?CloseWindow') ('')
+WHEN  ('?JumpString') ('')
+WHEN  ('?MinusOneMonth') ('')
+WHEN  ('?MinusOneWeek') ('')
+WHEN  ('?MinusOneYear') ('')
+WHEN  ('?PlusOneMonth') ('')
+WHEN  ('?PlusOneWeek') ('')
+WHEN  ('?PlusOneYear') ('')
+WHEN  ('?Select') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 83
+WHEN  ('?Button1_1') ()
+WHEN  ('?Button1_10') ()
+WHEN  ('?Button1_11') ()
+WHEN  ('?Button1_12') ()
+WHEN  ('?Button1_13') ()
+WHEN  ('?Button1_14') ()
+WHEN  ('?Button1_15') ()
+WHEN  ('?Button1_16') ()
+WHEN  ('?Button1_17') ()
+WHEN  ('?Button1_18') ()
+WHEN  ('?Button1_19') ()
+WHEN  ('?Button1_2') ()
+WHEN  ('?Button1_20') ()
+WHEN  ('?Button1_21') ()
+WHEN  ('?Button1_22') ()
+WHEN  ('?Button1_23') ()
+WHEN  ('?Button1_24') ()
+WHEN  ('?Button1_25') ()
+WHEN  ('?Button1_26') ()
+WHEN  ('?Button1_27') ()
+WHEN  ('?Button1_28') ()
+WHEN  ('?Button1_29') ()
+WHEN  ('?Button1_3') ()
+WHEN  ('?Button1_30') ()
+WHEN  ('?Button1_31') ()
+WHEN  ('?Button1_32') ()
+WHEN  ('?Button1_33') ()
+WHEN  ('?Button1_34') ()
+WHEN  ('?Button1_35') ()
+WHEN  ('?Button1_36') ()
+WHEN  ('?Button1_37') ()
+WHEN  ('?Button1_4') ()
+WHEN  ('?Button1_5') ()
+WHEN  ('?Button1_6') ()
+WHEN  ('?Button1_7') ()
+WHEN  ('?Button1_8') ()
+WHEN  ('?Button1_9') ()
+WHEN  ('?Button2_1') ()
+WHEN  ('?Button2_10') ()
+WHEN  ('?Button2_11') ()
+WHEN  ('?Button2_12') ()
+WHEN  ('?Button2_13') ()
+WHEN  ('?Button2_14') ()
+WHEN  ('?Button2_15') ()
+WHEN  ('?Button2_16') ()
+WHEN  ('?Button2_17') ()
+WHEN  ('?Button2_18') ()
+WHEN  ('?Button2_19') ()
+WHEN  ('?Button2_2') ()
+WHEN  ('?Button2_20') ()
+WHEN  ('?Button2_21') ()
+WHEN  ('?Button2_22') ()
+WHEN  ('?Button2_23') ()
+WHEN  ('?Button2_24') ()
+WHEN  ('?Button2_25') ()
+WHEN  ('?Button2_26') ()
+WHEN  ('?Button2_27') ()
+WHEN  ('?Button2_28') ()
+WHEN  ('?Button2_29') ()
+WHEN  ('?Button2_3') ()
+WHEN  ('?Button2_30') ()
+WHEN  ('?Button2_31') ()
+WHEN  ('?Button2_32') ()
+WHEN  ('?Button2_33') ()
+WHEN  ('?Button2_34') ()
+WHEN  ('?Button2_35') ()
+WHEN  ('?Button2_36') ()
+WHEN  ('?Button2_37') ()
+WHEN  ('?Button2_4') ()
+WHEN  ('?Button2_5') ()
+WHEN  ('?Button2_6') ()
+WHEN  ('?Button2_7') ()
+WHEN  ('?Button2_8') ()
+WHEN  ('?Button2_9') ()
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneMonth') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?MinusOneYear') ()
+WHEN  ('?PlusOneMonth') ()
+WHEN  ('?PlusOneWeek') ()
+WHEN  ('?PlusOneYear') ()
+WHEN  ('?Select') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 83
+WHEN  ('?Button1_1') (0)
+WHEN  ('?Button1_10') (0)
+WHEN  ('?Button1_11') (0)
+WHEN  ('?Button1_12') (0)
+WHEN  ('?Button1_13') (0)
+WHEN  ('?Button1_14') (0)
+WHEN  ('?Button1_15') (0)
+WHEN  ('?Button1_16') (0)
+WHEN  ('?Button1_17') (0)
+WHEN  ('?Button1_18') (0)
+WHEN  ('?Button1_19') (0)
+WHEN  ('?Button1_2') (0)
+WHEN  ('?Button1_20') (0)
+WHEN  ('?Button1_21') (0)
+WHEN  ('?Button1_22') (0)
+WHEN  ('?Button1_23') (0)
+WHEN  ('?Button1_24') (0)
+WHEN  ('?Button1_25') (0)
+WHEN  ('?Button1_26') (0)
+WHEN  ('?Button1_27') (0)
+WHEN  ('?Button1_28') (0)
+WHEN  ('?Button1_29') (0)
+WHEN  ('?Button1_3') (0)
+WHEN  ('?Button1_30') (0)
+WHEN  ('?Button1_31') (0)
+WHEN  ('?Button1_32') (0)
+WHEN  ('?Button1_33') (0)
+WHEN  ('?Button1_34') (0)
+WHEN  ('?Button1_35') (0)
+WHEN  ('?Button1_36') (0)
+WHEN  ('?Button1_37') (0)
+WHEN  ('?Button1_4') (0)
+WHEN  ('?Button1_5') (0)
+WHEN  ('?Button1_6') (0)
+WHEN  ('?Button1_7') (0)
+WHEN  ('?Button1_8') (0)
+WHEN  ('?Button1_9') (0)
+WHEN  ('?Button2_1') (0)
+WHEN  ('?Button2_10') (0)
+WHEN  ('?Button2_11') (0)
+WHEN  ('?Button2_12') (0)
+WHEN  ('?Button2_13') (0)
+WHEN  ('?Button2_14') (0)
+WHEN  ('?Button2_15') (0)
+WHEN  ('?Button2_16') (0)
+WHEN  ('?Button2_17') (0)
+WHEN  ('?Button2_18') (0)
+WHEN  ('?Button2_19') (0)
+WHEN  ('?Button2_2') (0)
+WHEN  ('?Button2_20') (0)
+WHEN  ('?Button2_21') (0)
+WHEN  ('?Button2_22') (0)
+WHEN  ('?Button2_23') (0)
+WHEN  ('?Button2_24') (0)
+WHEN  ('?Button2_25') (0)
+WHEN  ('?Button2_26') (0)
+WHEN  ('?Button2_27') (0)
+WHEN  ('?Button2_28') (0)
+WHEN  ('?Button2_29') (0)
+WHEN  ('?Button2_3') (0)
+WHEN  ('?Button2_30') (0)
+WHEN  ('?Button2_31') (0)
+WHEN  ('?Button2_32') (0)
+WHEN  ('?Button2_33') (0)
+WHEN  ('?Button2_34') (0)
+WHEN  ('?Button2_35') (0)
+WHEN  ('?Button2_36') (0)
+WHEN  ('?Button2_37') (0)
+WHEN  ('?Button2_4') (0)
+WHEN  ('?Button2_5') (0)
+WHEN  ('?Button2_6') (0)
+WHEN  ('?Button2_7') (0)
+WHEN  ('?Button2_8') (0)
+WHEN  ('?Button2_9') (0)
+WHEN  ('?CloseWindow') (0)
+WHEN  ('?JumpString') (0)
+WHEN  ('?MinusOneMonth') (0)
+WHEN  ('?MinusOneWeek') (0)
+WHEN  ('?MinusOneYear') (0)
+WHEN  ('?PlusOneMonth') (0)
+WHEN  ('?PlusOneWeek') (0)
+WHEN  ('?PlusOneYear') (0)
+WHEN  ('?Select') (0)
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 83
+WHEN  ('?Button1_1') ('')
+WHEN  ('?Button1_10') ('')
+WHEN  ('?Button1_11') ('')
+WHEN  ('?Button1_12') ('')
+WHEN  ('?Button1_13') ('')
+WHEN  ('?Button1_14') ('')
+WHEN  ('?Button1_15') ('')
+WHEN  ('?Button1_16') ('')
+WHEN  ('?Button1_17') ('')
+WHEN  ('?Button1_18') ('')
+WHEN  ('?Button1_19') ('')
+WHEN  ('?Button1_2') ('')
+WHEN  ('?Button1_20') ('')
+WHEN  ('?Button1_21') ('')
+WHEN  ('?Button1_22') ('')
+WHEN  ('?Button1_23') ('')
+WHEN  ('?Button1_24') ('')
+WHEN  ('?Button1_25') ('')
+WHEN  ('?Button1_26') ('')
+WHEN  ('?Button1_27') ('')
+WHEN  ('?Button1_28') ('')
+WHEN  ('?Button1_29') ('')
+WHEN  ('?Button1_3') ('')
+WHEN  ('?Button1_30') ('')
+WHEN  ('?Button1_31') ('')
+WHEN  ('?Button1_32') ('')
+WHEN  ('?Button1_33') ('')
+WHEN  ('?Button1_34') ('')
+WHEN  ('?Button1_35') ('')
+WHEN  ('?Button1_36') ('')
+WHEN  ('?Button1_37') ('')
+WHEN  ('?Button1_4') ('')
+WHEN  ('?Button1_5') ('')
+WHEN  ('?Button1_6') ('')
+WHEN  ('?Button1_7') ('')
+WHEN  ('?Button1_8') ('')
+WHEN  ('?Button1_9') ('')
+WHEN  ('?Button2_1') ('')
+WHEN  ('?Button2_10') ('')
+WHEN  ('?Button2_11') ('')
+WHEN  ('?Button2_12') ('')
+WHEN  ('?Button2_13') ('')
+WHEN  ('?Button2_14') ('')
+WHEN  ('?Button2_15') ('')
+WHEN  ('?Button2_16') ('')
+WHEN  ('?Button2_17') ('')
+WHEN  ('?Button2_18') ('')
+WHEN  ('?Button2_19') ('')
+WHEN  ('?Button2_2') ('')
+WHEN  ('?Button2_20') ('')
+WHEN  ('?Button2_21') ('')
+WHEN  ('?Button2_22') ('')
+WHEN  ('?Button2_23') ('')
+WHEN  ('?Button2_24') ('')
+WHEN  ('?Button2_25') ('')
+WHEN  ('?Button2_26') ('')
+WHEN  ('?Button2_27') ('')
+WHEN  ('?Button2_28') ('')
+WHEN  ('?Button2_29') ('')
+WHEN  ('?Button2_3') ('')
+WHEN  ('?Button2_30') ('')
+WHEN  ('?Button2_31') ('')
+WHEN  ('?Button2_32') ('')
+WHEN  ('?Button2_33') ('')
+WHEN  ('?Button2_34') ('')
+WHEN  ('?Button2_35') ('')
+WHEN  ('?Button2_36') ('')
+WHEN  ('?Button2_37') ('')
+WHEN  ('?Button2_4') ('')
+WHEN  ('?Button2_5') ('')
+WHEN  ('?Button2_6') ('')
+WHEN  ('?Button2_7') ('')
+WHEN  ('?Button2_8') ('')
+WHEN  ('?Button2_9') ('')
+WHEN  ('?CloseWindow') ('')
+WHEN  ('?JumpString') ('')
+WHEN  ('?MinusOneMonth') ('')
+WHEN  ('?MinusOneWeek') ('')
+WHEN  ('?MinusOneYear') ('')
+WHEN  ('?PlusOneMonth') ('')
+WHEN  ('?PlusOneWeek') ('')
+WHEN  ('?PlusOneYear') ('')
+WHEN  ('?Select') ('')
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 83
+WHEN  ('?Button1_1') ('None')
+WHEN  ('?Button1_10') ('None')
+WHEN  ('?Button1_11') ('None')
+WHEN  ('?Button1_12') ('None')
+WHEN  ('?Button1_13') ('None')
+WHEN  ('?Button1_14') ('None')
+WHEN  ('?Button1_15') ('None')
+WHEN  ('?Button1_16') ('None')
+WHEN  ('?Button1_17') ('None')
+WHEN  ('?Button1_18') ('None')
+WHEN  ('?Button1_19') ('None')
+WHEN  ('?Button1_2') ('None')
+WHEN  ('?Button1_20') ('None')
+WHEN  ('?Button1_21') ('None')
+WHEN  ('?Button1_22') ('None')
+WHEN  ('?Button1_23') ('None')
+WHEN  ('?Button1_24') ('None')
+WHEN  ('?Button1_25') ('None')
+WHEN  ('?Button1_26') ('None')
+WHEN  ('?Button1_27') ('None')
+WHEN  ('?Button1_28') ('None')
+WHEN  ('?Button1_29') ('None')
+WHEN  ('?Button1_3') ('None')
+WHEN  ('?Button1_30') ('None')
+WHEN  ('?Button1_31') ('None')
+WHEN  ('?Button1_32') ('None')
+WHEN  ('?Button1_33') ('None')
+WHEN  ('?Button1_34') ('None')
+WHEN  ('?Button1_35') ('None')
+WHEN  ('?Button1_36') ('None')
+WHEN  ('?Button1_37') ('None')
+WHEN  ('?Button1_4') ('None')
+WHEN  ('?Button1_5') ('None')
+WHEN  ('?Button1_6') ('None')
+WHEN  ('?Button1_7') ('None')
+WHEN  ('?Button1_8') ('None')
+WHEN  ('?Button1_9') ('None')
+WHEN  ('?Button2_1') ('None')
+WHEN  ('?Button2_10') ('None')
+WHEN  ('?Button2_11') ('None')
+WHEN  ('?Button2_12') ('None')
+WHEN  ('?Button2_13') ('None')
+WHEN  ('?Button2_14') ('None')
+WHEN  ('?Button2_15') ('None')
+WHEN  ('?Button2_16') ('None')
+WHEN  ('?Button2_17') ('None')
+WHEN  ('?Button2_18') ('None')
+WHEN  ('?Button2_19') ('None')
+WHEN  ('?Button2_2') ('None')
+WHEN  ('?Button2_20') ('None')
+WHEN  ('?Button2_21') ('None')
+WHEN  ('?Button2_22') ('None')
+WHEN  ('?Button2_23') ('None')
+WHEN  ('?Button2_24') ('None')
+WHEN  ('?Button2_25') ('None')
+WHEN  ('?Button2_26') ('None')
+WHEN  ('?Button2_27') ('None')
+WHEN  ('?Button2_28') ('None')
+WHEN  ('?Button2_29') ('None')
+WHEN  ('?Button2_3') ('None')
+WHEN  ('?Button2_30') ('None')
+WHEN  ('?Button2_31') ('None')
+WHEN  ('?Button2_32') ('None')
+WHEN  ('?Button2_33') ('None')
+WHEN  ('?Button2_34') ('None')
+WHEN  ('?Button2_35') ('None')
+WHEN  ('?Button2_36') ('None')
+WHEN  ('?Button2_37') ('None')
+WHEN  ('?Button2_4') ('None')
+WHEN  ('?Button2_5') ('None')
+WHEN  ('?Button2_6') ('None')
+WHEN  ('?Button2_7') ('None')
+WHEN  ('?Button2_8') ('None')
+WHEN  ('?Button2_9') ('None')
+WHEN  ('?CloseWindow') ('None')
+WHEN  ('?JumpString') ('None')
+WHEN  ('?MinusOneMonth') ('None')
+WHEN  ('?MinusOneWeek') ('None')
+WHEN  ('?MinusOneYear') ('None')
+WHEN  ('?PlusOneMonth') ('None')
+WHEN  ('?PlusOneWeek') ('None')
+WHEN  ('?PlusOneYear') ('None')
+WHEN  ('?Select') ('None')
+
+%PreLookupKey DEPEND %Control KEY TIMES 4
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?Select') ()
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 4
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?Select') ()
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 4
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?Select') ()
+
+%PostLookupKey DEPEND %Control KEY TIMES 4
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?Select') ()
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 4
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?Select') ()
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 4
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?Select') ()
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 4
+WHEN  ('?CloseWindow') (1)
+WHEN  ('?JumpString') (0)
+WHEN  ('?MinusOneWeek') (1)
+WHEN  ('?Select') (1)
+
+%PostLookupParams DEPEND %Control DEFAULT TIMES 4
+WHEN  ('?CloseWindow') ('')
+WHEN  ('?JumpString') ('')
+WHEN  ('?MinusOneWeek') ('')
+WHEN  ('?Select') ('')
+
+%ChildFile DEPEND %Control FILE TIMES 4
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?Select') ()
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 4
+WHEN  ('?CloseWindow') (0)
+WHEN  ('?JumpString') (0)
+WHEN  ('?MinusOneWeek') (0)
+WHEN  ('?Select') (0)
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 4
+WHEN  ('?CloseWindow')TIMES 0
+WHEN  ('?JumpString')TIMES 0
+WHEN  ('?MinusOneWeek')TIMES 0
+WHEN  ('?Select')TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 4
+WHEN  ('?CloseWindow')TIMES 0
+WHEN  ('?JumpString')TIMES 0
+WHEN  ('?MinusOneWeek')TIMES 0
+WHEN  ('?Select')TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 4
+WHEN  ('?CloseWindow')TIMES 0
+WHEN  ('?JumpString')TIMES 0
+WHEN  ('?MinusOneWeek')TIMES 0
+WHEN  ('?Select')TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 4
+WHEN  ('?CloseWindow')TIMES 0
+WHEN  ('?JumpString')TIMES 0
+WHEN  ('?MinusOneWeek')TIMES 0
+WHEN  ('?Select')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 4
+WHEN  ('?CloseWindow')TIMES 0
+WHEN  ('?JumpString')TIMES 0
+WHEN  ('?MinusOneWeek')TIMES 0
+WHEN  ('?Select')TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 4
+WHEN  ('?CloseWindow')TIMES 0
+WHEN  ('?JumpString')TIMES 0
+WHEN  ('?MinusOneWeek')TIMES 0
+WHEN  ('?Select')TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 4
+WHEN  ('?CloseWindow')TIMES 0
+WHEN  ('?JumpString')TIMES 0
+WHEN  ('?MinusOneWeek')TIMES 0
+WHEN  ('?Select')TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 4
+WHEN  ('?CloseWindow')TIMES 0
+WHEN  ('?JumpString')TIMES 0
+WHEN  ('?MinusOneWeek')TIMES 0
+WHEN  ('?Select')TIMES 0
+
+%ThreadKey1 DEPEND %Control FIELD TIMES 0
+
+%ThreadKey2 DEPEND %Control FIELD TIMES 0
+
+%ThreadKey3 DEPEND %Control FIELD TIMES 0
+
+%ThreadKey4 DEPEND %Control FIELD TIMES 0
+
+%ThreadBuffer DEPEND %Control FIELD TIMES 83
+WHEN  ('?Button1_1') ()
+WHEN  ('?Button1_10') ()
+WHEN  ('?Button1_11') ()
+WHEN  ('?Button1_12') ()
+WHEN  ('?Button1_13') ()
+WHEN  ('?Button1_14') ()
+WHEN  ('?Button1_15') ()
+WHEN  ('?Button1_16') ()
+WHEN  ('?Button1_17') ()
+WHEN  ('?Button1_18') ()
+WHEN  ('?Button1_19') ()
+WHEN  ('?Button1_2') ()
+WHEN  ('?Button1_20') ()
+WHEN  ('?Button1_21') ()
+WHEN  ('?Button1_22') ()
+WHEN  ('?Button1_23') ()
+WHEN  ('?Button1_24') ()
+WHEN  ('?Button1_25') ()
+WHEN  ('?Button1_26') ()
+WHEN  ('?Button1_27') ()
+WHEN  ('?Button1_28') ()
+WHEN  ('?Button1_29') ()
+WHEN  ('?Button1_3') ()
+WHEN  ('?Button1_30') ()
+WHEN  ('?Button1_31') ()
+WHEN  ('?Button1_32') ()
+WHEN  ('?Button1_33') ()
+WHEN  ('?Button1_34') ()
+WHEN  ('?Button1_35') ()
+WHEN  ('?Button1_36') ()
+WHEN  ('?Button1_37') ()
+WHEN  ('?Button1_4') ()
+WHEN  ('?Button1_5') ()
+WHEN  ('?Button1_6') ()
+WHEN  ('?Button1_7') ()
+WHEN  ('?Button1_8') ()
+WHEN  ('?Button1_9') ()
+WHEN  ('?Button2_1') ()
+WHEN  ('?Button2_10') ()
+WHEN  ('?Button2_11') ()
+WHEN  ('?Button2_12') ()
+WHEN  ('?Button2_13') ()
+WHEN  ('?Button2_14') ()
+WHEN  ('?Button2_15') ()
+WHEN  ('?Button2_16') ()
+WHEN  ('?Button2_17') ()
+WHEN  ('?Button2_18') ()
+WHEN  ('?Button2_19') ()
+WHEN  ('?Button2_2') ()
+WHEN  ('?Button2_20') ()
+WHEN  ('?Button2_21') ()
+WHEN  ('?Button2_22') ()
+WHEN  ('?Button2_23') ()
+WHEN  ('?Button2_24') ()
+WHEN  ('?Button2_25') ()
+WHEN  ('?Button2_26') ()
+WHEN  ('?Button2_27') ()
+WHEN  ('?Button2_28') ()
+WHEN  ('?Button2_29') ()
+WHEN  ('?Button2_3') ()
+WHEN  ('?Button2_30') ()
+WHEN  ('?Button2_31') ()
+WHEN  ('?Button2_32') ()
+WHEN  ('?Button2_33') ()
+WHEN  ('?Button2_34') ()
+WHEN  ('?Button2_35') ()
+WHEN  ('?Button2_36') ()
+WHEN  ('?Button2_37') ()
+WHEN  ('?Button2_4') ()
+WHEN  ('?Button2_5') ()
+WHEN  ('?Button2_6') ()
+WHEN  ('?Button2_7') ()
+WHEN  ('?Button2_8') ()
+WHEN  ('?Button2_9') ()
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneMonth') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?MinusOneYear') ()
+WHEN  ('?PlusOneMonth') ()
+WHEN  ('?PlusOneWeek') ()
+WHEN  ('?PlusOneYear') ()
+WHEN  ('?Select') ()
+
+%ThreadMaxInstance DEPEND %Control DEFAULT TIMES 83
+WHEN  ('?Button1_1') ('')
+WHEN  ('?Button1_10') ('')
+WHEN  ('?Button1_11') ('')
+WHEN  ('?Button1_12') ('')
+WHEN  ('?Button1_13') ('')
+WHEN  ('?Button1_14') ('')
+WHEN  ('?Button1_15') ('')
+WHEN  ('?Button1_16') ('')
+WHEN  ('?Button1_17') ('')
+WHEN  ('?Button1_18') ('')
+WHEN  ('?Button1_19') ('')
+WHEN  ('?Button1_2') ('')
+WHEN  ('?Button1_20') ('')
+WHEN  ('?Button1_21') ('')
+WHEN  ('?Button1_22') ('')
+WHEN  ('?Button1_23') ('')
+WHEN  ('?Button1_24') ('')
+WHEN  ('?Button1_25') ('')
+WHEN  ('?Button1_26') ('')
+WHEN  ('?Button1_27') ('')
+WHEN  ('?Button1_28') ('')
+WHEN  ('?Button1_29') ('')
+WHEN  ('?Button1_3') ('')
+WHEN  ('?Button1_30') ('')
+WHEN  ('?Button1_31') ('')
+WHEN  ('?Button1_32') ('')
+WHEN  ('?Button1_33') ('')
+WHEN  ('?Button1_34') ('')
+WHEN  ('?Button1_35') ('')
+WHEN  ('?Button1_36') ('')
+WHEN  ('?Button1_37') ('')
+WHEN  ('?Button1_4') ('')
+WHEN  ('?Button1_5') ('')
+WHEN  ('?Button1_6') ('')
+WHEN  ('?Button1_7') ('')
+WHEN  ('?Button1_8') ('')
+WHEN  ('?Button1_9') ('')
+WHEN  ('?Button2_1') ('')
+WHEN  ('?Button2_10') ('')
+WHEN  ('?Button2_11') ('')
+WHEN  ('?Button2_12') ('')
+WHEN  ('?Button2_13') ('')
+WHEN  ('?Button2_14') ('')
+WHEN  ('?Button2_15') ('')
+WHEN  ('?Button2_16') ('')
+WHEN  ('?Button2_17') ('')
+WHEN  ('?Button2_18') ('')
+WHEN  ('?Button2_19') ('')
+WHEN  ('?Button2_2') ('')
+WHEN  ('?Button2_20') ('')
+WHEN  ('?Button2_21') ('')
+WHEN  ('?Button2_22') ('')
+WHEN  ('?Button2_23') ('')
+WHEN  ('?Button2_24') ('')
+WHEN  ('?Button2_25') ('')
+WHEN  ('?Button2_26') ('')
+WHEN  ('?Button2_27') ('')
+WHEN  ('?Button2_28') ('')
+WHEN  ('?Button2_29') ('')
+WHEN  ('?Button2_3') ('')
+WHEN  ('?Button2_30') ('')
+WHEN  ('?Button2_31') ('')
+WHEN  ('?Button2_32') ('')
+WHEN  ('?Button2_33') ('')
+WHEN  ('?Button2_34') ('')
+WHEN  ('?Button2_35') ('')
+WHEN  ('?Button2_36') ('')
+WHEN  ('?Button2_37') ('')
+WHEN  ('?Button2_4') ('')
+WHEN  ('?Button2_5') ('')
+WHEN  ('?Button2_6') ('')
+WHEN  ('?Button2_7') ('')
+WHEN  ('?Button2_8') ('')
+WHEN  ('?Button2_9') ('')
+WHEN  ('?CloseWindow') ('')
+WHEN  ('?JumpString') ('')
+WHEN  ('?MinusOneMonth') ('')
+WHEN  ('?MinusOneWeek') ('')
+WHEN  ('?MinusOneYear') ('')
+WHEN  ('?PlusOneMonth') ('')
+WHEN  ('?PlusOneWeek') ('')
+WHEN  ('?PlusOneYear') ('')
+WHEN  ('?Select') ('')
+
+%ThreadRestoreInstance DEPEND %Control DEFAULT TIMES 83
+WHEN  ('?Button1_1') ('First')
+WHEN  ('?Button1_10') ('First')
+WHEN  ('?Button1_11') ('First')
+WHEN  ('?Button1_12') ('First')
+WHEN  ('?Button1_13') ('First')
+WHEN  ('?Button1_14') ('First')
+WHEN  ('?Button1_15') ('First')
+WHEN  ('?Button1_16') ('First')
+WHEN  ('?Button1_17') ('First')
+WHEN  ('?Button1_18') ('First')
+WHEN  ('?Button1_19') ('First')
+WHEN  ('?Button1_2') ('First')
+WHEN  ('?Button1_20') ('First')
+WHEN  ('?Button1_21') ('First')
+WHEN  ('?Button1_22') ('First')
+WHEN  ('?Button1_23') ('First')
+WHEN  ('?Button1_24') ('First')
+WHEN  ('?Button1_25') ('First')
+WHEN  ('?Button1_26') ('First')
+WHEN  ('?Button1_27') ('First')
+WHEN  ('?Button1_28') ('First')
+WHEN  ('?Button1_29') ('First')
+WHEN  ('?Button1_3') ('First')
+WHEN  ('?Button1_30') ('First')
+WHEN  ('?Button1_31') ('First')
+WHEN  ('?Button1_32') ('First')
+WHEN  ('?Button1_33') ('First')
+WHEN  ('?Button1_34') ('First')
+WHEN  ('?Button1_35') ('First')
+WHEN  ('?Button1_36') ('First')
+WHEN  ('?Button1_37') ('First')
+WHEN  ('?Button1_4') ('First')
+WHEN  ('?Button1_5') ('First')
+WHEN  ('?Button1_6') ('First')
+WHEN  ('?Button1_7') ('First')
+WHEN  ('?Button1_8') ('First')
+WHEN  ('?Button1_9') ('First')
+WHEN  ('?Button2_1') ('First')
+WHEN  ('?Button2_10') ('First')
+WHEN  ('?Button2_11') ('First')
+WHEN  ('?Button2_12') ('First')
+WHEN  ('?Button2_13') ('First')
+WHEN  ('?Button2_14') ('First')
+WHEN  ('?Button2_15') ('First')
+WHEN  ('?Button2_16') ('First')
+WHEN  ('?Button2_17') ('First')
+WHEN  ('?Button2_18') ('First')
+WHEN  ('?Button2_19') ('First')
+WHEN  ('?Button2_2') ('First')
+WHEN  ('?Button2_20') ('First')
+WHEN  ('?Button2_21') ('First')
+WHEN  ('?Button2_22') ('First')
+WHEN  ('?Button2_23') ('First')
+WHEN  ('?Button2_24') ('First')
+WHEN  ('?Button2_25') ('First')
+WHEN  ('?Button2_26') ('First')
+WHEN  ('?Button2_27') ('First')
+WHEN  ('?Button2_28') ('First')
+WHEN  ('?Button2_29') ('First')
+WHEN  ('?Button2_3') ('First')
+WHEN  ('?Button2_30') ('First')
+WHEN  ('?Button2_31') ('First')
+WHEN  ('?Button2_32') ('First')
+WHEN  ('?Button2_33') ('First')
+WHEN  ('?Button2_34') ('First')
+WHEN  ('?Button2_35') ('First')
+WHEN  ('?Button2_36') ('First')
+WHEN  ('?Button2_37') ('First')
+WHEN  ('?Button2_4') ('First')
+WHEN  ('?Button2_5') ('First')
+WHEN  ('?Button2_6') ('First')
+WHEN  ('?Button2_7') ('First')
+WHEN  ('?Button2_8') ('First')
+WHEN  ('?Button2_9') ('First')
+WHEN  ('?CloseWindow') ('First')
+WHEN  ('?JumpString') ('First')
+WHEN  ('?MinusOneMonth') ('First')
+WHEN  ('?MinusOneWeek') ('First')
+WHEN  ('?MinusOneYear') ('First')
+WHEN  ('?PlusOneMonth') ('First')
+WHEN  ('?PlusOneWeek') ('First')
+WHEN  ('?PlusOneYear') ('First')
+WHEN  ('?Select') ('First')
+
+%ThreadParameter1 DEPEND %Control FIELD TIMES 0
+
+%ThreadParameter2 DEPEND %Control FIELD TIMES 0
+
+%ThreadParameter3 DEPEND %Control FIELD TIMES 0
+
+%ThreadParameter4 DEPEND %Control FIELD TIMES 0
+
+%ThreadParam1 DEPEND %Control FIELD TIMES 83
+WHEN  ('?Button1_1') ()
+WHEN  ('?Button1_10') ()
+WHEN  ('?Button1_11') ()
+WHEN  ('?Button1_12') ()
+WHEN  ('?Button1_13') ()
+WHEN  ('?Button1_14') ()
+WHEN  ('?Button1_15') ()
+WHEN  ('?Button1_16') ()
+WHEN  ('?Button1_17') ()
+WHEN  ('?Button1_18') ()
+WHEN  ('?Button1_19') ()
+WHEN  ('?Button1_2') ()
+WHEN  ('?Button1_20') ()
+WHEN  ('?Button1_21') ()
+WHEN  ('?Button1_22') ()
+WHEN  ('?Button1_23') ()
+WHEN  ('?Button1_24') ()
+WHEN  ('?Button1_25') ()
+WHEN  ('?Button1_26') ()
+WHEN  ('?Button1_27') ()
+WHEN  ('?Button1_28') ()
+WHEN  ('?Button1_29') ()
+WHEN  ('?Button1_3') ()
+WHEN  ('?Button1_30') ()
+WHEN  ('?Button1_31') ()
+WHEN  ('?Button1_32') ()
+WHEN  ('?Button1_33') ()
+WHEN  ('?Button1_34') ()
+WHEN  ('?Button1_35') ()
+WHEN  ('?Button1_36') ()
+WHEN  ('?Button1_37') ()
+WHEN  ('?Button1_4') ()
+WHEN  ('?Button1_5') ()
+WHEN  ('?Button1_6') ()
+WHEN  ('?Button1_7') ()
+WHEN  ('?Button1_8') ()
+WHEN  ('?Button1_9') ()
+WHEN  ('?Button2_1') ()
+WHEN  ('?Button2_10') ()
+WHEN  ('?Button2_11') ()
+WHEN  ('?Button2_12') ()
+WHEN  ('?Button2_13') ()
+WHEN  ('?Button2_14') ()
+WHEN  ('?Button2_15') ()
+WHEN  ('?Button2_16') ()
+WHEN  ('?Button2_17') ()
+WHEN  ('?Button2_18') ()
+WHEN  ('?Button2_19') ()
+WHEN  ('?Button2_2') ()
+WHEN  ('?Button2_20') ()
+WHEN  ('?Button2_21') ()
+WHEN  ('?Button2_22') ()
+WHEN  ('?Button2_23') ()
+WHEN  ('?Button2_24') ()
+WHEN  ('?Button2_25') ()
+WHEN  ('?Button2_26') ()
+WHEN  ('?Button2_27') ()
+WHEN  ('?Button2_28') ()
+WHEN  ('?Button2_29') ()
+WHEN  ('?Button2_3') ()
+WHEN  ('?Button2_30') ()
+WHEN  ('?Button2_31') ()
+WHEN  ('?Button2_32') ()
+WHEN  ('?Button2_33') ()
+WHEN  ('?Button2_34') ()
+WHEN  ('?Button2_35') ()
+WHEN  ('?Button2_36') ()
+WHEN  ('?Button2_37') ()
+WHEN  ('?Button2_4') ()
+WHEN  ('?Button2_5') ()
+WHEN  ('?Button2_6') ()
+WHEN  ('?Button2_7') ()
+WHEN  ('?Button2_8') ()
+WHEN  ('?Button2_9') ()
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneMonth') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?MinusOneYear') ()
+WHEN  ('?PlusOneMonth') ()
+WHEN  ('?PlusOneWeek') ()
+WHEN  ('?PlusOneYear') ()
+WHEN  ('?Select') ()
+
+%ThreadParam2 DEPEND %Control FIELD TIMES 83
+WHEN  ('?Button1_1') ()
+WHEN  ('?Button1_10') ()
+WHEN  ('?Button1_11') ()
+WHEN  ('?Button1_12') ()
+WHEN  ('?Button1_13') ()
+WHEN  ('?Button1_14') ()
+WHEN  ('?Button1_15') ()
+WHEN  ('?Button1_16') ()
+WHEN  ('?Button1_17') ()
+WHEN  ('?Button1_18') ()
+WHEN  ('?Button1_19') ()
+WHEN  ('?Button1_2') ()
+WHEN  ('?Button1_20') ()
+WHEN  ('?Button1_21') ()
+WHEN  ('?Button1_22') ()
+WHEN  ('?Button1_23') ()
+WHEN  ('?Button1_24') ()
+WHEN  ('?Button1_25') ()
+WHEN  ('?Button1_26') ()
+WHEN  ('?Button1_27') ()
+WHEN  ('?Button1_28') ()
+WHEN  ('?Button1_29') ()
+WHEN  ('?Button1_3') ()
+WHEN  ('?Button1_30') ()
+WHEN  ('?Button1_31') ()
+WHEN  ('?Button1_32') ()
+WHEN  ('?Button1_33') ()
+WHEN  ('?Button1_34') ()
+WHEN  ('?Button1_35') ()
+WHEN  ('?Button1_36') ()
+WHEN  ('?Button1_37') ()
+WHEN  ('?Button1_4') ()
+WHEN  ('?Button1_5') ()
+WHEN  ('?Button1_6') ()
+WHEN  ('?Button1_7') ()
+WHEN  ('?Button1_8') ()
+WHEN  ('?Button1_9') ()
+WHEN  ('?Button2_1') ()
+WHEN  ('?Button2_10') ()
+WHEN  ('?Button2_11') ()
+WHEN  ('?Button2_12') ()
+WHEN  ('?Button2_13') ()
+WHEN  ('?Button2_14') ()
+WHEN  ('?Button2_15') ()
+WHEN  ('?Button2_16') ()
+WHEN  ('?Button2_17') ()
+WHEN  ('?Button2_18') ()
+WHEN  ('?Button2_19') ()
+WHEN  ('?Button2_2') ()
+WHEN  ('?Button2_20') ()
+WHEN  ('?Button2_21') ()
+WHEN  ('?Button2_22') ()
+WHEN  ('?Button2_23') ()
+WHEN  ('?Button2_24') ()
+WHEN  ('?Button2_25') ()
+WHEN  ('?Button2_26') ()
+WHEN  ('?Button2_27') ()
+WHEN  ('?Button2_28') ()
+WHEN  ('?Button2_29') ()
+WHEN  ('?Button2_3') ()
+WHEN  ('?Button2_30') ()
+WHEN  ('?Button2_31') ()
+WHEN  ('?Button2_32') ()
+WHEN  ('?Button2_33') ()
+WHEN  ('?Button2_34') ()
+WHEN  ('?Button2_35') ()
+WHEN  ('?Button2_36') ()
+WHEN  ('?Button2_37') ()
+WHEN  ('?Button2_4') ()
+WHEN  ('?Button2_5') ()
+WHEN  ('?Button2_6') ()
+WHEN  ('?Button2_7') ()
+WHEN  ('?Button2_8') ()
+WHEN  ('?Button2_9') ()
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneMonth') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?MinusOneYear') ()
+WHEN  ('?PlusOneMonth') ()
+WHEN  ('?PlusOneWeek') ()
+WHEN  ('?PlusOneYear') ()
+WHEN  ('?Select') ()
+
+%ThreadParam3 DEPEND %Control FIELD TIMES 83
+WHEN  ('?Button1_1') ()
+WHEN  ('?Button1_10') ()
+WHEN  ('?Button1_11') ()
+WHEN  ('?Button1_12') ()
+WHEN  ('?Button1_13') ()
+WHEN  ('?Button1_14') ()
+WHEN  ('?Button1_15') ()
+WHEN  ('?Button1_16') ()
+WHEN  ('?Button1_17') ()
+WHEN  ('?Button1_18') ()
+WHEN  ('?Button1_19') ()
+WHEN  ('?Button1_2') ()
+WHEN  ('?Button1_20') ()
+WHEN  ('?Button1_21') ()
+WHEN  ('?Button1_22') ()
+WHEN  ('?Button1_23') ()
+WHEN  ('?Button1_24') ()
+WHEN  ('?Button1_25') ()
+WHEN  ('?Button1_26') ()
+WHEN  ('?Button1_27') ()
+WHEN  ('?Button1_28') ()
+WHEN  ('?Button1_29') ()
+WHEN  ('?Button1_3') ()
+WHEN  ('?Button1_30') ()
+WHEN  ('?Button1_31') ()
+WHEN  ('?Button1_32') ()
+WHEN  ('?Button1_33') ()
+WHEN  ('?Button1_34') ()
+WHEN  ('?Button1_35') ()
+WHEN  ('?Button1_36') ()
+WHEN  ('?Button1_37') ()
+WHEN  ('?Button1_4') ()
+WHEN  ('?Button1_5') ()
+WHEN  ('?Button1_6') ()
+WHEN  ('?Button1_7') ()
+WHEN  ('?Button1_8') ()
+WHEN  ('?Button1_9') ()
+WHEN  ('?Button2_1') ()
+WHEN  ('?Button2_10') ()
+WHEN  ('?Button2_11') ()
+WHEN  ('?Button2_12') ()
+WHEN  ('?Button2_13') ()
+WHEN  ('?Button2_14') ()
+WHEN  ('?Button2_15') ()
+WHEN  ('?Button2_16') ()
+WHEN  ('?Button2_17') ()
+WHEN  ('?Button2_18') ()
+WHEN  ('?Button2_19') ()
+WHEN  ('?Button2_2') ()
+WHEN  ('?Button2_20') ()
+WHEN  ('?Button2_21') ()
+WHEN  ('?Button2_22') ()
+WHEN  ('?Button2_23') ()
+WHEN  ('?Button2_24') ()
+WHEN  ('?Button2_25') ()
+WHEN  ('?Button2_26') ()
+WHEN  ('?Button2_27') ()
+WHEN  ('?Button2_28') ()
+WHEN  ('?Button2_29') ()
+WHEN  ('?Button2_3') ()
+WHEN  ('?Button2_30') ()
+WHEN  ('?Button2_31') ()
+WHEN  ('?Button2_32') ()
+WHEN  ('?Button2_33') ()
+WHEN  ('?Button2_34') ()
+WHEN  ('?Button2_35') ()
+WHEN  ('?Button2_36') ()
+WHEN  ('?Button2_37') ()
+WHEN  ('?Button2_4') ()
+WHEN  ('?Button2_5') ()
+WHEN  ('?Button2_6') ()
+WHEN  ('?Button2_7') ()
+WHEN  ('?Button2_8') ()
+WHEN  ('?Button2_9') ()
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneMonth') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?MinusOneYear') ()
+WHEN  ('?PlusOneMonth') ()
+WHEN  ('?PlusOneWeek') ()
+WHEN  ('?PlusOneYear') ()
+WHEN  ('?Select') ()
+
+%ThreadParam4 DEPEND %Control FIELD TIMES 83
+WHEN  ('?Button1_1') ()
+WHEN  ('?Button1_10') ()
+WHEN  ('?Button1_11') ()
+WHEN  ('?Button1_12') ()
+WHEN  ('?Button1_13') ()
+WHEN  ('?Button1_14') ()
+WHEN  ('?Button1_15') ()
+WHEN  ('?Button1_16') ()
+WHEN  ('?Button1_17') ()
+WHEN  ('?Button1_18') ()
+WHEN  ('?Button1_19') ()
+WHEN  ('?Button1_2') ()
+WHEN  ('?Button1_20') ()
+WHEN  ('?Button1_21') ()
+WHEN  ('?Button1_22') ()
+WHEN  ('?Button1_23') ()
+WHEN  ('?Button1_24') ()
+WHEN  ('?Button1_25') ()
+WHEN  ('?Button1_26') ()
+WHEN  ('?Button1_27') ()
+WHEN  ('?Button1_28') ()
+WHEN  ('?Button1_29') ()
+WHEN  ('?Button1_3') ()
+WHEN  ('?Button1_30') ()
+WHEN  ('?Button1_31') ()
+WHEN  ('?Button1_32') ()
+WHEN  ('?Button1_33') ()
+WHEN  ('?Button1_34') ()
+WHEN  ('?Button1_35') ()
+WHEN  ('?Button1_36') ()
+WHEN  ('?Button1_37') ()
+WHEN  ('?Button1_4') ()
+WHEN  ('?Button1_5') ()
+WHEN  ('?Button1_6') ()
+WHEN  ('?Button1_7') ()
+WHEN  ('?Button1_8') ()
+WHEN  ('?Button1_9') ()
+WHEN  ('?Button2_1') ()
+WHEN  ('?Button2_10') ()
+WHEN  ('?Button2_11') ()
+WHEN  ('?Button2_12') ()
+WHEN  ('?Button2_13') ()
+WHEN  ('?Button2_14') ()
+WHEN  ('?Button2_15') ()
+WHEN  ('?Button2_16') ()
+WHEN  ('?Button2_17') ()
+WHEN  ('?Button2_18') ()
+WHEN  ('?Button2_19') ()
+WHEN  ('?Button2_2') ()
+WHEN  ('?Button2_20') ()
+WHEN  ('?Button2_21') ()
+WHEN  ('?Button2_22') ()
+WHEN  ('?Button2_23') ()
+WHEN  ('?Button2_24') ()
+WHEN  ('?Button2_25') ()
+WHEN  ('?Button2_26') ()
+WHEN  ('?Button2_27') ()
+WHEN  ('?Button2_28') ()
+WHEN  ('?Button2_29') ()
+WHEN  ('?Button2_3') ()
+WHEN  ('?Button2_30') ()
+WHEN  ('?Button2_31') ()
+WHEN  ('?Button2_32') ()
+WHEN  ('?Button2_33') ()
+WHEN  ('?Button2_34') ()
+WHEN  ('?Button2_35') ()
+WHEN  ('?Button2_36') ()
+WHEN  ('?Button2_37') ()
+WHEN  ('?Button2_4') ()
+WHEN  ('?Button2_5') ()
+WHEN  ('?Button2_6') ()
+WHEN  ('?Button2_7') ()
+WHEN  ('?Button2_8') ()
+WHEN  ('?Button2_9') ()
+WHEN  ('?CloseWindow') ()
+WHEN  ('?JumpString') ()
+WHEN  ('?MinusOneMonth') ()
+WHEN  ('?MinusOneWeek') ()
+WHEN  ('?MinusOneYear') ()
+WHEN  ('?PlusOneMonth') ()
+WHEN  ('?PlusOneWeek') ()
+WHEN  ('?PlusOneYear') ()
+WHEN  ('?Select') ()
+
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 1
+WHEN  ('?CloseWindow')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 1
+WHEN  ('?CloseWindow')TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 0
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 0
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 0
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
+
+[EMBED]
+EMBED %ProcedureRoutines
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+SetupProc ROUTINE
+ clear(IndexMonth)                               !fill the days in the month
+ DaysInTheMonth[1] = 31                          ! array... used in the
+                                                 ! setupcalendar routines
+ leaptest = deformat('02/28/' & year(PassedDate),@d2) + 1
+ if month(LeapTest) = 3
+    DaysInTheMonth[2] = 28
+ else
+    DaysInTheMonth[2] = 29
+ end
+ DaysInTheMonth[3] = 31
+ DaysInTheMonth[4] = 30
+ DaysInTheMonth[5] = 31
+ DaysInTheMonth[6] = 30
+ DaysInTheMonth[7] = 31
+ DaysInTheMonth[8] = 31
+ DaysInTheMonth[9] = 30
+ DaysInTheMonth[10] = 31
+ DaysInTheMonth[11] = 30
+ DaysInTheMonth[12] = 31
+                                                 !if user is beginning a cal
+ if not SaveThisMonth                            ! session... do the initial
+    SaveThisMonth = month(PassedDate)            ! calendar entry data setup
+ .                                               ! set middle month to passed
+                                                 ! date's month
+ clear(DayString1)
+ MonthByte = month(PassedDate)
+ ShortYear = year(PassedDate)
+ IndexMonth[1] = MonthByte
+ do SetupCalendar1
+ clear(DayString2)
+! if Month(PassedDate) = 1
+!   MonthByte = 12
+!   ShortYear = year(PassedDate) - 1
+ if Month(PassedDate) = 12
+   MonthByte = 1
+   ShortYear = year(PassedDate) + 1
+ else
+!   MonthByte = month(PassedDate) - 1
+   MonthByte = month(PassedDate) + 1
+   ShortYear = year(PassedDate)
+ .
+ IndexMonth[2] = MonthByte
+ do SetupCalendar2
+ ScrnMonthString  = MonthString1
+ ScrnMonthString2 = MonthString2
+ display
+ exit  !** Check EXIT allowed here **
+!----------------------------------------------------------------------
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+SelectCode routine
+ if keycode() = CtrlRight
+    clear(DateConverter)
+    DateConverter = PassedDate
+    DateConverter += (DaysIntheMonth[IndexMonth[2]] - 1)
+    PassedDate = DateConverter
+    SaveThisMonth = IndexMonth[3] + 1
+    do SetupProc
+ elsif keycode() = CtrlLeft
+    clear(DateConverter)
+    DateConverter = PassedDate
+    DateConverter -= (DaysIntheMonth[IndexMonth[2]] + 1)
+    PassedDate = DateConverter
+    SaveThisMonth = IndexMonth[1] - 1
+    do SetupProc
+ .
+ if selected() < 43 and selected() >= 4
+   Index1 = selected() - 3
+   if keycode() = RightKey
+     if Index1 = 8 or Index1 = 15 |
+     or Index1 = 22 or Index1 = 29 |
+     or Index1 = 36 or DayString1[Index1] = 1
+        clear(DateConverter)
+        DateConverter = PassedDate
+        DateConverter += (DaysIntheMonth[IndexMonth[2]] - 1)
+        PassedDate = DateConverter
+        SaveThisMonth = IndexMonth[3] + 1
+        do SetupProc
+     .
+   else
+     WorkingDate = DisplayDate1[Index1]
+     PassedDate = WorkingDate
+  .
+  MessageDate = format(DisplayDate1[Index1],@d4)
+ elsif Selected() > 40 and Selected() < 94
+   Index1 = Selected() - 49
+   MessageDate = format(DisplayDate2[Index1],@d4)
+   WorkingDate = DisplayDate2[Index1]
+   PassedDate = WorkingDate
+ .
+ window{prop:text} = 'Calendar - [' & MessageDate & ']'
+ display()
+ exit  !** Check EXIT allowed here **
+!----------------------------------------------------------------------
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+SetupCalendar1 routine
+ EXECUTE DATE(MonthByte,1,ShortYear) % 7 + 1     !
+   DayOfTheWeek = 1                              !this code sets the start box for
+   DayOfTheWeek = 2                              ! filling the calendar based on
+   DayOfTheWeek = 3                              ! passed month and year
+   DayOfTheWeek = 4                              !
+   DayOfTheWeek = 5                              !
+   DayOfTheWeek = 6                              !
+   DayOfTheWeek = 7                              !
+ END
+ case DayOfTheWeek
+   of 2
+    ?Button1_1{PROP:Hide} = True
+   of 3
+    ?Button1_1{PROP:Hide} = True
+    ?Button1_2{PROP:Hide} = True
+   of 4
+    ?Button1_1{PROP:Hide} = True
+    ?Button1_2{PROP:Hide} = True
+    ?Button1_3{PROP:Hide} = True
+   of 5
+    ?Button1_1{PROP:Hide} = True
+    ?Button1_2{PROP:Hide} = True
+    ?Button1_3{PROP:Hide} = True
+    ?Button1_4{PROP:Hide} = True
+   of 6
+    ?Button1_1{PROP:Hide} = True
+    ?Button1_2{PROP:Hide} = True
+    ?Button1_3{PROP:Hide} = True
+    ?Button1_4{PROP:Hide} = True
+    ?Button1_5{PROP:Hide} = True
+   of 7
+    ?Button1_1{PROP:Hide} = True
+    ?Button1_2{PROP:Hide} = True
+    ?Button1_3{PROP:Hide} = True
+    ?Button1_4{PROP:Hide} = True
+    ?Button1_5{PROP:Hide} = True
+    ?Button1_6{PROP:Hide} = True
+ .
+  ?Button1_29{PROP:Hide} = True
+  ?Button1_30{PROP:Hide} = True
+  ?Button1_31{PROP:Hide} = True
+  ?Button1_32{PROP:Hide} = True
+  ?Button1_33{PROP:Hide} = True
+  ?Button1_34{PROP:Hide} = True
+  ?Button1_35{PROP:Hide} = True
+  ?Button1_36{PROP:Hide} = True
+  ?Button1_37{PROP:Hide} = True
+                                         !
+ loop DayByte = 1 to DaysInTheMonth[MonthByte]   !this code fills the box text
+      DisplayDate1[DayOfTheWeek] = DATE(MonthByte,DayByte,ShortYear)!fill date
+      case DayOfTheWeek
+        of 1
+           ?Button1_1{PROP:Text} = DayByte
+           ?Button1_1{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_1,,,000FFFFH)
+             select(?Button1_1)
+           .
+        of 2
+           ?Button1_2{PROP:Text} = Daybyte
+           ?Button1_2{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_2,,,000FFFFH)
+             select(?Button1_2)
+           .
+        of 3
+           ?Button1_3{PROP:Text} = Daybyte
+           ?Button1_3{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_3,,,000FFFFH)
+             select(?Button1_3)
+           .
+        of 4
+           ?Button1_4{PROP:Text} = DayByte
+           ?Button1_4{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_4,,,000FFFFH)
+             select(?Button1_4)
+           .
+        of 5
+           ?Button1_5{PROP:Text} = DayByte
+           ?Button1_5{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_5,,,000FFFFH)
+             select(?Button1_5)
+           .
+        of 6
+           ?Button1_6{PROP:Text} = DayByte
+           ?Button1_6{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_6,,,000FFFFH)
+             select(?Button1_6)
+           .
+        of 7
+           ?Button1_7{PROP:Text} = DayByte
+           ?Button1_7{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_7,,,000FFFFH)
+             select(?Button1_7)
+           .
+        of 8
+           ?Button1_8{PROP:Text} = DayByte
+           ?Button1_8{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_8,,,000FFFFH)
+             select(?Button1_8)
+           .
+        of 9
+           ?Button1_9{PROP:Text} = DayByte
+           ?Button1_9{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_9,,,000FFFFH)
+             select(?Button1_9)
+           .
+        of 10
+           ?Button1_10{PROP:Text} = DayByte
+           ?Button1_10{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_10,,,000FFFFH)
+             select(?Button1_10)
+           .
+        of 11
+           ?Button1_11{PROP:Text} = DayByte
+           ?Button1_11{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_11,,,000FFFFH)
+             select(?Button1_11)
+           .
+        of 12
+           ?Button1_12{PROP:Text} = DayByte
+           ?Button1_12{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_12,,,000FFFFH)
+             select(?Button1_12)
+           .
+        of 13
+           ?Button1_13{PROP:Text} = DayByte
+           ?Button1_13{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_13,,,000FFFFH)
+             select(?Button1_13)
+           .
+        of 14
+           ?Button1_14{PROP:Text} = DayByte
+           ?Button1_14{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_14,,,000FFFFH)
+             select(?Button1_14)
+           .
+        of 15
+           ?Button1_15{PROP:Text} = DayByte
+           ?Button1_15{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_15,,,000FFFFH)
+             select(?Button1_15)
+           .
+        of 16
+           ?Button1_16{PROP:Text} = DayByte
+           ?Button1_16{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_16,,,000FFFFH)
+             select(?Button1_16)
+           .
+        of 17
+           ?Button1_17{PROP:Text} = DayByte
+           ?Button1_17{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_17,,,000FFFFH)
+             select(?Button1_17)
+           .
+        of 18
+           ?Button1_18{PROP:Text} = DayByte
+           ?Button1_18{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_18,,,000FFFFH)
+             select(?Button1_18)
+           .
+        of 19
+           ?Button1_19{PROP:Text} = DayByte
+           ?Button1_19{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_19,,,000FFFFH)
+             select(?Button1_19)
+           .
+        of 20
+           ?Button1_20{PROP:Text} = DayByte
+           ?Button1_20{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_20,,,000FFFFH)
+             select(?Button1_20)
+           .
+        of 21
+           ?Button1_21{PROP:Text} = DayByte
+           ?Button1_21{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_21,,,000FFFFH)
+             select(?Button1_21)
+           .
+        of 22
+           ?Button1_22{PROP:Text} = DayByte
+           ?Button1_22{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_22,,,000FFFFH)
+             select(?Button1_22)
+           .
+        of 23
+           ?Button1_23{PROP:Text} = DayByte
+           ?Button1_23{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_23,,,000FFFFH)
+             select(?Button1_23)
+           .
+        of 24
+           ?Button1_24{PROP:Text} = DayByte
+           ?Button1_24{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_24,,,000FFFFH)
+             select(?Button1_24)
+           .
+        of 25
+           ?Button1_25{PROP:Text} = DayByte
+           ?Button1_25{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_25,,,000FFFFH)
+             select(?Button1_25)
+           .
+        of 26
+           ?Button1_26{PROP:Text} = DayByte
+           ?Button1_26{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_26,,,000FFFFH)
+             select(?Button1_26)
+           .
+        of 27
+           ?Button1_27{PROP:Text} = DayByte
+           ?Button1_27{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_27,,,000FFFFH)
+             select(?Button1_27)
+           .
+        of 28
+           ?Button1_28{PROP:Text} = DayByte
+           ?Button1_28{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_28,,,000FFFFH)
+             select(?Button1_28)
+           .
+        of 29
+           ?Button1_29{PROP:Text} = DayByte
+           ?Button1_29{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_29,,,000FFFFH)
+             select(?Button1_29)
+           .
+        of 30
+           ?Button1_30{PROP:Text} = DayByte
+           ?Button1_30{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_30,,,000FFFFH)
+             select(?Button1_30)
+           .
+        of 31
+           ?Button1_31{PROP:Text} = DayByte
+           ?Button1_31{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_31,,,000FFFFH)
+             select(?Button1_31)
+           .
+        of 32
+           ?Button1_32{PROP:Text} = DayByte
+           ?Button1_32{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_32,,,000FFFFH)
+             select(?Button1_32)
+           .
+        of 33
+           ?Button1_33{PROP:Text} = DayByte
+           ?Button1_33{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_33,,,000FFFFH)
+             select(?Button1_33)
+           .
+        of 34
+           ?Button1_34{PROP:Text} = DayByte
+           ?Button1_34{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_34,,,000FFFFH)
+             select(?Button1_34)
+           .
+        of 35
+           ?Button1_35{PROP:Text} = DayByte
+           ?Button1_35{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_35,,,000FFFFH)
+             select(?Button1_35)
+           .
+        of 36
+           ?Button1_36{PROP:Text} = DayByte
+           ?Button1_36{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_36,,,000FFFFH)
+             select(?Button1_36)
+           .
+        of 37
+           ?Button1_37{PROP:Text} = DayByte
+           ?Button1_37{PROP:Hide} = False
+           if DisplayDate1[DayOfTheWeek] = passeddate
+             setfont(?Button1_37,,,000FFFFH)
+             select(?Button1_37)
+           .
+      .
+      DayOfTheWeek += 1                             ! increment the box
+                                                 ! array with the date
+ .                                               !end loop
+ EXECUTE MonthByte                               !
+   MonthString1 = center('January '&ShortYear,17)!
+   MonthString1 = center('February '&ShortYear,17)
+   MonthString1 = center('March '&ShortYear,17)  !
+   MonthString1 = center('April '&ShortYear,17)  !
+   MonthString1 = center('May '&ShortYear,17)    !
+   MonthString1 = center('June '&ShortYear,17)   !
+   MonthString1 = center('July '&ShortYear,17)   !
+   MonthString1 = center('August '&ShortYear,17) !
+   MonthString1 = center('September '&ShortYear,17)
+   MonthString1 = center('October '&ShortYear,17)!
+   MonthString1 = center('November '&ShortYear,17)
+   MonthString1 = center('December '&ShortYear,17)
+ END                                             !
+ exit  !** Check EXIT allowed here **
+!----------------------------------------------------------------------
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+SetupCalendar2 routine
+ EXECUTE DATE(MonthByte,1,ShortYear) % 7 + 1     !
+   DayOfTheWeek = 1                              !this code sets the start box for
+   DayOfTheWeek = 2                              ! filling the calendar based on
+   DayOfTheWeek = 3                              ! passed month and year
+   DayOfTheWeek = 4                              !
+   DayOfTheWeek = 5                              !
+   DayOfTheWeek = 6                              !
+   DayOfTheWeek = 7                              !
+ END
+ case DayOfTheWeek
+   of 2
+    ?Button2_1{PROP:Hide} = True
+   of 3
+    ?Button2_1{PROP:Hide} = True
+    ?Button2_2{PROP:Hide} = True
+   of 4
+    ?Button2_1{PROP:Hide} = True
+    ?Button2_2{PROP:Hide} = True
+    ?Button2_3{PROP:Hide} = True
+   of 5
+    ?Button2_1{PROP:Hide} = True
+    ?Button2_2{PROP:Hide} = True
+    ?Button2_3{PROP:Hide} = True
+    ?Button2_4{PROP:Hide} = True
+   of 6
+    ?Button2_1{PROP:Hide} = True
+    ?Button2_2{PROP:Hide} = True
+    ?Button2_3{PROP:Hide} = True
+    ?Button2_4{PROP:Hide} = True
+    ?Button2_5{PROP:Hide} = True
+   of 7
+    ?Button2_1{PROP:Hide} = True
+    ?Button2_2{PROP:Hide} = True
+    ?Button2_3{PROP:Hide} = True
+    ?Button2_4{PROP:Hide} = True
+    ?Button2_5{PROP:Hide} = True
+    ?Button2_6{PROP:Hide} = True
+ end
+ ?Button2_29{PROP:Hide} = True
+ ?Button2_30{PROP:Hide} = True
+ ?Button2_31{PROP:Hide} = True
+ ?Button2_32{PROP:Hide} = True
+ ?Button2_33{PROP:Hide} = True
+ ?Button2_34{PROP:Hide} = True
+ ?Button2_35{PROP:Hide} = True
+ ?Button2_36{PROP:Hide} = True
+ ?Button2_37{PROP:Hide} = True
+ loop DayByte = 1 to DaysInTheMonth[MonthByte]   !this code fills the box text
+      DisplayDate2[DayOfTheWeek] = DATE(MonthByte,DayByte,ShortYear)!fill date
+      case DayOfTheWeek
+        of 1
+           ?Button2_1{PROP:Text} = DayByte
+           ?Button2_1{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_1,,,000FFFFH)
+             select(?Button2_1)
+           .
+        of 2
+           ?Button2_2{PROP:Text} = Daybyte
+           ?Button2_2{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_2,,,000FFFFH)
+             select(?Button2_2)
+           .
+        of 3
+           ?Button2_3{PROP:Text} = Daybyte
+           ?Button2_3{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_3,,,000FFFFH)
+             select(?Button2_3)
+           .
+        of 4
+           ?Button2_4{PROP:Text} = DayByte
+           ?Button2_4{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_4,,,000FFFFH)
+             select(?Button2_4)
+           .
+        of 5
+           ?Button2_5{PROP:Text} = DayByte
+           ?Button2_5{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_5,,,000FFFFH)
+             select(?Button2_5)
+           .
+        of 6
+           ?Button2_6{PROP:Text} = DayByte
+           ?Button2_6{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_6,,,000FFFFH)
+             select(?Button2_6)
+           .
+        of 7
+           ?Button2_7{PROP:Text} = DayByte
+           ?Button2_7{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_7,,,000FFFFH)
+             select(?Button2_7)
+           .
+        of 8
+           ?Button2_8{PROP:Text} = DayByte
+           ?Button2_8{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_8,,,000FFFFH)
+             select(?Button2_8)
+           .
+        of 9
+           ?Button2_9{PROP:Text} = DayByte
+           ?Button2_9{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_9,,,000FFFFH)
+             select(?Button2_9)
+           .
+        of 10
+           ?Button2_10{PROP:Text} = DayByte
+           ?Button2_10{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_10,,,000FFFFH)
+             select(?Button2_10)
+           .
+        of 11
+           ?Button2_11{PROP:Text} = DayByte
+           ?Button2_11{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_11,,,000FFFFH)
+             select(?Button2_11)
+           .
+        of 12
+           ?Button2_12{PROP:Text} = DayByte
+           ?Button2_12{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_12,,,000FFFFH)
+             select(?Button2_12)
+           .
+        of 13
+           ?Button2_13{PROP:Text} = DayByte
+           ?Button2_13{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_13,,,000FFFFH)
+             select(?Button2_13)
+           .
+        of 14
+           ?Button2_14{PROP:Text} = DayByte
+           ?Button2_14{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_14,,,000FFFFH)
+             select(?Button2_14)
+           .
+        of 15
+           ?Button2_15{PROP:Text} = DayByte
+           ?Button2_15{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_15,,,000FFFFH)
+             select(?Button2_15)
+           .
+        of 16
+           ?Button2_16{PROP:Text} = DayByte
+           ?Button2_16{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_16,,,000FFFFH)
+             select(?Button2_16)
+           .
+        of 17
+           ?Button2_17{PROP:Text} = DayByte
+           ?Button2_17{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_17,,,000FFFFH)
+             select(?Button2_17)
+           .
+        of 18
+           ?Button2_18{PROP:Text} = DayByte
+           ?Button2_18{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_18,,,000FFFFH)
+             select(?Button2_18)
+           .
+        of 19
+           ?Button2_19{PROP:Text} = DayByte
+           ?Button2_19{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_19,,,000FFFFH)
+             select(?Button2_19)
+           .
+        of 20
+           ?Button2_20{PROP:Text} = DayByte
+           ?Button2_20{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_20,,,000FFFFH)
+             select(?Button2_20)
+           .
+        of 21
+           ?Button2_21{PROP:Text} = DayByte
+           ?Button2_21{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_21,,,000FFFFH)
+             select(?Button2_21)
+           .
+        of 22
+           ?Button2_22{PROP:Text} = DayByte
+           ?Button2_22{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_22,,,000FFFFH)
+             select(?Button2_22)
+           .
+        of 23
+           ?Button2_23{PROP:Text} = DayByte
+           ?Button2_23{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_23,,,000FFFFH)
+             select(?Button2_23)
+           .
+        of 24
+           ?Button2_24{PROP:Text} = DayByte
+           ?Button2_24{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_24,,,000FFFFH)
+             select(?Button2_24)
+           .
+        of 25
+           ?Button2_25{PROP:Text} = DayByte
+           ?Button2_25{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_25,,,000FFFFH)
+             select(?Button2_25)
+           .
+        of 26
+           ?Button2_26{PROP:Text} = DayByte
+           ?Button2_26{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_26,,,000FFFFH)
+             select(?Button2_26)
+           .
+        of 27
+           ?Button2_27{PROP:Text} = DayByte
+           ?Button2_27{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_27,,,000FFFFH)
+             select(?Button2_27)
+           .
+        of 28
+           ?Button2_28{PROP:Text} = DayByte
+           ?Button2_28{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_28,,,000FFFFH)
+             select(?Button2_28)
+           .
+        of 29
+           ?Button2_29{PROP:Text} = DayByte
+           ?Button2_29{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_29,,,000FFFFH)
+             select(?Button2_29)
+           .
+        of 30
+           ?Button2_30{PROP:Text} = DayByte
+           ?Button2_30{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_30,,,000FFFFH)
+             select(?Button2_30)
+           .
+        of 31
+           ?Button2_31{PROP:Text} = DayByte
+           ?Button2_31{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_31,,,000FFFFH)
+             select(?Button2_31)
+           .
+        of 32
+           ?Button2_32{PROP:Text} = DayByte
+           ?Button2_32{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_32,,,000FFFFH)
+             select(?Button2_32)
+           .
+        of 33
+           ?Button2_33{PROP:Text} = DayByte
+           ?Button2_33{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_33,,,000FFFFH)
+             select(?Button2_33)
+           .
+        of 34
+           ?Button2_34{PROP:Text} = DayByte
+           ?Button2_34{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_34,,,000FFFFH)
+             select(?Button2_34)
+           .
+        of 35
+           ?Button2_35{PROP:Text} = DayByte
+           ?Button2_35{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_35,,,000FFFFH)
+             select(?Button2_35)
+           .
+        of 36
+           ?Button2_36{PROP:Text} = DayByte
+           ?Button2_36{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_36,,,000FFFFH)
+             select(?Button2_36)
+           .
+        of 37
+           ?Button2_37{PROP:Text} = DayByte
+           ?Button2_37{PROP:Hide} = False
+           if DisplayDate2[DayOfTheWeek] = passeddate
+             setfont(?Button2_37,,,000FFFFH)
+             select(?Button2_37)
+           .
+      .
+      DayOfTheWeek += 1                          ! increment the box
+                                                 ! array with the date
+ .                                               !end loop
+ EXECUTE MonthByte                               !
+   MonthString2 = center('January '&ShortYear,17)!
+   MonthString2 = center('February '&ShortYear,17)
+   MonthString2 = center('March '&ShortYear,17)  !
+   MonthString2 = center('April '&ShortYear,17)  !
+   MonthString2 = center('May '&ShortYear,17)    !
+   MonthString2 = center('June '&ShortYear,17)   !
+   MonthString2 = center('July '&ShortYear,17)   !
+   MonthString2 = center('August '&ShortYear,17) !
+   MonthString2 = center('September '&ShortYear,17)
+   MonthString2 = center('October '&ShortYear,17)!
+   MonthString2 = center('November '&ShortYear,17)
+   MonthString2 = center('December '&ShortYear,17)
+ END                                             !
+ exit  !** Check EXIT allowed here **
+!----------------------------------------------------------------------
+[END]
+EMBED %AcceptLoopBeforeEventHandling
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+case event()
+  of EVENT:AlertKey
+     case keycode()
+       of MouseLeft2
+          do SelectCode
+          pDate = PassedDate
+          !IslBreak = True
+          break
+     end
+end
+[END]
+EMBED %ControlPostEventHandling
+[INSTANCES]
+WHEN '?JumpString'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+JumpCode(JumpString, PassedDate)
+clear(JumpString)
+select(?JumpString)
+do SetupProc
+clear(JumpString)
+[END]
+[END]
+WHEN '?MinusOneWeek'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+JumpCode('-1w', PassedDate)                     !Move the date
+clear(JumpString)                               !Clear the screen var
+do setupproc
+[END]
+[END]
+WHEN '?PlusOneWeek'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+JumpCode('1w', PassedDate)                     !Move the date
+clear(JumpString)                               !Clear the screen var
+do setupproc
+[END]
+[END]
+WHEN '?MinusOneMonth'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+JumpCode('-1m', PassedDate)                     !Move the date
+clear(JumpString)                               !Clear the screen var
+do setupproc
+[END]
+[END]
+WHEN '?PlusOneMonth'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+JumpCode('1m', PassedDate)                      !Move the date
+clear(JumpString)                               !Clear the screen var
+do SetupProc                                    !Redraw the windows
+[END]
+[END]
+WHEN '?MinusOneYear'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+JumpCode('-1y', PassedDate)                     !Move the date
+clear(JumpString)                               !Clear the screen var
+do SetupProc                                    !Redraw the windows
+[END]
+[END]
+WHEN '?PlusOneYear'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+JumpCode('1y', PassedDate)                     !Move the date
+clear(JumpString)                               !Clear the screen var
+do SetupProc                                    !Redraw the windows
+[END]
+[END]
+WHEN '?Select'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+pDate = PassedDate
+DO SelectCode
+[GROUP]
+PRIORITY 4000
+INSTANCE 2
+[END]
+[END]
+WHEN '?CloseWindow'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ pDate = OriginalPassedDate
+[GROUP]
+PRIORITY 4000
+INSTANCE 1
+[END]
+[END]
+[END]
+EMBED %AcceptLoopAfterFieldHandling
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+HoldField = selected()
+DO SelectCode
+[END]
+EMBED %EndOfProcedure
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ALIAS()
+[END]
+EMBED %AcceptLoopAfterEventHandling
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+if not RedrawButtonsFlag            !this code is here rather than in window-
+   RedrawButtonsFlag = 1            ! event handling ( open window ) because
+   clear(SaveThisMonth)             ! the template puts a 'select first field'
+   alias(RightKey,TabKey)           ! after this code which selects the correct
+ ! alias(LeftKey,ShftTab)           ! button.  This embed point runs within the
+   alert(CtrlRight)                 ! accept structure and needs a flag to tell
+   alert(CtrlLeft)                  ! it when to run.  The flag is cleared when
+   do SetupProc                     ! the user press the +/- month, year, week
+end
+[END]
+EMBED %DataSectionBeforeWindow
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+LeapTest                long
+Holdfield               short
+DayString1              STRING(2),DIM(37)
+DayString2              STRING(2),DIM(37)
+DisplayDate1            DATE,DIM(37)
+DisplayDate2            DATE,DIM(37)
+MonthString1            STRING(17)
+MonthString2            STRING(17)
+RedrawButtonsFlag       byte(0)
+DateConverter           long
+Index1                  short
+Index2                  short
+CheckDate               short
+LeftMonth               byte
+RightMonth              byte
+Monthbyte               byte                     !
+ShortYear               short
+IndexMonth              byte,dim(3)
+SaveThisMonth           byte
+DayByte                 byte
+DayOfTheWeek            byte                     !
+DaysInTheMonth          short,dim(12)            !
+DateArray               date,dim(31)             !
+WorkingDate             date
+OriginalPassedDate      date
+PassedDate              date
+SelectedField           short
+ArrayIndex              short
+[END]
+EMBED %ProcedureSetup
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ PassedDate = pDate                 !convert to date field
+ OriginalPassedDate = PassedDate    !original passed date is put into
+                                    ! passed date field if user escapes without
+                                    ! selecting date
+ if PassedDate = 0 then             !Default passed date
+    PassedDate = today()
+ .
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 90
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[ADDITION]
+NAME ABC CloseCurrentWindow
+[INSTANCE]
+INSTANCE 1
+[INSTANCE]
+INSTANCE 2
+[CALLS]
+JumpCode
+[WINDOW]
+window  WINDOW(' '),AT(,,264,158),FONT('MS Sans Serif',8,COLOR:Black,FONT:regular),DOUBLE, |
+          ALRT(MouseLeft2),CENTER,GRAY,MASK,MSG('Calendar'),SYSTEM
+          PROMPT('Date &Jump String:'),AT(4,6,,9),USE(?DateJumpString:Prompt),#LINK(?JumpString), |
+            #ORIG(?JumpString:Prompt)
+          ENTRY(@s7),AT(66,6,,9),USE(JumpString),UPR,MSG('Jump String'),#LINK(?DateJumpString:Prompt), |
+            #ORIG(JumpString)
+          GROUP,AT(4,16,96,126),USE(?Group1),BOXED,#ORIG(?Group1)
+            BUTTON(' '),AT(11,50,11,11),USE(?Button1_1),#ORIG(?Button1)
+            BUTTON(' '),AT(23,50,11,11),USE(?Button1_2),#ORIG(?Button2)
+            BUTTON(' '),AT(35,50,11,11),USE(?Button1_3),#ORIG(?Button3)
+            BUTTON(' '),AT(47,50,11,11),USE(?Button1_4),#ORIG(?Button4)
+            BUTTON(' '),AT(59,50,11,11),USE(?Button1_5),#ORIG(?Button5)
+            BUTTON(' '),AT(71,50,11,11),USE(?Button1_6),#ORIG(?Button6)
+            BUTTON(' '),AT(83,50,11,11),USE(?Button1_7),#ORIG(?Button7)
+            BUTTON(' '),AT(11,65,11,11),USE(?Button1_8),#ORIG(?Button8)
+            BUTTON(' '),AT(23,65,11,11),USE(?Button1_9),#ORIG(?Button9)
+            BUTTON(' '),AT(35,65,11,11),USE(?Button1_10),#ORIG(?Button10)
+            BUTTON(' '),AT(47,65,11,11),USE(?Button1_11),#ORIG(?Button11)
+            BUTTON(' '),AT(59,65,11,11),USE(?Button1_12),#ORIG(?Button12)
+            BUTTON(' '),AT(71,65,11,11),USE(?Button1_13),#ORIG(?Button13)
+            BUTTON(' '),AT(83,65,11,11),USE(?Button1_14),#ORIG(?Button14)
+            BUTTON(' '),AT(11,80,11,11),USE(?Button1_15),#ORIG(?Button15)
+            BUTTON(' '),AT(23,80,11,11),USE(?Button1_16),#ORIG(?Button16)
+            BUTTON(' '),AT(35,80,11,11),USE(?Button1_17),#ORIG(?Button17)
+            BUTTON(' '),AT(47,80,11,11),USE(?Button1_18),#ORIG(?Button18)
+            BUTTON(' '),AT(59,80,11,11),USE(?Button1_19),#ORIG(?Button19)
+            BUTTON(' '),AT(71,80,11,11),USE(?Button1_20),#ORIG(?Button20)
+            BUTTON(' '),AT(83,80,11,11),USE(?Button1_21),#ORIG(?Button21)
+            BUTTON(' '),AT(11,95,11,11),USE(?Button1_22),#ORIG(?Button22)
+            BUTTON(' '),AT(23,95,11,11),USE(?Button1_23),#ORIG(?Button23)
+            BUTTON(' '),AT(35,95,11,11),USE(?Button1_24),#ORIG(?Button24)
+            BUTTON(' '),AT(47,95,11,11),USE(?Button1_25),#ORIG(?Button25)
+            BUTTON(' '),AT(59,95,11,11),USE(?Button1_26),#ORIG(?Button26)
+            BUTTON(' '),AT(71,95,11,11),USE(?Button1_27),#ORIG(?Button27)
+            BUTTON(' '),AT(83,95,11,11),USE(?Button1_28),#ORIG(?Button28)
+            BUTTON(' '),AT(11,110,11,11),USE(?Button1_29),#ORIG(?Button29)
+            BUTTON(' '),AT(23,110,11,11),USE(?Button1_30),#ORIG(?Button30)
+            BUTTON(' '),AT(35,110,11,11),USE(?Button1_31),#ORIG(?Button31)
+            BUTTON(' '),AT(47,110,11,11),USE(?Button1_32),#ORIG(?Button32)
+            BUTTON(' '),AT(59,110,11,11),USE(?Button1_33),#ORIG(?Button33)
+            BUTTON(' '),AT(71,110,11,11),USE(?Button1_34),#ORIG(?Button34)
+            BUTTON(' '),AT(83,110,11,11),USE(?Button1_35),#ORIG(?Button35)
+            BUTTON(' '),AT(11,125,11,11),USE(?Button1_36),#ORIG(?Button36)
+            BUTTON(' '),AT(23,125,11,11),USE(?Button1_37),#ORIG(?Button37)
+            STRING(@s17),AT(8,28),USE(ScrnMonthString),#ORIG(?String1)
+            STRING('Su'),AT(12,40),USE(?String3),#ORIG(?String3)
+            STRING('Mo'),AT(24,40),USE(?String4),#ORIG(?String4)
+            STRING('Tu'),AT(36,40),USE(?String5),#ORIG(?String5)
+            STRING('We'),AT(48,40),USE(?String6),#ORIG(?String6)
+            STRING('Fr'),AT(73,40),USE(?String8),#ORIG(?String8)
+            STRING('Th'),AT(60,40),USE(?String7),#ORIG(?String7)
+            STRING('Sa'),AT(84,40),USE(?String9),#ORIG(?String9)
+          END
+          GROUP,AT(109,16,96,126),USE(?Group2),BOXED,#ORIG(?Group2)
+            BUTTON(' '),AT(116,50,11,11),USE(?Button2_1),#ORIG(?Button38)
+            BUTTON(' '),AT(128,50,11,11),USE(?Button2_2),#ORIG(?Button39)
+            BUTTON(' '),AT(140,50,11,11),USE(?Button2_3),#ORIG(?Button40)
+            BUTTON(' '),AT(152,50,11,11),USE(?Button2_4),#ORIG(?Button41)
+            BUTTON(' '),AT(164,50,11,11),USE(?Button2_5),#ORIG(?Button42)
+            BUTTON(' '),AT(176,50,11,11),USE(?Button2_6),#ORIG(?Button43)
+            BUTTON(' '),AT(188,50,11,11),USE(?Button2_7),#ORIG(?Button45)
+            BUTTON(' '),AT(116,65,11,11),USE(?Button2_8),#ORIG(?Button44)
+            BUTTON(' '),AT(128,65,11,11),USE(?Button2_9),#ORIG(?Button46)
+            BUTTON(' '),AT(140,65,11,11),USE(?Button2_10),#ORIG(?Button47)
+            BUTTON(' '),AT(152,65,11,11),USE(?Button2_11),#ORIG(?Button48)
+            BUTTON(' '),AT(164,65,11,11),USE(?Button2_12),#ORIG(?Button49)
+            BUTTON(' '),AT(176,65,11,11),USE(?Button2_13),#ORIG(?Button74)
+            BUTTON(' '),AT(188,65,11,11),USE(?Button2_14),#ORIG(?Button50)
+            BUTTON(' '),AT(116,80,11,11),USE(?Button2_15),#ORIG(?Button51)
+            BUTTON(' '),AT(128,80,11,11),USE(?Button2_16),#ORIG(?Button52)
+            BUTTON(' '),AT(140,80,11,11),USE(?Button2_17),#ORIG(?Button53)
+            BUTTON(' '),AT(152,80,11,11),USE(?Button2_18),#ORIG(?Button54)
+            BUTTON(' '),AT(164,80,11,11),USE(?Button2_19),#ORIG(?Button55)
+            BUTTON(' '),AT(176,80,11,11),USE(?Button2_20),#ORIG(?Button56)
+            BUTTON(' '),AT(188,80,11,11),USE(?Button2_21),#ORIG(?Button57)
+            BUTTON(' '),AT(116,95,11,11),USE(?Button2_22),#ORIG(?Button58)
+            BUTTON(' '),AT(128,95,11,11),USE(?Button2_23),#ORIG(?Button59)
+            BUTTON(' '),AT(140,95,11,11),USE(?Button2_24),#ORIG(?Button60)
+            BUTTON(' '),AT(152,95,11,11),USE(?Button2_25),#ORIG(?Button61)
+            BUTTON(' '),AT(164,95,11,11),USE(?Button2_26),#ORIG(?Button62)
+            BUTTON(' '),AT(176,95,11,11),USE(?Button2_27),#ORIG(?Button63)
+            BUTTON(' '),AT(188,95,11,11),USE(?Button2_28),#ORIG(?Button64)
+            BUTTON(' '),AT(116,110,11,11),USE(?Button2_29),#ORIG(?Button65)
+            BUTTON(' '),AT(128,110,11,11),USE(?Button2_30),#ORIG(?Button66)
+            BUTTON(' '),AT(140,110,11,11),USE(?Button2_31),#ORIG(?Button67)
+            BUTTON(' '),AT(152,110,11,11),USE(?Button2_32),#ORIG(?Button68)
+            BUTTON(' '),AT(164,110,11,11),USE(?Button2_33),#ORIG(?Button69)
+            BUTTON(' '),AT(176,110,11,11),USE(?Button2_34),#ORIG(?Button70)
+            BUTTON(' '),AT(188,110,11,11),USE(?Button2_35),#ORIG(?Button71)
+            BUTTON(' '),AT(116,125,11,11),USE(?Button2_36),#ORIG(?Button72)
+            BUTTON(' '),AT(128,125,11,11),USE(?Button2_37),#ORIG(?Button73)
+            STRING(@s17),AT(116,28),USE(ScrnMonthString2),#ORIG(?String2)
+            STRING('Su'),AT(116,40),USE(?String10),#ORIG(?String10)
+            STRING('Mo'),AT(128,40),USE(?String11),#ORIG(?String11)
+            STRING('Tu'),AT(140,40),USE(?String12),#ORIG(?String12)
+            STRING('We'),AT(152,40),USE(?String13),#ORIG(?String13)
+            STRING('Th'),AT(164,40),USE(?String14),#ORIG(?String14)
+            STRING('Fr'),AT(177,40),USE(?String15),#ORIG(?String15)
+            STRING('Sa'),AT(188,40),USE(?String16),#ORIG(?String16)
+          END
+          BUTTON('- Week'),AT(214,18,40,12),USE(?MinusOneWeek),MSG('Minus One Week'),#ORIG(?Button79)
+          BUTTON('+ Week'),AT(214,34,40,12),USE(?PlusOneWeek),MSG('Plus One Week'),#ORIG(?Button80)
+          BUTTON('- Month'),AT(214,49,40,12),USE(?MinusOneMonth),MSG('Minus One Month'),#ORIG(?Button75)
+          BUTTON('+ Month'),AT(214,65,40,12),USE(?PlusOneMonth),MSG('Plus One Month'),#ORIG(?Button76)
+          BUTTON('- Year'),AT(214,80,40,12),USE(?MinusOneYear),MSG('Minus One Year'),#ORIG(?Button78)
+          BUTTON('+ Year'),AT(214,95,40,12),USE(?PlusOneYear),MSG('Plus One Year'),#ORIG(?Button77)
+          BUTTON('Se&lect'),AT(214,117,40,12),USE(?Select),ALRT(EnterKey),KEY(EnterKey),DEFAULT, |
+            MSG('Select highlighted date'),#ORIG(?Button82)
+          BUTTON('Cl&ose'),AT(214,138,40,12),USE(?CloseWindow),STD(STD:Close),#ORIG(?Button81)
+        END
+
+[PROCEDURE]
+NAME JumpCode
+PROTOTYPE '(STRING JumpString, *DATE ParamDate)'
+PARAMETERS '(STRING JumpString, *DATE ParamDate)'
+NOEXPORT
+[COMMON]
+DESCRIPTION 'Date Jump Code'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:55:41'
+[PROMPTS]
+%ReturnValue FIELD  ()
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Alpha                   string(1)
+NextAlpha               string(1)
+SecondNegative          byte
+FirstNegative           byte
+ShortHolder             short
+ShortHolderB            short
+OneString               string(1)
+OneStringB              string(1)
+EightString             string(8)
+Counter                 byte
+OkOne                   byte
+OkTwo                   byte
+StartMonth              byte
+StartYear               short
+SaveDate                byte
+SaveMonth               byte
+SaveYear                short
+SaveDay                 date
+ReturnDate              date
+MonthDays               byte
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ clear(MonthDays)
+ clear(Alpha)                                    !clear the local variables
+ clear(NextAlpha)
+ clear(SecondNegative)
+ clear(FirstNegative)
+ clear(ShortHolder)
+ clear(ShortHolderB)
+ clear(OneString)
+ clear(OneStringB)
+ clear(OkOne)
+ clear(Oktwo)
+ StartMonth = Month(ParamDate)                  !fill these vars with passed
+ StartYear  = year(ParamDate)                   ! date
+ ReturnDate = ParamDate
+ execute StartMonth
+   MonthDays = 31
+   MonthDays = 28
+   MonthDays = 31
+   MonthDays = 30
+   MonthDays = 31
+   MonthDays = 30
+   MonthDays = 31
+   MonthDays = 31
+   MonthDays = 30
+   MonthDays = 31
+   MonthDays = 30
+   MonthDays = 31
+ .                                               !end execute
+ if inrange(val(sub(JumpString,1,1)),65,90)      !parse jump parameters into
+   Alpha = 1                                     ! local vars if a letter
+ .
+ Counter = 1
+ if Alpha = 1                                    !if the first character was
+   loop 8 times                                  ! a letter
+       if inrange(val(sub(JumpString,Counter,1)),48,57) !-if a number
+          if NextAlpha = 2
+             ShortHolderB = clip(left(ShortHolderB)) & sub(JumpString,Counter,1)
+          elsif NextAlpha = 1
+             ShortHolder = clip(left(ShortHolder)) & sub(JumpString,Counter,1)
+          .
+       elsif inrange(val(upper(sub(JumpString,Counter,1))),65,90)!if a letter
+          if NextAlpha = 0
+             OneString = sub(JumpString,Counter,1) !fill the second number
+             NextAlpha = 1
+          elsif NextAlpha = 1
+             OneStringB = sub(JumpString,Counter,1)!fill the second number
+             NextAlpha = 2
+          .
+       elsif sub(JumpString,Counter,1) = '-'
+         if NextAlpha = 1
+            FirstNegative = 1
+         elsif NextAlpha = 2
+            SecondNegative = 1
+         .
+       .
+       Counter += 1
+   .
+ elsif Alpha = 0                                 !if the first character was a number
+   loop 8 times
+    !  STOP('LONG '&ShortHolder&' LONGB '&ShortHolderB&' S1 '&OneString&' S2 '&OneStringB)
+       if inrange(val(sub(JumpString,Counter,1)),48,57)!if a number
+          if NextAlpha = 0
+             ShortHolder = clip(left(ShortHolder)) & sub(JumpString,Counter,1)
+          elsif NextAlpha = 1
+             ShortHolderB = clip(left(ShortHolderB)) & sub(JumpString,Counter,1)
+          .
+       elsif inrange(val(upper(sub(JumpString,Counter,1))),65,90)!if a letter
+          if NextAlpha = 0
+             OneString = sub(JumpString,Counter,1) !fill the second number
+             NextAlpha = 1
+          elsif NextAlpha = 1
+             OneStringB = sub(JumpString,Counter,1)!fill the second number
+             NextAlpha += 1
+          .
+       elsif sub(JumpString,Counter,1) = '-'
+         if NextAlpha = 0
+            FirstNegative = 1
+         elsif NextAlpha = 1 and len(clip(left(sub(JumpString,Counter + 1,1)))) = 0
+            FirstNegative = 1
+         elsif NextAlpha = 1 and len(clip(left(sub(JumpString,Counter + 1,1)))) = 1
+            SecondNegative = 1
+         elsif NextAlpha = 2 and len(clip(left(sub(JumpString,Counter + 1,1)))) = 0
+            SecondNegative = 1
+         .
+       .
+       Counter += 1
+   .
+ .
+ if FirstNegative = 1
+    ShortHolder = ShortHolder * -1
+ .
+ if SecondNegative = 1
+    ShortHolderB = ShortHolderB * -1
+ .
+                                                 !
+ if len(clip(left(OneString))) > 0               !
+   case upper(OneString)                         !
+       of 'D'                                    !if the user is jumping days
+         ParamDate = ParamDate + ShortHolder   ! add the days to the date
+         if ShortHolder < 0                      ! if the jump is - and the
+            if StartMonth = 1 and day(ParamDate) = 1!date is 01/01/XX
+               StartMonth = 12                   ! change month to december
+               StartYear -= 1                    ! and sub 1 from year
+            elsif StartMonth > 1 and Day(ParamDate) = 1! if any other month
+               StartMonth -= 1                   ! sub 1 from month
+            .                                    !
+         elsif ShortHolder > 0                   ! if adding days and at the
+            if StartMonth = 12 and day(ParamDate) = 31! last day of december
+               StartMonth = 1                    ! make month jan and add 1 to
+               StartYear += 1                    ! year
+            elsif StartMonth <> 12               !if month is not dec or jan
+               if MonthDays = day(ParamDate)!if on the last day of the
+                  StartMonth += 1                ! month, add 1 to month
+               .                                 !endif days...
+            .                                    !endif startmonth =
+         .                                       !endif shortholder <0
+       of 'W'                                    !
+         ParamDate = ParamDate + (7 * ShortHolder)
+         if StartMonth = 1                       !if month is january
+            if ShortHolder < 0                   ! if subt a week, subt a
+               if day(ParamDate) < 7            ! year if in 1st week of jan.
+                 StartMonth = 12                 !
+                 StartYear -= 1                  !
+               .                                 !
+            elsif ShortHolder > 0 and |          ! elsif add a week, add a
+            day(ParamDate) >= 25                ! month if in last week of
+               StartMonth += 1                   ! january
+            .                                    !endif shortholder > ...
+         elsif StarTMonth = 12                   !elsif in december and subt.
+            if ShortHolder < 0 and day(ParamDate) <= 7! a week, if in first
+               StartMonth -= 1                   ! week, subtract a month
+            elsif ShortHolder > 0 and |          ! elsif adding a week and
+            day(ParamDate) <= 25                ! in last week, set month to
+               StartMonth = 1                    ! january and add year.
+               StartYear += 1                    !
+            .                                    !
+         else                                    !
+            if ShortHolder < 0 and day(ParamDate) > 7
+               StartMonth -= 1                   !
+            elsif ShortHolder > 0                !
+               case MonthDays               !
+                 of 28                           !
+                   if day(ParamDate) >= 22      !
+                     StartMonth += 1             !
+                   .
+                 of 30                           !
+                   if day(ParamDate) >= 24      !
+                     StartMonth += 1             !
+                   .
+                 of 31                           !
+                   if day(ParamDate) >= 25      !
+                     StartMonth += 1             !
+                   .
+               .                                 !endcase
+            .                                    !endif shortholder > ...
+         .                                       !endif starmonth =
+      of 'M'                                     !
+        SaveDate = day(ParamDate)               !
+        SaveMonth = month(ParamDate)            !
+        SaveYear = year(ParamDate)              !
+        if ShortHolder > 0                       !
+          if (SaveMonth + ShortHolder) <= 12 and|!
+          (SaveMonth + ShortHolder) > 0          !
+            SaveDay = date(SaveMonth + ShortHolder,SaveDate,SaveYear)
+          elsif SaveMonth + ShortHolder > 12     !
+            SaveDay = date(SaveMonth+(ShortHolder - 12),SaveDate,SaveYear+1)
+          .                                      !
+        else                                     !
+           if SaveMonth + ShortHolder <= 0       !
+             SaveDay = date(12+(SaveMonth+ShortHolder),SaveDate,SaveYear-1)
+           elsif SaveMonth + ShortHolder > 0     !
+             SaveDay = date(SaveMonth+ShortHolder,SaveDate,SaveYear)
+           .                                     !
+        .                                        !
+        ParamDate = SaveDay                     !
+        if ShortHolder < 0                       !if subtracting
+            if StartMonth = 1                    !
+               StartMonth = 13 + ShortHolder     !
+               StartYear -= 1                    !
+            else                                 !
+               if StartMonth + ShortHolder >= 1  !if after sub, in same year...
+                 StartMonth = StartMonth + ShortHolder
+               elsif StartMonth + ShortHolder <= 0
+                 StartMonth = 12 + (StartMonth + ShortHolder)
+                 StartYear -= 1                  !
+               .                                 !startmonth sub the movement
+            .                                    !
+        elsif ShortHolder > 0                    !
+            if StartMonth = 12                   !
+               StartMonth = ShortHolder          !
+               StartYear += 1                    !
+            else                                 !
+               if StartMonth + ShortHolder <= 12 !
+                 StartMonth = StartMonth + ShortHolder
+               elsif StartMonth + ShortHolder > 12
+                 StartYear += 1                  !
+                 StartMonth = StartMonth + (ShortHolder - 12)
+               .                                 !startmonth sub the movement
+            .                                    !
+        .                                        !
+        ParamDate = SaveDay                     !
+       of 'Y'                                    !
+         ParamDate = ParamDate + (365 * ShortHolder)
+         StartYear = StartYear + ShortHolder     !
+   .                                             !
+ .                                               !
+ if len(clip(left(OneStringB))) > 0              !
+     case upper(OneStringB)                      !
+         of 'D'                                  !
+           ParamDate = ParamDate + ShortHolderB!
+           if ShortHolderB < 0                   ! if the jump is - and the
+              if StartMonth = 1 and day(ParamDate) = 1!date is 01/01/XX
+                 StartMonth = 12                 ! change month to december
+                 StartYear -= 1                  ! and sub 1 from year
+              elsif StartMonth > 1 and Day(ParamDate) = 1! if any other month
+                 StartMonth -= 1                 ! sub 1 from month
+              .                                  !
+           elsif ShortHolderB > 0                ! if adding days and at the
+              if StartMonth = 12 and day(ParamDate) = 31! last day of december
+                 StartMonth = 1                  ! make month jan and add 1 to
+                 StartYear += 1                  ! year
+              elsif StartMonth <> 12             !if month is not dec or jan
+                 if MonthDays = day(ParamDate)!if on the last day of the
+                    StartMonth += 1              ! month, add 1 to month
+                 .                               !endif days...
+              .                                  !endif startmonth =
+           .                                     !endif shortholder <0
+         OF 'W'                                  !
+           ParamDate = ParamDate + (7 * ShortHolderB)
+           if StartMonth = 1                     !if month is january
+              if ShortHolder < 0                 ! if subt a week, subt a
+                 if day(ParamDate) < 7          ! year if in 1st week of jan.
+                   StartMonth = 12               !
+                   StartYear -= 1                !
+                 .                               !
+              elsif ShortHolder > 0 and |        ! elsif add a week, add a
+              day(ParamDate) >= 25              ! month if in last week of
+                 StartMonth += 1                 ! january
+              .                                  !endif shortholder > ...
+           elsif StartMonth = 12                 !elsif in december and subt.
+              if ShortHolder < 0 and day(ParamDate) <= 7! a week, if in first
+                 StartMonth -= 1                 ! week, subtract a month
+              elsif ShortHolder > 0 and |        ! elsif adding a week and
+              day(ParamDate) <= 25              ! in last week, set month to
+                 StartMonth = 1                  ! january and add year.
+                 StartYear += 1                  !
+              .                                  !
+           else                                  !
+              if ShortHolder < 0 and day(ParamDate) > 7
+                 StartMonth -= 1                 !
+              elsif ShortHolder > 0              !
+                 case MonthDays             !
+                   of 28                         !
+                     if day(ParamDate) >= 22    !
+                       StartMonth += 1           !
+                     .
+                   of 30                         !
+                     if day(ParamDate) >= 24    !
+                       StartMonth += 1           !
+                     .
+                   of 31                         !
+                     if day(ParamDate) >= 25    !
+                       StartMonth += 1           !
+                     .
+                 .                               !endcase
+              .                                  !endif shortholder > ...
+           .                                     !endif starmonth =
+         of 'M'                                  !
+          SaveDate = day( ParamDate )           !
+          SaveMonth = month( ParamDate )        !
+          SaveYear = year( ParamDate )          !
+          if ShortHolderB > 0                    !
+            if (SaveMonth + ShortHolderB) <= 12 |!
+            and (SaveMonth + ShortHolderB) > 0   !
+              SaveDay = date(SaveMonth + ShortHolderB,SaveDate,SaveYear)
+            elsif SaveMonth + ShortHolderB > 12  !
+              SaveDay = date(SaveMonth+(ShortHolderB - 12),SaveDate,SaveYear+1)
+            .                                    !
+          else                                   !
+             if SaveMonth + ShortHolderB <= 0    !
+               SaveDay = date(12+(SaveMonth+ShortHolderB),SaveDate,SaveYear-1)
+             elsif SaveMonth + ShortHolderB > 0  !
+               SaveDay = date(SaveMonth+ShortHolderB,SaveDate,SaveYear)
+             .                                   !
+          .                                      !
+          ParamDate = SaveDay                   !
+          if ShortHolderB < 0                    !if subtracting
+              if StartMonth = 1                  !
+                 StartMonth = 13 + ShortHolderB  !
+                 StartYear -= 1                  !
+              else                               !
+                 if StartMonth + ShortHolderB >= 1!if after sub, in same year...
+                   StartMonth = StartMonth + ShortHolderB
+                 elsif StartMonth + ShortHolderB <= 0
+                   StartMonth = 12 + (StartMonth + ShortHolderB)
+                   StartYear -= 1                !
+                 .                               !startmonth sub the movement
+              .                                  !
+          elsif ShortHolderB > 0                 !
+            if StartMonth = 12                   !
+               StartMonth = ShortHolderB         !
+               StartYear += 1                    !
+            else                                 !
+               if StartMonth + ShortHolderB <= 12!
+                 StartMonth = StartMonth + ShortHolderB
+               elsif StartMonth + ShortHolderB > 12
+                 StartYear += 1                  !
+                 StartMonth = StartMonth + (ShortHolderB - 12)
+               .                                 !startmonth sub the movement
+            .                                    !
+          .                                      !
+         of 'Y'                                  !
+          ParamDate = ParamDate + (365 * ShortHolderB)
+          StartYear = StartYear + ShortHolderB   !
+     .                                           !
+ .
+[END]
+[END]
+[END]

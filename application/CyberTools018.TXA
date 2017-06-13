@@ -1,0 +1,111 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+MODIFIED '2017/06/09' '22:13:06'
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME srcURLHandler
+PROTOTYPE '(UNSIGNED wHandle, STRING URL),UNSIGNED,PROC'
+PARAMETERS '(UNSIGNED wHandle, STRING URL)'
+[COMMON]
+FROM ABC Source
+MODIFIED '2017/06/09' '22:58:37'
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+    URLBuffer = CLIP(URL)
+    EmptyString=''
+    ShellExecute(whandle, 0, URLBuffer, 0, EmptyString, 1)
+
+    GetWindowText(wHandle,szCurrentText,SIZE(szCurrentText))
+    hCurrWnd = GetWindow(wHandle,GW_HWNDFIRST)
+    LOOP WHILE hCurrWnd <> 0
+      IF GetWindowText(hCurrWnd,szWindowText,SIZE(szWindowText))
+         IF (szWindowText <> szCurrentText) AND IsWindowVisible(hCurrWnd) AND ~hTopWnd
+            hTopWnd = hCurrWnd
+            BREAK
+         END
+      END
+      hCurrWnd = GetWindow(hCurrWnd,GW_HWNDNEXT)
+    END
+
+    RETURN hTopWnd
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3500
+PROPERTY:END
+GW_HWNDFIRST         EQUATE(0)
+GW_HWNDNEXT          EQUATE(2)
+URLBuffer            CSTRING(256)
+EmptyString          CSTRING(254)
+hCurrWnd             UNSIGNED
+hTopWnd              UNSIGNED(0)
+szCurrentText        CSTRING(256)
+szWindowText         CSTRING(256)
+[END]
+[END]
+[END]

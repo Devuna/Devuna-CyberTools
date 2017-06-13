@@ -1,0 +1,1827 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+MODIFIED '2017/06/09' '22:09:56'
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME Main
+NOEXPORT
+[COMMON]
+DESCRIPTION 'Cyber Tools Demo Main Menu'
+FROM ABC Frame
+MODIFIED '2017/06/09' '22:15:16'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('LocalRequest:'),USE(?LocalRequest:Prompt)
+! ENTRY(@n-14),USE(LocalRequest)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(LocalRequest)
+LocalRequest             LONG
+!!> GUID('69c52b44-5f9f-4292-ac76-752c4167b336'),PROMPT('LocalRequest:'),HEADER('LocalRequest'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('Date Holder:'),USE(?DateHolder:Prompt)
+! ENTRY(@d2),USE(DateHolder)
+[REPORTCONTROLS]
+! STRING(@d2),USE(DateHolder)
+DateHolder               DATE
+!!> GUID('ead1f244-f7f3-48fe-ad85-551f03ff534d'),PROMPT('Date Holder:'),HEADER('Date Holder'),PICTURE(@d2)
+[SCREENCONTROLS]
+! PROMPT('CurrentTab:'),USE(?CurrentTab:Prompt)
+! ENTRY(@s80),USE(CurrentTab)
+[REPORTCONTROLS]
+! STRING(@s80),USE(CurrentTab)
+CurrentTab               STRING(80)
+!!> GUID('ad658bd7-1acc-4996-b7cd-75910c02d2c2'),PROMPT('CurrentTab:'),HEADER('CurrentTab'),PICTURE(@s80)
+[SCREENCONTROLS]
+! PROMPT('NewThread:'),USE(?NewThread:Prompt)
+! ENTRY(@n-14),USE(NewThread)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(NewThread)
+NewThread                LONG,AUTO
+!!> GUID('2630b6c5-33c9-4c86-81b7-faf75036dccc'),PROMPT('NewThread:'),HEADER('NewThread'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('ThreadCount:'),USE(?ThreadCount:Prompt)
+! ENTRY(@n-14),USE(ThreadCount)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(ThreadCount)
+ThreadCount              LONG,AUTO
+!!> GUID('35cc9a71-7b6f-4607-b20b-d03e87655c77'),PROMPT('ThreadCount:'),HEADER('ThreadCount'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Record:'),USE(?loc:tq:Record:Prompt)
+! ENTRY(@s255),USE(loc:tq:Record)
+[REPORTCONTROLS]
+! STRING(@s255),USE(loc:tq:Record)
+loc:tq:Record            GROUP,PRE()
+!!> GUID('1f43e29f-f1ca-4157-8695-a8cbabd04ac0'),PROMPT('loc:tq:Record:'),HEADER('loc:tq:Record'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Number:'),USE(?loc:tq:Number:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Number)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Number)
+loc:tq:Number              LONG !thread number         (returned by START)
+!!> GUID('84796be6-8138-47e6-958f-05bae983dd4c'),INITIAL('0'),PROMPT('loc:tq:Number:'),HEADER('loc:tq:Number'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Name:'),USE(?loc:tq:Name:Prompt)
+! ENTRY(@s30),USE(loc:tq:Name)
+[REPORTCONTROLS]
+! STRING(@s30),USE(loc:tq:Name)
+loc:tq:Name                STRING(30) !procedure name        (e.g., MasterList)
+!!> GUID('96f1597e-d698-45cb-ace3-7a715ed32490'),PROMPT('loc:tq:Name:'),HEADER('loc:tq:Name'),PICTURE(@s30)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Instance:'),USE(?loc:tq:Instance:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Instance)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Instance)
+loc:tq:Instance            LONG !procedure instance
+!!> GUID('fdcb7c06-0b48-4175-8bd6-6150eb16dcc7'),INITIAL('0'),PROMPT('loc:tq:Instance:'),HEADER('loc:tq:Instance'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:MaxInstance:'),USE(?loc:tq:MaxInstance:Prompt)
+! ENTRY(@n-14),USE(loc:tq:MaxInstance)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:MaxInstance)
+loc:tq:MaxInstance         LONG !maximum procedure instance
+!!> GUID('ea9f3edf-dcfa-444f-8bc5-7af96ea3bb13'),INITIAL('0'),PROMPT('loc:tq:MaxInstance:'),HEADER('loc:tq:MaxInstance'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param1:'),USE(?loc:tq:Param1:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param1)
+loc:tq:Param1              LONG !foreign key 1
+!!> GUID('0ccfa738-4966-4b46-93f4-4148deb9479b'),INITIAL('0'),PROMPT('loc:tq:Param1:'),HEADER('loc:tq:Param1'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param2:'),USE(?loc:tq:Param2:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param2)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param2)
+loc:tq:Param2              LONG !foreign key 2
+!!> GUID('3d636b5e-f4c3-4334-8d0e-619b59bbbd66'),INITIAL('0'),PROMPT('loc:tq:Param2:'),HEADER('loc:tq:Param2'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param3:'),USE(?loc:tq:Param3:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param3)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param3)
+loc:tq:Param3              LONG !foreign key 3
+!!> GUID('d51ada56-844f-4847-88a8-446637476426'),INITIAL('0'),PROMPT('loc:tq:Param3:'),HEADER('loc:tq:Param3'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param4:'),USE(?loc:tq:Param4:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param4)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param4)
+loc:tq:Param4              LONG !foreign key 4
+!!> GUID('abc086a8-6dc9-42db-986c-ec88adf9e3ed'),INITIAL('0'),PROMPT('loc:tq:Param4:'),HEADER('loc:tq:Param4'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Buffer:'),USE(?loc:tq:Buffer:Prompt)
+! TEXT,USE(loc:tq:Buffer),BOXED
+[REPORTCONTROLS]
+! TEXT,USE(loc:tq:Buffer),BOXED
+loc:tq:Buffer              STRING(256) !data buffer
+!!> GUID('bb93dc80-5dbc-46e0-9c7a-285ca6d730ff'),PROMPT('loc:tq:Buffer:'),HEADER('loc:tq:Buffer'),PICTURE(@s255)
+                         END
+!!> GUID('28e72aff-ea61-4110-a1aa-a1b8b4314aed')
+[SCREENCONTROLS]
+! PROMPT('hWnd:'),USE(?hWnd:Prompt)
+! ENTRY(@n6),USE(hWnd)
+[REPORTCONTROLS]
+! STRING(@n6),USE(hWnd)
+hWnd                     USHORT,AUTO
+!!> GUID('1963c2a9-ae42-45cb-9f90-8b6661438c26'),PROMPT('hWnd:'),HEADER('hWnd'),PICTURE(@n6)
+[SCREENCONTROLS]
+! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('ec9922ad-94e5-4d51-887a-077e3c394466'),PROMPT('FilesOpened:'),HEADER('FilesOpened'),PICTURE(@n3)
+[PROMPTS]
+%INISaveWindow LONG  (1)
+%ButtonAction DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('No Special Action')
+WHEN  ('?Arrange') ('No Special Action')
+WHEN  ('?Calendar') ('No Special Action')
+WHEN  ('?Cascade') ('No Special Action')
+WHEN  ('?Copy') ('No Special Action')
+WHEN  ('?Cut') ('No Special Action')
+WHEN  ('?CyberTools') ('No Special Action')
+WHEN  ('?EditMenu') ('No Special Action')
+WHEN  ('?Exit') ('No Special Action')
+WHEN  ('?FileMenu') ('No Special Action')
+WHEN  ('?HelpOnHelp') ('No Special Action')
+WHEN  ('?HelpSearch') ('No Special Action')
+WHEN  ('?Helpindex') ('No Special Action')
+WHEN  ('?Paste') ('No Special Action')
+WHEN  ('?PrintSetup') ('No Special Action')
+WHEN  ('?TestWAVControl') ('Call a Procedure')
+WHEN  ('?Tile') ('No Special Action')
+
+%MenuAction DEPEND %Control STRING TIMES 1
+WHEN  ('?Exit') ('No Special Action')
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('25000')
+WHEN  ('?Arrange') ('25000')
+WHEN  ('?Calendar') ('25000')
+WHEN  ('?Cascade') ('25000')
+WHEN  ('?Copy') ('25000')
+WHEN  ('?Cut') ('25000')
+WHEN  ('?CyberTools') ('25000')
+WHEN  ('?EditMenu') ('25000')
+WHEN  ('?Exit') ('25000')
+WHEN  ('?FileMenu') ('25000')
+WHEN  ('?HelpOnHelp') ('25000')
+WHEN  ('?HelpSearch') ('25000')
+WHEN  ('?Helpindex') ('25000')
+WHEN  ('?Paste') ('25000')
+WHEN  ('?PrintSetup') ('25000')
+WHEN  ('?TestWAVControl') ('25000')
+WHEN  ('?Tile') ('25000')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 17
+WHEN  ('') ()
+WHEN  ('?Arrange') ()
+WHEN  ('?Calendar') ()
+WHEN  ('?Cascade') ()
+WHEN  ('?Copy') ()
+WHEN  ('?Cut') ()
+WHEN  ('?CyberTools') ()
+WHEN  ('?EditMenu') ()
+WHEN  ('?Exit') ()
+WHEN  ('?FileMenu') ()
+WHEN  ('?HelpOnHelp') ()
+WHEN  ('?HelpSearch') ()
+WHEN  ('?Helpindex') ()
+WHEN  ('?Paste') ()
+WHEN  ('?PrintSetup') ()
+WHEN  ('?TestWAVControl') (TestWAVControl)
+WHEN  ('?Tile') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 17
+WHEN  ('') (0)
+WHEN  ('?Arrange') (0)
+WHEN  ('?Calendar') (0)
+WHEN  ('?Cascade') (0)
+WHEN  ('?Copy') (0)
+WHEN  ('?Cut') (0)
+WHEN  ('?CyberTools') (0)
+WHEN  ('?EditMenu') (0)
+WHEN  ('?Exit') (0)
+WHEN  ('?FileMenu') (0)
+WHEN  ('?HelpOnHelp') (0)
+WHEN  ('?HelpSearch') (0)
+WHEN  ('?Helpindex') (0)
+WHEN  ('?Paste') (0)
+WHEN  ('?PrintSetup') (0)
+WHEN  ('?TestWAVControl') (1)
+WHEN  ('?Tile') (0)
+
+%ReturnValue FIELD  ()
+%ButtonRunName DEPEND %Control DEFAULT TIMES 14
+WHEN  ('') ('')
+WHEN  ('?Arrange') ('')
+WHEN  ('?Calendar') ('')
+WHEN  ('?Cascade') ('')
+WHEN  ('?Copy') ('')
+WHEN  ('?Cut') ('')
+WHEN  ('?Exit') ('')
+WHEN  ('?HelpOnHelp') ('')
+WHEN  ('?HelpSearch') ('')
+WHEN  ('?Helpindex') ('')
+WHEN  ('?Paste') ('')
+WHEN  ('?PrintSetup') ('')
+WHEN  ('?TestWAVControl') ('')
+WHEN  ('?Tile') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 14
+WHEN  ('') ('')
+WHEN  ('?Arrange') ('')
+WHEN  ('?Calendar') ('')
+WHEN  ('?Cascade') ('')
+WHEN  ('?Copy') ('')
+WHEN  ('?Cut') ('')
+WHEN  ('?Exit') ('')
+WHEN  ('?HelpOnHelp') ('')
+WHEN  ('?HelpSearch') ('')
+WHEN  ('?Helpindex') ('')
+WHEN  ('?Paste') ('')
+WHEN  ('?PrintSetup') ('')
+WHEN  ('?TestWAVControl') ('')
+WHEN  ('?Tile') ('')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 14
+WHEN  ('') ('')
+WHEN  ('?Arrange') ('')
+WHEN  ('?Calendar') ('')
+WHEN  ('?Cascade') ('')
+WHEN  ('?Copy') ('')
+WHEN  ('?Cut') ('')
+WHEN  ('?Exit') ('')
+WHEN  ('?HelpOnHelp') ('')
+WHEN  ('?HelpSearch') ('')
+WHEN  ('?Helpindex') ('')
+WHEN  ('?Paste') ('')
+WHEN  ('?PrintSetup') ('')
+WHEN  ('?TestWAVControl') ('')
+WHEN  ('?Tile') ('')
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 14
+WHEN  ('') ('None')
+WHEN  ('?Arrange') ('None')
+WHEN  ('?Calendar') ('None')
+WHEN  ('?Cascade') ('None')
+WHEN  ('?Copy') ('None')
+WHEN  ('?Cut') ('None')
+WHEN  ('?Exit') ('None')
+WHEN  ('?HelpOnHelp') ('None')
+WHEN  ('?HelpSearch') ('None')
+WHEN  ('?Helpindex') ('None')
+WHEN  ('?Paste') ('None')
+WHEN  ('?PrintSetup') ('None')
+WHEN  ('?TestWAVControl') ('None')
+WHEN  ('?Tile') ('None')
+
+%PreLookupKey DEPEND %Control KEY TIMES 1
+WHEN  ('') ()
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 1
+WHEN  ('') ()
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('') ()
+
+%PostLookupKey DEPEND %Control KEY TIMES 1
+WHEN  ('') ()
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 1
+WHEN  ('') ()
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('') ()
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 2
+WHEN  ('') (1)
+WHEN  ('?HelpOnHelp') (1)
+
+%PostLookupParams DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%ChildFile DEPEND %Control FILE TIMES 1
+WHEN  ('') ()
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 1
+WHEN  ('')TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?HelpOnHelp')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 1
+WHEN  ('')TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?HelpOnHelp')TIMES 0
+
+%ThreadKey1 DEPEND %Control FIELD TIMES 1
+WHEN  ('') ()
+
+%ThreadKey2 DEPEND %Control FIELD TIMES 1
+WHEN  ('') ()
+
+%ThreadKey3 DEPEND %Control FIELD TIMES 1
+WHEN  ('') ()
+
+%ThreadKey4 DEPEND %Control FIELD TIMES 1
+WHEN  ('') ()
+
+%ThreadBuffer DEPEND %Control FIELD TIMES 14
+WHEN  ('') ()
+WHEN  ('?Arrange') ()
+WHEN  ('?Calendar') ()
+WHEN  ('?Cascade') ()
+WHEN  ('?Copy') ()
+WHEN  ('?Cut') ()
+WHEN  ('?Exit') ()
+WHEN  ('?HelpOnHelp') ()
+WHEN  ('?HelpSearch') ()
+WHEN  ('?Helpindex') ()
+WHEN  ('?Paste') ()
+WHEN  ('?PrintSetup') ()
+WHEN  ('?TestWAVControl') ()
+WHEN  ('?Tile') ()
+
+%ThreadMaxInstance DEPEND %Control DEFAULT TIMES 14
+WHEN  ('') ('')
+WHEN  ('?Arrange') ('')
+WHEN  ('?Calendar') ('')
+WHEN  ('?Cascade') ('')
+WHEN  ('?Copy') ('')
+WHEN  ('?Cut') ('')
+WHEN  ('?Exit') ('')
+WHEN  ('?HelpOnHelp') ('')
+WHEN  ('?HelpSearch') ('')
+WHEN  ('?Helpindex') ('')
+WHEN  ('?Paste') ('')
+WHEN  ('?PrintSetup') ('')
+WHEN  ('?TestWAVControl') ('')
+WHEN  ('?Tile') ('')
+
+%ThreadRestoreInstance DEPEND %Control DEFAULT TIMES 14
+WHEN  ('') ('First')
+WHEN  ('?Arrange') ('First')
+WHEN  ('?Calendar') ('First')
+WHEN  ('?Cascade') ('First')
+WHEN  ('?Copy') ('First')
+WHEN  ('?Cut') ('First')
+WHEN  ('?Exit') ('First')
+WHEN  ('?HelpOnHelp') ('First')
+WHEN  ('?HelpSearch') ('First')
+WHEN  ('?Helpindex') ('First')
+WHEN  ('?Paste') ('First')
+WHEN  ('?PrintSetup') ('First')
+WHEN  ('?TestWAVControl') ('First')
+WHEN  ('?Tile') ('First')
+
+%ThreadParameter1 DEPEND %Control FIELD TIMES 1
+WHEN  ('') ()
+
+%ThreadParameter2 DEPEND %Control FIELD TIMES 1
+WHEN  ('') ()
+
+%ThreadParameter3 DEPEND %Control FIELD TIMES 1
+WHEN  ('') ()
+
+%ThreadParameter4 DEPEND %Control FIELD TIMES 1
+WHEN  ('') ()
+
+%ThreadParam1 DEPEND %Control FIELD TIMES 14
+WHEN  ('') ()
+WHEN  ('?Arrange') ()
+WHEN  ('?Calendar') ()
+WHEN  ('?Cascade') ()
+WHEN  ('?Copy') ()
+WHEN  ('?Cut') ()
+WHEN  ('?Exit') ()
+WHEN  ('?HelpOnHelp') ()
+WHEN  ('?HelpSearch') ()
+WHEN  ('?Helpindex') ()
+WHEN  ('?Paste') ()
+WHEN  ('?PrintSetup') ()
+WHEN  ('?TestWAVControl') ()
+WHEN  ('?Tile') ()
+
+%ThreadParam2 DEPEND %Control FIELD TIMES 14
+WHEN  ('') ()
+WHEN  ('?Arrange') ()
+WHEN  ('?Calendar') ()
+WHEN  ('?Cascade') ()
+WHEN  ('?Copy') ()
+WHEN  ('?Cut') ()
+WHEN  ('?Exit') ()
+WHEN  ('?HelpOnHelp') ()
+WHEN  ('?HelpSearch') ()
+WHEN  ('?Helpindex') ()
+WHEN  ('?Paste') ()
+WHEN  ('?PrintSetup') ()
+WHEN  ('?TestWAVControl') ()
+WHEN  ('?Tile') ()
+
+%ThreadParam3 DEPEND %Control FIELD TIMES 14
+WHEN  ('') ()
+WHEN  ('?Arrange') ()
+WHEN  ('?Calendar') ()
+WHEN  ('?Cascade') ()
+WHEN  ('?Copy') ()
+WHEN  ('?Cut') ()
+WHEN  ('?Exit') ()
+WHEN  ('?HelpOnHelp') ()
+WHEN  ('?HelpSearch') ()
+WHEN  ('?Helpindex') ()
+WHEN  ('?Paste') ()
+WHEN  ('?PrintSetup') ()
+WHEN  ('?TestWAVControl') ()
+WHEN  ('?Tile') ()
+
+%ThreadParam4 DEPEND %Control FIELD TIMES 14
+WHEN  ('') ()
+WHEN  ('?Arrange') ()
+WHEN  ('?Calendar') ()
+WHEN  ('?Cascade') ()
+WHEN  ('?Copy') ()
+WHEN  ('?Cut') ()
+WHEN  ('?Exit') ()
+WHEN  ('?HelpOnHelp') ()
+WHEN  ('?HelpSearch') ()
+WHEN  ('?Helpindex') ()
+WHEN  ('?Paste') ()
+WHEN  ('?PrintSetup') ()
+WHEN  ('?TestWAVControl') ()
+WHEN  ('?Tile') ()
+
+%SplashProcedure PROCEDURE  ()
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?HelpOnHelp')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?HelpOnHelp')TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+[EMBED]
+EMBED %ControlPostEventHandling
+[INSTANCES]
+WHEN '?Calendar'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ DateHolder = today()                           !Fill Date Holder
+ Calendar( DateHolder )                         !Call Calendar
+[END]
+[END]
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 90
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[ADDITION]
+NAME ABC DateTimeDisplay
+[INSTANCE]
+INSTANCE 1
+PROCPROP
+[PROMPTS]
+%DisplayDate LONG  (1)
+%DatePicture DEFAULT  ('October 31, 1959')
+%OtherDatePicture DEFAULT  ('')
+%ShowDayOfWeek LONG  (1)
+%DateDisplayLocation DEFAULT  ('Status Bar')
+%DateStatusSection DEFAULT  ('3')
+%DateControl DEFAULT  ('')
+%DisplayTime LONG  (1)
+%TimePicture DEFAULT  ('5:30PM')
+%OtherTimePicture DEFAULT  ('')
+%TimeDisplayLocation DEFAULT  ('Status Bar')
+%TimeStatusSection DEFAULT  ('4')
+%TimeControl DEFAULT  ('')
+[CALLS]
+CalendarOLD
+WordWrapText
+FullName
+WAVControl
+TestWAVControl
+C3ResizeControls
+CopyFile
+ProperString
+RemoveCharacter
+[WINDOW]
+AppFrame APPLICATION('Cyber Tools Demo'),AT(-1,0,310,190),FONT('MS Sans Serif',8,COLOR:Black, |
+          FONT:bold),RESIZE,MAXIMIZE,MAX,STATUS(-1,80,120,45),SYSTEM
+          MENUBAR
+            MENU('&Cyber Tools'),USE(?CyberTools),MSG('Cyber Tools')
+              ITEM('&Calendar'),USE(?Calendar),MSG('Calendar')
+              ITEM('&Test WAV Control'),USE(?TestWAVControl),MSG('Test WAV Control')
+            END
+            MENU('&File'),USE(?FileMenu)
+              ITEM('P&rint Setup...'),USE(?PrintSetup),MSG('Setup Printer'),STD(STD:PrintSetup)
+              ITEM,SEPARATOR
+              ITEM('E&xit'),USE(?Exit),MSG('Exit this application'),STD(STD:Close)
+            END
+            MENU('&Edit'),USE(?EditMenu)
+              ITEM('Cu&t'),USE(?Cut),MSG('Remove item to Windows Clipboard'),STD(STD:Cut)
+              ITEM('&Copy'),USE(?Copy),MSG('Copy item to Windows Clipboard'),STD(STD:Copy)
+              ITEM('&Paste'),USE(?Paste),MSG('Paste contents of Windows Clipboard'),STD(STD:Paste)
+            END
+            MENU('&Window'),MSG('Create and Arrange windows')
+              ITEM('T&ile'),USE(?Tile),MSG('Make all open windows visible'),STD(STD:TileWindow)
+              ITEM('&Cascade'),USE(?Cascade),MSG('Stack all open windows'),STD(STD:CascadeWindow)
+              ITEM('&Arrange Icons'),USE(?Arrange),MSG('Align all window icons'),STD(STD:ArrangeIcons)
+            END
+            MENU('&Help'),MSG('Windows Help')
+              ITEM('&Contents'),USE(?Helpindex),MSG('View the contents of the help file'), |
+                STD(STD:HelpIndex)
+              ITEM('&Search for Help On...'),USE(?HelpSearch),MSG('Search for help on a subject'), |
+                STD(STD:HelpSearch)
+              ITEM('&How to Use Help'),USE(?HelpOnHelp),MSG('How to use Windows Help'),STD(STD:HelpOnHelp)
+            END
+          END
+        END
+
+[PROCEDURE]
+NAME TestWAVControl
+NOEXPORT
+[COMMON]
+DESCRIPTION 'Test WAV Control Procedure'
+FROM ABC Window
+MODIFIED '2017/06/09' '22:15:29'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('LocalRequest:'),USE(?LocalRequest:Prompt)
+! ENTRY(@n-14),USE(LocalRequest)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(LocalRequest)
+LocalRequest             LONG
+!!> GUID('e69c5b79-0449-4247-ac54-7f53211e7e6b'),PROMPT('LocalRequest:'),HEADER('LocalRequest'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('NewThread:'),USE(?NewThread:Prompt)
+! ENTRY(@n-14),USE(NewThread)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(NewThread)
+NewThread                LONG,AUTO
+!!> GUID('c63f45af-f11d-444e-bcf3-cf9f77f384c4'),PROMPT('NewThread:'),HEADER('NewThread'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('hWnd:'),USE(?hWnd:Prompt)
+! ENTRY(@n6),USE(hWnd)
+[REPORTCONTROLS]
+! STRING(@n6),USE(hWnd)
+hWnd                     USHORT,AUTO
+!!> GUID('b7a39883-3d9a-4a97-bd54-af1dc64e146b'),PROMPT('hWnd:'),HEADER('hWnd'),PICTURE(@n6)
+[SCREENCONTROLS]
+! PROMPT('ThreadCount:'),USE(?ThreadCount:Prompt)
+! ENTRY(@n-14),USE(ThreadCount)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(ThreadCount)
+ThreadCount              LONG,AUTO
+!!> GUID('4b7d5234-f954-456c-8a7f-f34605f7b500'),PROMPT('ThreadCount:'),HEADER('ThreadCount'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Record:'),USE(?loc:tq:Record:Prompt)
+! ENTRY(@s255),USE(loc:tq:Record)
+[REPORTCONTROLS]
+! STRING(@s255),USE(loc:tq:Record)
+loc:tq:Record            GROUP,PRE()
+!!> GUID('0fb564ce-045e-401b-89f4-937ca8ab91d3'),PROMPT('loc:tq:Record:'),HEADER('loc:tq:Record'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Number:'),USE(?loc:tq:Number:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Number)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Number)
+loc:tq:Number              LONG !thread number         (returned by START)
+!!> GUID('56ce427c-eb4a-434c-bfd2-0953a73adadb'),INITIAL('0'),PROMPT('loc:tq:Number:'),HEADER('loc:tq:Number'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Name:'),USE(?loc:tq:Name:Prompt)
+! ENTRY(@s30),USE(loc:tq:Name)
+[REPORTCONTROLS]
+! STRING(@s30),USE(loc:tq:Name)
+loc:tq:Name                STRING(30) !procedure name        (e.g., MasterList)
+!!> GUID('5322c926-dde4-4a7f-b0b5-8a561e5207ff'),PROMPT('loc:tq:Name:'),HEADER('loc:tq:Name'),PICTURE(@s30)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Instance:'),USE(?loc:tq:Instance:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Instance)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Instance)
+loc:tq:Instance            LONG !procedure instance
+!!> GUID('4a635722-0b25-4664-b994-159b0f548e64'),INITIAL('0'),PROMPT('loc:tq:Instance:'),HEADER('loc:tq:Instance'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:MaxInstance:'),USE(?loc:tq:MaxInstance:Prompt)
+! ENTRY(@n-14),USE(loc:tq:MaxInstance)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:MaxInstance)
+loc:tq:MaxInstance         LONG !maximum procedure instance
+!!> GUID('d03a39ed-54dc-42c7-a2dd-eaeea80d8627'),INITIAL('0'),PROMPT('loc:tq:MaxInstance:'),HEADER('loc:tq:MaxInstance'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param1:'),USE(?loc:tq:Param1:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param1)
+loc:tq:Param1              LONG !foreign key 1
+!!> GUID('772c6db5-103b-4de6-afe5-92bd20d344fa'),INITIAL('0'),PROMPT('loc:tq:Param1:'),HEADER('loc:tq:Param1'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param2:'),USE(?loc:tq:Param2:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param2)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param2)
+loc:tq:Param2              LONG !foreign key 2
+!!> GUID('d737d7e2-9172-446c-aa82-b9a9fd48e4b9'),INITIAL('0'),PROMPT('loc:tq:Param2:'),HEADER('loc:tq:Param2'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param3:'),USE(?loc:tq:Param3:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param3)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param3)
+loc:tq:Param3              LONG !foreign key 3
+!!> GUID('2066ce1e-79d0-42d5-b9e1-64565b46a378'),INITIAL('0'),PROMPT('loc:tq:Param3:'),HEADER('loc:tq:Param3'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Param4:'),USE(?loc:tq:Param4:Prompt)
+! ENTRY(@n-14),USE(loc:tq:Param4)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(loc:tq:Param4)
+loc:tq:Param4              LONG !foreign key 4
+!!> GUID('b1921289-4ffb-4e59-a135-ec6093e5cb75'),INITIAL('0'),PROMPT('loc:tq:Param4:'),HEADER('loc:tq:Param4'),PICTURE(@n-14)
+[SCREENCONTROLS]
+! PROMPT('loc:tq:Buffer:'),USE(?loc:tq:Buffer:Prompt)
+! TEXT,USE(loc:tq:Buffer),BOXED
+[REPORTCONTROLS]
+! TEXT,USE(loc:tq:Buffer),BOXED
+loc:tq:Buffer              STRING(256) !data buffer
+!!> GUID('69b19d97-3eae-457d-9c94-c1db8eaf6e06'),PROMPT('loc:tq:Buffer:'),HEADER('loc:tq:Buffer'),PICTURE(@s255)
+                         END
+!!> GUID('b6549369-6a91-49f0-acc9-9a6e72e9c2a7')
+[SCREENCONTROLS]
+! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('dc3dcb7e-6fa3-407f-9f89-de98f7dfd566'),PROMPT('FilesOpened:'),HEADER('FilesOpened'),PICTURE(@n3)
+[PROMPTS]
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ButtonAction DEPEND %Control DEFAULT TIMES 12
+WHEN  ('?CloseButton') ('No Special Action')
+WHEN  ('?FastForward') ('No Special Action')
+WHEN  ('?Pause') ('No Special Action')
+WHEN  ('?Play') ('No Special Action')
+WHEN  ('?Position') ('No Special Action')
+WHEN  ('?Record') ('No Special Action')
+WHEN  ('?Resume') ('No Special Action')
+WHEN  ('?Rewind') ('No Special Action')
+WHEN  ('?Save') ('No Special Action')
+WHEN  ('?Stop') ('No Special Action')
+WHEN  ('?ToEnd') ('No Special Action')
+WHEN  ('?ToTop') ('No Special Action')
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 12
+WHEN  ('?CloseButton') ('25000')
+WHEN  ('?FastForward') ('25000')
+WHEN  ('?Pause') ('25000')
+WHEN  ('?Play') ('25000')
+WHEN  ('?Position') ('25000')
+WHEN  ('?Record') ('25000')
+WHEN  ('?Resume') ('25000')
+WHEN  ('?Rewind') ('25000')
+WHEN  ('?Save') ('25000')
+WHEN  ('?Stop') ('25000')
+WHEN  ('?ToEnd') ('25000')
+WHEN  ('?ToTop') ('25000')
+
+%ReturnValue FIELD  ()
+%ButtonRunName DEPEND %Control DEFAULT TIMES 12
+WHEN  ('?CloseButton') ('')
+WHEN  ('?FastForward') ('')
+WHEN  ('?Pause') ('')
+WHEN  ('?Play') ('')
+WHEN  ('?Position') ('')
+WHEN  ('?Record') ('')
+WHEN  ('?Resume') ('')
+WHEN  ('?Rewind') ('')
+WHEN  ('?Save') ('')
+WHEN  ('?Stop') ('')
+WHEN  ('?ToEnd') ('')
+WHEN  ('?ToTop') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 12
+WHEN  ('?CloseButton') ('')
+WHEN  ('?FastForward') ('')
+WHEN  ('?Pause') ('')
+WHEN  ('?Play') ('')
+WHEN  ('?Position') ('')
+WHEN  ('?Record') ('')
+WHEN  ('?Resume') ('')
+WHEN  ('?Rewind') ('')
+WHEN  ('?Save') ('')
+WHEN  ('?Stop') ('')
+WHEN  ('?ToEnd') ('')
+WHEN  ('?ToTop') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 12
+WHEN  ('?CloseButton') ()
+WHEN  ('?FastForward') ()
+WHEN  ('?Pause') ()
+WHEN  ('?Play') ()
+WHEN  ('?Position') ()
+WHEN  ('?Record') ()
+WHEN  ('?Resume') ()
+WHEN  ('?Rewind') ()
+WHEN  ('?Save') ()
+WHEN  ('?Stop') ()
+WHEN  ('?ToEnd') ()
+WHEN  ('?ToTop') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 12
+WHEN  ('?CloseButton') (0)
+WHEN  ('?FastForward') (0)
+WHEN  ('?Pause') (0)
+WHEN  ('?Play') (0)
+WHEN  ('?Position') (0)
+WHEN  ('?Record') (0)
+WHEN  ('?Resume') (0)
+WHEN  ('?Rewind') (0)
+WHEN  ('?Save') (0)
+WHEN  ('?Stop') (0)
+WHEN  ('?ToEnd') (0)
+WHEN  ('?ToTop') (0)
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 12
+WHEN  ('?CloseButton') ('')
+WHEN  ('?FastForward') ('')
+WHEN  ('?Pause') ('')
+WHEN  ('?Play') ('')
+WHEN  ('?Position') ('')
+WHEN  ('?Record') ('')
+WHEN  ('?Resume') ('')
+WHEN  ('?Rewind') ('')
+WHEN  ('?Save') ('')
+WHEN  ('?Stop') ('')
+WHEN  ('?ToEnd') ('')
+WHEN  ('?ToTop') ('')
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 12
+WHEN  ('?CloseButton') ('None')
+WHEN  ('?FastForward') ('None')
+WHEN  ('?Pause') ('None')
+WHEN  ('?Play') ('None')
+WHEN  ('?Position') ('None')
+WHEN  ('?Record') ('None')
+WHEN  ('?Resume') ('None')
+WHEN  ('?Rewind') ('None')
+WHEN  ('?Save') ('None')
+WHEN  ('?Stop') ('None')
+WHEN  ('?ToEnd') ('None')
+WHEN  ('?ToTop') ('None')
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 0
+
+%PostLookupParams DEPEND %Control DEFAULT TIMES 0
+
+%ChildFile DEPEND %Control FILE TIMES 0
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%ThreadKey1 DEPEND %Control FIELD TIMES 0
+
+%ThreadKey2 DEPEND %Control FIELD TIMES 0
+
+%ThreadKey3 DEPEND %Control FIELD TIMES 0
+
+%ThreadKey4 DEPEND %Control FIELD TIMES 0
+
+%ThreadBuffer DEPEND %Control FIELD TIMES 12
+WHEN  ('?CloseButton') ()
+WHEN  ('?FastForward') ()
+WHEN  ('?Pause') ()
+WHEN  ('?Play') ()
+WHEN  ('?Position') ()
+WHEN  ('?Record') ()
+WHEN  ('?Resume') ()
+WHEN  ('?Rewind') ()
+WHEN  ('?Save') ()
+WHEN  ('?Stop') ()
+WHEN  ('?ToEnd') ()
+WHEN  ('?ToTop') ()
+
+%ThreadMaxInstance DEPEND %Control DEFAULT TIMES 12
+WHEN  ('?CloseButton') ('')
+WHEN  ('?FastForward') ('')
+WHEN  ('?Pause') ('')
+WHEN  ('?Play') ('')
+WHEN  ('?Position') ('')
+WHEN  ('?Record') ('')
+WHEN  ('?Resume') ('')
+WHEN  ('?Rewind') ('')
+WHEN  ('?Save') ('')
+WHEN  ('?Stop') ('')
+WHEN  ('?ToEnd') ('')
+WHEN  ('?ToTop') ('')
+
+%ThreadRestoreInstance DEPEND %Control DEFAULT TIMES 12
+WHEN  ('?CloseButton') ('First')
+WHEN  ('?FastForward') ('First')
+WHEN  ('?Pause') ('First')
+WHEN  ('?Play') ('First')
+WHEN  ('?Position') ('First')
+WHEN  ('?Record') ('First')
+WHEN  ('?Resume') ('First')
+WHEN  ('?Rewind') ('First')
+WHEN  ('?Save') ('First')
+WHEN  ('?Stop') ('First')
+WHEN  ('?ToEnd') ('First')
+WHEN  ('?ToTop') ('First')
+
+%ThreadParameter1 DEPEND %Control FIELD TIMES 0
+
+%ThreadParameter2 DEPEND %Control FIELD TIMES 0
+
+%ThreadParameter3 DEPEND %Control FIELD TIMES 0
+
+%ThreadParameter4 DEPEND %Control FIELD TIMES 0
+
+%ThreadParam1 DEPEND %Control FIELD TIMES 12
+WHEN  ('?CloseButton') ()
+WHEN  ('?FastForward') ()
+WHEN  ('?Pause') ()
+WHEN  ('?Play') ()
+WHEN  ('?Position') ()
+WHEN  ('?Record') ()
+WHEN  ('?Resume') ()
+WHEN  ('?Rewind') ()
+WHEN  ('?Save') ()
+WHEN  ('?Stop') ()
+WHEN  ('?ToEnd') ()
+WHEN  ('?ToTop') ()
+
+%ThreadParam2 DEPEND %Control FIELD TIMES 12
+WHEN  ('?CloseButton') ()
+WHEN  ('?FastForward') ()
+WHEN  ('?Pause') ()
+WHEN  ('?Play') ()
+WHEN  ('?Position') ()
+WHEN  ('?Record') ()
+WHEN  ('?Resume') ()
+WHEN  ('?Rewind') ()
+WHEN  ('?Save') ()
+WHEN  ('?Stop') ()
+WHEN  ('?ToEnd') ()
+WHEN  ('?ToTop') ()
+
+%ThreadParam3 DEPEND %Control FIELD TIMES 12
+WHEN  ('?CloseButton') ()
+WHEN  ('?FastForward') ()
+WHEN  ('?Pause') ()
+WHEN  ('?Play') ()
+WHEN  ('?Position') ()
+WHEN  ('?Record') ()
+WHEN  ('?Resume') ()
+WHEN  ('?Rewind') ()
+WHEN  ('?Save') ()
+WHEN  ('?Stop') ()
+WHEN  ('?ToEnd') ()
+WHEN  ('?ToTop') ()
+
+%ThreadParam4 DEPEND %Control FIELD TIMES 12
+WHEN  ('?CloseButton') ()
+WHEN  ('?FastForward') ()
+WHEN  ('?Pause') ()
+WHEN  ('?Play') ()
+WHEN  ('?Position') ()
+WHEN  ('?Record') ()
+WHEN  ('?Resume') ()
+WHEN  ('?Rewind') ()
+WHEN  ('?Save') ()
+WHEN  ('?Stop') ()
+WHEN  ('?ToEnd') ()
+WHEN  ('?ToTop') ()
+
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 0
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 0
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 0
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
+
+[EMBED]
+EMBED %DataSectionBeforeWindow
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+MCIDeviceId                  ushort(0)          !MCI Device Handle
+MCIPromptName                cstring(50)        !Prompt Name
+MciWindowHandle              ulong(0)           !Global Window Handle
+MciPosition                  ulong(0)           !Global MCI File Position
+[END]
+EMBED %BeforeAccept
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIPromptName = 'test.wav'
+ MCIDeviceId = WAVControl( 'Open', 0, MCIWindowHandle, MCIPromptName )
+ MCIPosition = 1
+[END]
+EMBED %ControlPostEventHandling
+[INSTANCES]
+WHEN '?Save'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Save', MCIDeviceId, MCIWindowHandle, MCIPromptName, MCIPosition )
+[END]
+[END]
+WHEN '?Record'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Record', MCIDeviceId, MCIWindowHandle, MCIPromptName, MCIPosition )
+[END]
+[END]
+WHEN '?FastForward'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Fast Forward', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+[END]
+[END]
+WHEN '?Rewind'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Rewind', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+[END]
+[END]
+WHEN '?Position'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Position', MCIDeviceId, MCIWindowHandle, MCIPromptName, MCIPosition )
+ x# = message( 'Position was: ' & mciPosition, 'Position Status', icon:Hand, button:Ok, button:Ok )
+[END]
+[END]
+WHEN '?ToEnd'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'To End', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+[END]
+[END]
+WHEN '?ToTop'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'To Top', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+[END]
+[END]
+WHEN '?Resume'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Resume', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+[END]
+[END]
+WHEN '?Pause'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Pause', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+[END]
+[END]
+WHEN '?Stop'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Stop', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+[END]
+[END]
+WHEN '?CloseButton'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ MCIDeviceId = WAVControl( 'Close', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+ post( EVENT:CloseWindow )
+[END]
+[END]
+WHEN '?Play'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+! MCIDeviceId = WAVControl( 'Seek', MCIDeviceId, MCIWindowHandle, MCIPromptName, MCIPosition )
+ MCIDeviceId = WAVControl( 'Play', MCIDeviceId, MCIWindowHandle, MCIPromptName )
+[END]
+[END]
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 90
+PROPERTY:END
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notices
+[END]
+[END]
+[CALLS]
+WAVControl
+[WINDOW]
+window  WINDOW('Test WAV Control'),AT(,,295,81),FONT('MS Sans Serif',8,COLOR:Black),DOUBLE, |
+          GRAY
+          BUTTON('&Save'),AT(196,39),USE(?Save),#ORIG(?Record)
+          BUTTON('Re&cord'),AT(152,39),USE(?Record),#ORIG(?Position)
+          BUTTON('&Fast Forward'),AT(92,39),USE(?FastForward),#ORIG(?Rewind)
+          BUTTON('Re&wind'),AT(48,39),USE(?Rewind),#ORIG(?Position)
+          BUTTON('Po&sition'),AT(4,39),USE(?Position),#ORIG(?Resume)
+          BUTTON('To E&nd'),AT(204,18),USE(?ToEnd),#ORIG(?ToTop)
+          BUTTON('&To Top'),AT(160,18),USE(?ToTop),#ORIG(?Resume)
+          BUTTON('&Resume'),AT(116,18),USE(?Resume),#ORIG(?Pause)
+          BUTTON('P&ause'),AT(76,18),USE(?Pause),#ORIG(?Play)
+          BUTTON('&Stop'),AT(40,18),USE(?Stop),#ORIG(?Play)
+          BUTTON('Cl&ose'),AT(116,65,44,12),USE(?CloseButton),DEFAULT
+          BUTTON('&Play'),AT(4,18),USE(?Play),#ORIG(?Button2)
+        END
+
+[END]
