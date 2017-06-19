@@ -114,6 +114,7 @@
 >StdDev(*QUEUE pQueue, *DECIMAL pValue, *DECIMAL pStdDev)                                !Standard Deviation
 
 >Word:SpellCheck(*CSTRING p\_TextToCheck, BYTE p_Quiet=0)                                 !SpellCheck using word ole
->
+
+
 >WAVControl(STRING ControlType, USHORT DeviceID, ULONG CallingWindow, \*CSTRING WAVFileName, <*ULONG PassedPosition>),USHORT  !Control WAV File
 
