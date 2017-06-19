@@ -1051,7 +1051,8 @@ FilesOpened              BYTE
 [PROMPTS]
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
-%ButtonAction DEPEND %Control DEFAULT TIMES 12
+%ButtonAction DEPEND %Control DEFAULT TIMES 13
+WHEN  ('') ('No Special Action')
 WHEN  ('?CloseButton') ('No Special Action')
 WHEN  ('?FastForward') ('No Special Action')
 WHEN  ('?Pause') ('No Special Action')
@@ -1065,7 +1066,8 @@ WHEN  ('?Stop') ('No Special Action')
 WHEN  ('?ToEnd') ('No Special Action')
 WHEN  ('?ToTop') ('No Special Action')
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 12
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 13
+WHEN  ('') ('25000')
 WHEN  ('?CloseButton') ('25000')
 WHEN  ('?FastForward') ('25000')
 WHEN  ('?Pause') ('25000')
@@ -1150,7 +1152,8 @@ WHEN  ('?Stop') ('')
 WHEN  ('?ToEnd') ('')
 WHEN  ('?ToTop') ('')
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 12
+%ButtonRequest DEPEND %Control DEFAULT TIMES 13
+WHEN  ('') ('None')
 WHEN  ('?CloseButton') ('None')
 WHEN  ('?FastForward') ('None')
 WHEN  ('?Pause') ('None')
@@ -1176,7 +1179,8 @@ WHEN  ('?ToTop') ('None')
 
 %PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 0
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
 
 %PostLookupParams DEPEND %Control DEFAULT TIMES 0
 
@@ -1194,7 +1198,8 @@ WHEN  ('?ToTop') ('None')
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 0
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
 
@@ -1206,7 +1211,8 @@ WHEN  ('?ToTop') ('None')
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 0
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %ThreadKey1 DEPEND %Control FIELD TIMES 0
 
@@ -1419,13 +1425,15 @@ WHEN  ('WindowToolbar')TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 0
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 0
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %LookupAssign DEPEND %Control MULTI LONG TIMES 0
 
@@ -1546,49 +1554,62 @@ WHEN  ('WindowToolbar') ('NO')
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
 
 %CheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 0
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %PreserveVarsLoc MULTI LONG  ()
 %PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 0
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 0
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 0
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?Save')
 
 %AIImgRound DEPEND %Control LONG TIMES 0
 
@@ -1596,25 +1617,29 @@ WHEN  ('WindowToolbar') ('NO')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIDisableImg DEPEND %Control DEFAULT TIMES 0
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIHotImg DEPEND %Control DEFAULT TIMES 0
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIPressedImg DEPEND %Control DEFAULT TIMES 0
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 [EMBED]
 EMBED %DataSectionBeforeWindow

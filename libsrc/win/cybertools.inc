@@ -1,10 +1,25 @@
-!********************************************************************************
-! Source module name:  cyber100.inc
-! Release Version:     CyberTools 10.0
-!
-! Copyright (c) 2006-2015 Devuna, Inc.  All Rights Reserved.
-!********************************************************************************
-  MODULE('CYBER100.DLL')
+!region Notices
+! ================================================================================ 
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+! 
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
+! 
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
+!    it under the terms of the GNU General Public License as published by 
+!    the Free Software Foundation, either version 3 of the License, or 
+!    (at your option) any later version. 
+! 
+!    Devuna-CyberTools is distributed in the hope that it will be useful, 
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+!    GNU General Public License for more details. 
+! 
+!    You should have received a copy of the GNU General Public License 
+!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
+! ================================================================================ 
+!EndRegion Notice
+  MODULE('CYBERTOOLS.DLL')
     CalendarOLD(*? pDate)                                                                   !Three Month Calendar
     WordWrapText(*CSTRING TextToWrap, *QUEUE TextQueue, *STRING TextQueueField, BYTE TextLength, BYTE TextLines)                !Word Wrap Text
     FullName(*CSTRING FName, *CSTRING MI, *CSTRING LName, *CSTRING FullName)                !Full Name
@@ -27,8 +42,6 @@
     PutRegistry(STRING pSectionName, STRING pTokenLabel, STRING pNewValue, <STRING pFileName>, <STRING pUserName>)                      !Put Registry Information
     GetRegistry(STRING pSectionName, STRING pTokenLabel, <STRING pDefaultValue>, <STRING pDummyParameter>, <STRING pUserName>),STRING   !Get Registry Data
     DeleteRegistry(STRING pSectionName, STRING pTokenLabel, STRING pNewValue, <STRING pFileName>, <STRING pUserName>)                   !Delete Registry Information
-    ExpressionBuilder(*QUEUE loc:VarQueue, *CSTRING loc:PassedTable, *CSTRING loc:PassedField, *CSTRING ReturnedExpression, BindFile PassedBindFile, UnBindfile PassedUnbindFile)   !Protocol Locking Configuration Database Table
-    ValueWindow(STRING PictureString),STRING                                                !Expression Builder Value Entry Window
     NumberToText(*DECIMAL pAmount, BYTE pFlag, *CSTRING TextAmount)                         !Number To Text Converter
     EnumPrinters(*QUEUE pQueue, *CSTRING pPrinterName),LONG                                 !Enumerate Printers
     StdDev(*QUEUE pQueue, *DECIMAL pValue, *DECIMAL pStdDev)                                !Standard Deviation

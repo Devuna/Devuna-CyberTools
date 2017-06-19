@@ -39,7 +39,7 @@ PARAMETERS '(*? pDate)'
 [COMMON]
 DESCRIPTION 'Three Month Calendar'
 FROM ABC Window
-MODIFIED '2017/06/09' '22:15:36'
+MODIFIED '2017/06/12' '17:13:07'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('LocalRequest:'),USE(?LocalRequest:Prompt)
@@ -186,7 +186,8 @@ FilesOpened              BYTE
 [PROMPTS]
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
-%ButtonAction DEPEND %Control DEFAULT TIMES 84
+%ButtonAction DEPEND %Control DEFAULT TIMES 85
+WHEN  ('') ('No Special Action')
 WHEN  ('?Button1_1') ('No Special Action')
 WHEN  ('?Button1_10') ('No Special Action')
 WHEN  ('?Button1_11') ('No Special Action')
@@ -272,7 +273,8 @@ WHEN  ('?PlusOneWeek') ('No Special Action')
 WHEN  ('?PlusOneYear') ('No Special Action')
 WHEN  ('?Select') ('No Special Action')
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 84
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 85
+WHEN  ('') ('25000')
 WHEN  ('?Button1_1') ('25000')
 WHEN  ('?Button1_10') ('25000')
 WHEN  ('?Button1_11') ('25000')
@@ -784,7 +786,8 @@ WHEN  ('?PlusOneWeek') ('')
 WHEN  ('?PlusOneYear') ('')
 WHEN  ('?Select') ('')
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 83
+%ButtonRequest DEPEND %Control DEFAULT TIMES 84
+WHEN  ('') ('None')
 WHEN  ('?Button1_1') ('None')
 WHEN  ('?Button1_10') ('None')
 WHEN  ('?Button1_11') ('None')
@@ -905,7 +908,8 @@ WHEN  ('?JumpString') ()
 WHEN  ('?MinusOneWeek') ()
 WHEN  ('?Select') ()
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 4
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 5
+WHEN  ('') (1)
 WHEN  ('?CloseWindow') (1)
 WHEN  ('?JumpString') (0)
 WHEN  ('?MinusOneWeek') (1)
@@ -951,7 +955,8 @@ WHEN  ('?JumpString')TIMES 0
 WHEN  ('?MinusOneWeek')TIMES 0
 WHEN  ('?Select')TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 4
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 5
+WHEN  ('')TIMES 0
 WHEN  ('?CloseWindow')TIMES 0
 WHEN  ('?JumpString')TIMES 0
 WHEN  ('?MinusOneWeek')TIMES 0
@@ -979,7 +984,8 @@ WHEN  ('?JumpString')TIMES 0
 WHEN  ('?MinusOneWeek')TIMES 0
 WHEN  ('?Select')TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 4
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 5
+WHEN  ('')TIMES 0
 WHEN  ('?CloseWindow')TIMES 0
 WHEN  ('?JumpString')TIMES 0
 WHEN  ('?MinusOneWeek')TIMES 0
@@ -1693,14 +1699,16 @@ WHEN  ('WindowToolbar')TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 1
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
 WHEN  ('?CloseWindow')TIMES 0
 
 %UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 1
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
 WHEN  ('?CloseWindow')TIMES 0
 
 %LookupAssign DEPEND %Control MULTI LONG TIMES 0
@@ -1822,49 +1830,62 @@ WHEN  ('WindowToolbar') ('NO')
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
 
 %CheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 0
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %PreserveVarsLoc MULTI LONG  ()
 %PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 0
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 0
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 0
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?DateJumpString:Prompt')
 
 %AIImgRound DEPEND %Control LONG TIMES 0
 
@@ -1872,25 +1893,29 @@ WHEN  ('WindowToolbar') ('NO')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIDisableImg DEPEND %Control DEFAULT TIMES 0
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIHotImg DEPEND %Control DEFAULT TIMES 0
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIPressedImg DEPEND %Control DEFAULT TIMES 0
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 [EMBED]
 EMBED %ProcedureRoutines

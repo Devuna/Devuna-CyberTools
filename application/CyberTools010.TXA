@@ -1,7 +1,7 @@
 [MODULE]
 [COMMON]
 FROM ABC GENERATED
-MODIFIED '2017/06/09' '22:11:19'
+MODIFIED '2017/06/09' '22:11:30'
 [EMBED]
 EMBED %StartOfModule
 [DEFINITION]
@@ -33,2978 +33,25 @@ PROPERTY:END
 [END]
 [END]
 [PROCEDURE]
-NAME ExpressionBuilder
-PROTOTYPE '(*QUEUE loc:VarQueue, *CSTRING loc:PassedTable, *CSTRING loc:PassedField, *CSTRING ReturnedExpression, BindFile PassedBindFile, UnBindfile PassedUnbindFile)'
-PARAMETERS '(*QUEUE loc:VarQueue, *CSTRING loc:PassedTable, *CSTRING loc:PassedField, *CSTRING ReturnedExpression, BindFile PassedBindFile, UnBindfile PassedUnbindFile)'
+NAME NumberToText
+PROTOTYPE '(*DECIMAL pAmount, BYTE pFlag, *CSTRING TextAmount, <<*CSTRING pFormat>)'
+PARAMETERS '(*DECIMAL pAmount, BYTE pFlag, *CSTRING TextAmount, <<*CSTRING pFormat>)'
 [COMMON]
-DESCRIPTION 'Protocol Locking Configuration Database Table'
-FROM ABC Window
-MODIFIED '2017/06/09' '22:18:43'
-[DATA]
-[SCREENCONTROLS]
-! PROMPT('LocalRequest:'),USE(?LocalRequest:Prompt)
-! ENTRY(@n-14),USE(LocalRequest)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(LocalRequest)
-LocalRequest             LONG
-!!> GUID('cdcf022c-4ca3-4c11-b081-23f831d8633c'),PROMPT('LocalRequest:'),HEADER('LocalRequest'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
-! ENTRY(@n3),USE(FilesOpened)
-[REPORTCONTROLS]
-! STRING(@n3),USE(FilesOpened)
-FilesOpened              BYTE
-!!> GUID('34e74c63-364c-405f-abb8-7c1c8c9f807e'),PROMPT('FilesOpened:'),HEADER('FilesOpened'),PICTURE(@n3)
-[SCREENCONTROLS]
-! PROMPT('NewThread:'),USE(?NewThread:Prompt)
-! ENTRY(@n-14),USE(NewThread)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(NewThread)
-NewThread                LONG,AUTO
-!!> GUID('987b888e-876b-400c-91cc-bcf474b22b7a'),PROMPT('NewThread:'),HEADER('NewThread'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('ThreadCount:'),USE(?ThreadCount:Prompt)
-! ENTRY(@n-14),USE(ThreadCount)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(ThreadCount)
-ThreadCount              LONG,AUTO
-!!> GUID('5292af1b-1327-4cba-81f5-8e73ccc8d08c'),PROMPT('ThreadCount:'),HEADER('ThreadCount'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Record:'),USE(?loc:tq:Record:Prompt)
-! ENTRY(@s255),USE(loc:tq:Record)
-[REPORTCONTROLS]
-! STRING(@s255),USE(loc:tq:Record)
-loc:tq:Record            GROUP,PRE()
-!!> GUID('bd429785-e89e-4acf-8ef6-7230cdf4fee6'),PROMPT('loc:tq:Record:'),HEADER('loc:tq:Record'),PICTURE(@s255)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Number:'),USE(?loc:tq:Number:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Number)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Number)
-loc:tq:Number              LONG !thread number         (returned by START)
-!!> GUID('5a90d19e-4b0e-4e6f-be8e-331d9e498ccc'),INITIAL('0'),PROMPT('loc:tq:Number:'),HEADER('loc:tq:Number'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Name:'),USE(?loc:tq:Name:Prompt)
-! ENTRY(@s30),USE(loc:tq:Name)
-[REPORTCONTROLS]
-! STRING(@s30),USE(loc:tq:Name)
-loc:tq:Name                STRING(30) !procedure name        (e.g., MasterList)
-!!> GUID('c08692ab-b4f7-41ed-971d-11d3bb0ea290'),PROMPT('loc:tq:Name:'),HEADER('loc:tq:Name'),PICTURE(@s30)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Instance:'),USE(?loc:tq:Instance:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Instance)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Instance)
-loc:tq:Instance            LONG !procedure instance
-!!> GUID('d37ce428-2c2e-4f21-9ebd-d1e1b4c667d8'),INITIAL('0'),PROMPT('loc:tq:Instance:'),HEADER('loc:tq:Instance'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:MaxInstance:'),USE(?loc:tq:MaxInstance:Prompt)
-! ENTRY(@n-14),USE(loc:tq:MaxInstance)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:MaxInstance)
-loc:tq:MaxInstance         LONG !maximum procedure instance
-!!> GUID('6977f30e-260c-496c-a734-07a618968aff'),INITIAL('0'),PROMPT('loc:tq:MaxInstance:'),HEADER('loc:tq:MaxInstance'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Param1:'),USE(?loc:tq:Param1:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Param1)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Param1)
-loc:tq:Param1              LONG !foreign key 1
-!!> GUID('daef5a04-0104-48be-8381-7664006f0b19'),INITIAL('0'),PROMPT('loc:tq:Param1:'),HEADER('loc:tq:Param1'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Param2:'),USE(?loc:tq:Param2:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Param2)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Param2)
-loc:tq:Param2              LONG !foreign key 2
-!!> GUID('9816db5e-6542-4737-99f9-e016e13f46f5'),INITIAL('0'),PROMPT('loc:tq:Param2:'),HEADER('loc:tq:Param2'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Param3:'),USE(?loc:tq:Param3:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Param3)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Param3)
-loc:tq:Param3              LONG !foreign key 3
-!!> GUID('3e9eabef-489d-4294-8a68-4ea202f2a3a3'),INITIAL('0'),PROMPT('loc:tq:Param3:'),HEADER('loc:tq:Param3'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Param4:'),USE(?loc:tq:Param4:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Param4)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Param4)
-loc:tq:Param4              LONG !foreign key 4
-!!> GUID('ca517d9d-0329-4103-a6c3-9c4e37884f0a'),INITIAL('0'),PROMPT('loc:tq:Param4:'),HEADER('loc:tq:Param4'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Buffer:'),USE(?loc:tq:Buffer:Prompt)
-! TEXT,USE(loc:tq:Buffer),BOXED
-[REPORTCONTROLS]
-! TEXT,USE(loc:tq:Buffer),BOXED
-loc:tq:Buffer              STRING(256) !data buffer
-!!> GUID('ebe897b9-d5b6-43e0-b031-f1b4e6e5bc14'),PROMPT('loc:tq:Buffer:'),HEADER('loc:tq:Buffer'),PICTURE(@s255)
-                         END
-!!> GUID('e19a181f-3b9c-4f1d-963e-1e8d374be948')
-[SCREENCONTROLS]
-! PROMPT('hWnd:'),USE(?hWnd:Prompt)
-! ENTRY(@n6),USE(hWnd)
-[REPORTCONTROLS]
-! STRING(@n6),USE(hWnd)
-hWnd                     USHORT,AUTO
-!!> GUID('5877102b-42a6-4aae-b4f7-0a9103908e00'),PROMPT('hWnd:'),HEADER('hWnd'),PICTURE(@n6)
-[SCREENCONTROLS]
-! PROMPT('ReverseOrder:'),USE(?ReverseOrder:Prompt)
-! ENTRY(@n3),USE(ReverseOrder)
-[REPORTCONTROLS]
-! STRING(@n3),USE(ReverseOrder)
-ReverseOrder             BYTE !Clarion
-!!> GUID('eeec7c02-d1e0-430a-bca3-74004697dd67'),PROMPT('ReverseOrder:'),HEADER('ReverseOrder'),PICTURE(@n3)
-[SCREENCONTROLS]
-! PROMPT('PROM andatory Queue:'),USE(?ChoiceTypeQueue:Prompt)
-! ENTRY(@s71),USE(ChoiceTypeQueue),MSG('Protocol display queue')
-[REPORTCONTROLS]
-! STRING(@s71),USE(ChoiceTypeQueue)
-ChoiceTypeQueue          QUEUE,PRE(PRSdisplay) !Data choice type queue
-!!> GUID('5e44ecc5-43bc-4ce1-a0fc-ea28d2209ffa'),PROMPT('PROM andatory Queue:'),HEADER('PROM andatory Queue'),MESSAGE('Protocol display queue'),PICTURE(@s71)
-[SCREENCONTROLS]
-! PROMPT('Prm Display String:'),USE(?PRSdisplay:PRSDisplayString:Prompt)
-! ENTRY(@s50),USE(PRSdisplay:PRSDisplayString),MSG('Protocol browse display string')
-[REPORTCONTROLS]
-! STRING(@s50),USE(PRSdisplay:PRSDisplayString)
-PRSDisplayString           STRING(50) !Protocol browse display string
-!!> GUID('b30a493d-11b4-4ce2-a3bf-d348a3ce46b1'),PROMPT('Prm Display String:'),HEADER('Prm Display String'),MESSAGE('Protocol browse display string'),PICTURE(@s50)
-[SCREENCONTROLS]
-! PROMPT('PRMI con Long:'),USE(?PRSdisplay:PRSIconLong:Prompt)
-! ENTRY(@n-13),USE(PRSdisplay:PRSIconLong),MSG('Icon long')
-[REPORTCONTROLS]
-! STRING(@n-13),USE(PRSdisplay:PRSIconLong)
-PRSIconLong                LONG !Icon long
-!!> GUID('7867c202-6cc3-4231-9f84-609198fc04e2'),PROMPT('PRMI con Long:'),HEADER('PRMI con Long'),MESSAGE('Icon long'),PICTURE(@n-13)
-[SCREENCONTROLS]
-! PROMPT('Prm Tree Level:'),USE(?PRSdisplay:PRSTreeLevel:Prompt)
-! ENTRY(@n-13),USE(PRSdisplay:PRSTreeLevel),MSG('Tree level of protocol browse')
-[REPORTCONTROLS]
-! STRING(@n-13),USE(PRSdisplay:PRSTreeLevel)
-PRSTreeLevel               LONG !Tree level of protocol browse
-!!> GUID('f46e7200-33b0-418b-ad9c-ecc2d95c7e9b'),PROMPT('Prm Tree Level:'),HEADER('Prm Tree Level'),MESSAGE('Tree level of protocol browse'),PICTURE(@n-13)
-[SCREENCONTROLS]
-! PROMPT('PRMPRL Sys ID:'),USE(?PRSdisplay:PRSPRL_SysID:Prompt)
-! ENTRY(@n-13),USE(PRSdisplay:PRSPRL_SysID),MSG('CTprl system ID')
-[REPORTCONTROLS]
-! STRING(@n-13),USE(PRSdisplay:PRSPRL_SysID)
-PRSPRL_SysID               LONG !CTprl system ID
-!!> GUID('e729a087-4944-4e92-9334-3837105aeeb1'),PROMPT('PRMPRL Sys ID:'),HEADER('PRMPRL Sys ID'),MESSAGE('CTprl system ID'),PICTURE(@n-13)
-[SCREENCONTROLS]
-! PROMPT('Item Type:'),USE(?PRSdisplay:PRSItemType:Prompt)
-! ENTRY(@s1),USE(PRSdisplay:PRSItemType),MSG('Table or Field')
-[REPORTCONTROLS]
-! STRING(@s1),USE(PRSdisplay:PRSItemType)
-PRSItemType                STRING(1) !Table or Field
-!!> GUID('77220870-5a89-4e11-b410-901fc7dc7354'),PROMPT('Item Type:'),HEADER('Item Type'),MESSAGE('Table or Field'),PICTURE(@s1)
-[SCREENCONTROLS]
-! PROMPT('PRsG roup Number:'),USE(?PRSdisplay:PRSGroupNumber:Prompt)
-! ENTRY(@n-13),USE(PRSdisplay:PRSGroupNumber),MSG('Table/field group number')
-[REPORTCONTROLS]
-! STRING(@n-13),USE(PRSdisplay:PRSGroupNumber)
-PRSGroupNumber             LONG !Table/field group number
-!!> GUID('5f05c276-8ce2-4665-b51e-09deb3de1716'),PROMPT('PRsG roup Number:'),HEADER('PRsG roup Number'),MESSAGE('Table/field group number'),PICTURE(@n-13)
-                         END
-!!> GUID('79687237-8f7d-4543-93cf-2de4be001b69')
-[SCREENCONTROLS]
-! PROMPT('DisplayString:'),USE(?DisplayString:Prompt)
-! ENTRY(@s255),USE(DisplayString)
-[REPORTCONTROLS]
-! STRING(@s255),USE(DisplayString)
-DisplayString            STRING(255)
-!!> GUID('0fc2a513-bb05-47e3-942c-a8a9a7ff253a'),PROMPT('DisplayString:'),HEADER('DisplayString'),PICTURE(@s255)
-[SCREENCONTROLS]
-! PROMPT('Function Queue:'),USE(?FunctionQueue:Prompt)
-! ENTRY(@s50),USE(FunctionQueue),MSG('Function Queuue')
-[REPORTCONTROLS]
-! STRING(@s50),USE(FunctionQueue)
-FunctionQueue            QUEUE,PRE() !Function Queuue
-!!> GUID('d38f71aa-cc75-4fca-825e-065785d3d33a'),PROMPT('Function Queue:'),HEADER('Function Queue'),MESSAGE('Function Queuue'),PICTURE(@s50)
-[SCREENCONTROLS]
-! PROMPT('Function String:'),USE(?FunctionString:Prompt)
-! ENTRY(@s50),USE(FunctionString),MSG('Function queue string')
-[REPORTCONTROLS]
-! STRING(@s50),USE(FunctionString)
-FunctionString             STRING(50) !Function queue string
-!!> GUID('364c726e-8013-4b84-971c-073b01874a07'),PROMPT('Function String:'),HEADER('Function String'),MESSAGE('Function queue string'),PICTURE(@s50)
-                         END
-!!> GUID('ca143e3b-8a90-4e64-9463-03e17b4ae045')
-[SCREENCONTROLS]
-! PROMPT('Constant Choice Queue:'),USE(?ConstantChoiceQueue:Prompt)
-! ENTRY(@s50),USE(ConstantChoiceQueue),MSG('Constant choice queue')
-[REPORTCONTROLS]
-! STRING(@s50),USE(ConstantChoiceQueue)
-ConstantChoiceQueue      QUEUE,PRE() !Constant choice queue
-!!> GUID('955a6752-8182-4e34-9383-23d4d67ac268'),PROMPT('Constant Choice Queue:'),HEADER('Constant Choice Queue'),MESSAGE('Constant choice queue'),PICTURE(@s50)
-[SCREENCONTROLS]
-! PROMPT('Constant Choice String:'),USE(?ConstantChoiceString:Prompt)
-! ENTRY(@s50),USE(ConstantChoiceString),MSG('Constant Choice String')
-[REPORTCONTROLS]
-! STRING(@s50),USE(ConstantChoiceString)
-ConstantChoiceString       STRING(50) !Constant Choice String
-!!> GUID('8e33c09a-ea2a-45f1-8f5e-51777cdfddd4'),PROMPT('Constant Choice String:'),HEADER('Constant Choice String'),MESSAGE('Constant Choice String'),PICTURE(@s50)
-                         END
-!!> GUID('0a76cebd-a49f-421b-98a8-ec7217af2505')
-[SCREENCONTROLS]
-! PROMPT('Choice Queue:'),USE(?ChoiceQueue:Prompt)
-! ENTRY(@s50),USE(ChoiceQueue),MSG('Choice Display Queue')
-[REPORTCONTROLS]
-! STRING(@s50),USE(ChoiceQueue)
-ChoiceQueue              QUEUE,PRE() !Choice Display Queue
-!!> GUID('5522ba73-bcb6-4e0d-9731-6b5d9e17a26a'),PROMPT('Choice Queue:'),HEADER('Choice Queue'),MESSAGE('Choice Display Queue'),PICTURE(@s50)
-[SCREENCONTROLS]
-! PROMPT('Choice Display String:'),USE(?ChoiceDisplayString:Prompt)
-! ENTRY(@s50),USE(ChoiceDisplayString),MSG('Choice Display String')
-[REPORTCONTROLS]
-! STRING(@s50),USE(ChoiceDisplayString)
-ChoiceDisplayString        STRING(50) !Choice Display String
-!!> GUID('b35fb3ff-4e40-4bc5-9af9-618280cee0a4'),PROMPT('Choice Display String:'),HEADER('Choice Display String'),MESSAGE('Choice Display String'),PICTURE(@s50)
-                         END
-!!> GUID('c84397ce-cb8c-41b1-aa3b-058915cc1224')
-[SCREENCONTROLS]
-! PROMPT('Expression Group:'),USE(?ExpressionGroup:Prompt)
-! ENTRY(@s255),USE(ExpressionGroup),MSG('Expression bindable group')
-[REPORTCONTROLS]
-! STRING(@s255),USE(ExpressionGroup)
-ExpressionGroup          GROUP,PRE(loc) !Expression bindable group
-!!> GUID('477446ac-d430-4e4f-98a3-dbf70d7b88ba'),PROMPT('Expression Group:'),HEADER('Expression Group'),MESSAGE('Expression bindable group'),PICTURE(@s255)
-[SCREENCONTROLS]
-! PROMPT('LOC : Expression:'),USE(?loc:Expression:Prompt)
-! ENTRY(@s255),USE(loc:Expression),MSG('the expression')
-[REPORTCONTROLS]
-! STRING(@s255),USE(loc:Expression)
-Expression                 STRING(255) !the expression
-!!> GUID('9c337067-418a-468b-a270-999a5f7445d7'),PROMPT('LOC : Expression:'),HEADER('LOC : Expression'),MESSAGE('the expression'),PICTURE(@s255)
-                         END
-!!> GUID('0af03ad0-a388-43b6-a063-f0b97ff67675')
-[SCREENCONTROLS]
-! PROMPT('Field Choice Queue:'),USE(?FieldChoiceQueue:Prompt)
-! ENTRY(@s100),USE(FieldChoiceQueue),MSG('Field Choice Queue')
-[REPORTCONTROLS]
-! STRING(@s100),USE(FieldChoiceQueue)
-FieldChoiceQueue         QUEUE,PRE() !Field Choice Queue
-!!> GUID('f7103eab-f903-4a60-996c-e33da36bfba7'),PROMPT('Field Choice Queue:'),HEADER('Field Choice Queue'),MESSAGE('Field Choice Queue'),PICTURE(@s100)
-[SCREENCONTROLS]
-! PROMPT('Field Choice:'),USE(?FieldChoice:Prompt)
-! ENTRY(@s50),USE(FieldChoice),MSG('Field Choice String')
-[REPORTCONTROLS]
-! STRING(@s50),USE(FieldChoice)
-FieldChoice                STRING(50) !Field Choice String
-!!> GUID('af9922d6-9f32-49cb-905b-0135348f0e35'),PROMPT('Field Choice:'),HEADER('Field Choice'),MESSAGE('Field Choice String'),PICTURE(@s50)
-[SCREENCONTROLS]
-! PROMPT('FT able Choice:'),USE(?FTableChoice:Prompt)
-! ENTRY(@s50),USE(FTableChoice),MSG('Table choice')
-[REPORTCONTROLS]
-! STRING(@s50),USE(FTableChoice)
-FTableChoice               STRING(50) !Table choice
-!!> GUID('98169e9d-290b-4175-9b78-b6699621bc08'),PROMPT('FT able Choice:'),HEADER('FT able Choice'),MESSAGE('Table choice'),PICTURE(@s50)
-                         END
-!!> GUID('126f109a-32d1-468a-8a25-c1ee0d3e57b5')
-[SCREENCONTROLS]
-! PROMPT('Table Choice Queue:'),USE(?TableChoiceQueue:Prompt)
-! ENTRY(@s50),USE(TableChoiceQueue),MSG('Table Choice Queue')
-[REPORTCONTROLS]
-! STRING(@s50),USE(TableChoiceQueue)
-TableChoiceQueue         QUEUE,PRE() !Table Choice Queue
-!!> GUID('514fdce3-2093-48d3-b9e5-37a8bfc33cb3'),PROMPT('Table Choice Queue:'),HEADER('Table Choice Queue'),MESSAGE('Table Choice Queue'),PICTURE(@s50)
-[SCREENCONTROLS]
-! PROMPT('TT able Choice:'),USE(?TTableChoice:Prompt)
-! ENTRY(@s50),USE(TTableChoice),MSG('table choice')
-[REPORTCONTROLS]
-! STRING(@s50),USE(TTableChoice)
-TTableChoice               STRING(50) !table choice
-!!> GUID('c6344beb-2d65-4b7b-9e92-6cdcf7e480b4'),PROMPT('TT able Choice:'),HEADER('TT able Choice'),MESSAGE('table choice'),PICTURE(@s50)
-                         END
-!!> GUID('72b7fe97-d447-4c60-98b9-1a56d99c17b3')
-[SCREENCONTROLS]
-! PROMPT('Clipboard Contents:'),USE(?ClipboardContents:Prompt)
-! ENTRY(@s255),USE(ClipboardContents),MSG('clipboard contents')
-[REPORTCONTROLS]
-! STRING(@s255),USE(ClipboardContents)
-ClipboardContents        STRING(255) !clipboard contents
-!!> GUID('80b7b9d5-d112-4edc-8fae-56b954c51db2'),PROMPT('Clipboard Contents:'),HEADER('Clipboard Contents'),MESSAGE('clipboard contents'),PICTURE(@s255)
+DESCRIPTION 'Number To Text Converter'
+FROM ABC Source
+MODIFIED '2017/06/09' '22:56:14'
 [PROMPTS]
-%WindowOperationMode DEFAULT  ('Use WINDOW setting')
-%INISaveWindow LONG  (1)
-%ButtonAction DEPEND %Control DEFAULT TIMES 31
-WHEN  ('?Addition') ('No Special Action')
-WHEN  ('?ArrayIndex') ('No Special Action')
-WHEN  ('?Cancel') ('No Special Action')
-WHEN  ('?Check') ('No Special Action')
-WHEN  ('?ChoiceList') ('No Special Action')
-WHEN  ('?ChoiceTypes') ('No Special Action')
-WHEN  ('?Clear') ('No Special Action')
-WHEN  ('?ClipboardContents') ('No Special Action')
-WHEN  ('?Concantenation') ('No Special Action')
-WHEN  ('?Division') ('No Special Action')
-WHEN  ('?Equal') ('No Special Action')
-WHEN  ('?Exponent') ('No Special Action')
-WHEN  ('?GreaterOrEqual') ('No Special Action')
-WHEN  ('?GreaterThan') ('No Special Action')
-WHEN  ('?Group1') ('No Special Action')
-WHEN  ('?Group2') ('No Special Action')
-WHEN  ('?Help') ('No Special Action')
-WHEN  ('?InsertValue') ('No Special Action')
-WHEN  ('?LOC:Expression') ('No Special Action')
-WHEN  ('?LessThan') ('No Special Action')
-WHEN  ('?LesserOrEqual') ('No Special Action')
-WHEN  ('?LogicalAND') ('No Special Action')
-WHEN  ('?LogicalNOT') ('No Special Action')
-WHEN  ('?LogicalOR') ('No Special Action')
-WHEN  ('?Modulus') ('No Special Action')
-WHEN  ('?Multiplication') ('No Special Action')
-WHEN  ('?NotEqual') ('No Special Action')
-WHEN  ('?OK') ('No Special Action')
-WHEN  ('?Subtract') ('No Special Action')
-WHEN  ('?Tab1') ('No Special Action')
-WHEN  ('?loc:Expression') ('No Special Action')
-
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 31
-WHEN  ('?Addition') ('25000')
-WHEN  ('?ArrayIndex') ('25000')
-WHEN  ('?Cancel') ('25000')
-WHEN  ('?Check') ('25000')
-WHEN  ('?ChoiceList') ('25000')
-WHEN  ('?ChoiceTypes') ('25000')
-WHEN  ('?Clear') ('25000')
-WHEN  ('?ClipboardContents') ('25000')
-WHEN  ('?Concantenation') ('25000')
-WHEN  ('?Division') ('25000')
-WHEN  ('?Equal') ('25000')
-WHEN  ('?Exponent') ('25000')
-WHEN  ('?GreaterOrEqual') ('25000')
-WHEN  ('?GreaterThan') ('25000')
-WHEN  ('?Group1') ('25000')
-WHEN  ('?Group2') ('25000')
-WHEN  ('?Help') ('25000')
-WHEN  ('?InsertValue') ('25000')
-WHEN  ('?LOC:Expression') ('25000')
-WHEN  ('?LessThan') ('25000')
-WHEN  ('?LesserOrEqual') ('25000')
-WHEN  ('?LogicalAND') ('25000')
-WHEN  ('?LogicalNOT') ('25000')
-WHEN  ('?LogicalOR') ('25000')
-WHEN  ('?Modulus') ('25000')
-WHEN  ('?Multiplication') ('25000')
-WHEN  ('?NotEqual') ('25000')
-WHEN  ('?OK') ('25000')
-WHEN  ('?Subtract') ('25000')
-WHEN  ('?Tab1') ('25000')
-WHEN  ('?loc:Expression') ('25000')
-
-%ThreadRestoreInstance DEPEND %Control DEFAULT TIMES 31
-WHEN  ('?Addition') ('First')
-WHEN  ('?ArrayIndex') ('First')
-WHEN  ('?Cancel') ('First')
-WHEN  ('?Check') ('First')
-WHEN  ('?ChoiceList') ('First')
-WHEN  ('?ChoiceTypes') ('First')
-WHEN  ('?Clear') ('First')
-WHEN  ('?ClipboardContents') ('First')
-WHEN  ('?Concantenation') ('First')
-WHEN  ('?Division') ('First')
-WHEN  ('?Equal') ('First')
-WHEN  ('?Exponent') ('First')
-WHEN  ('?GreaterOrEqual') ('First')
-WHEN  ('?GreaterThan') ('First')
-WHEN  ('?Group1') ('First')
-WHEN  ('?Group2') ('First')
-WHEN  ('?Help') ('First')
-WHEN  ('?InsertValue') ('First')
-WHEN  ('?LOC:Expression') ('First')
-WHEN  ('?LessThan') ('First')
-WHEN  ('?LesserOrEqual') ('First')
-WHEN  ('?LogicalAND') ('First')
-WHEN  ('?LogicalNOT') ('First')
-WHEN  ('?LogicalOR') ('First')
-WHEN  ('?Modulus') ('First')
-WHEN  ('?Multiplication') ('First')
-WHEN  ('?NotEqual') ('First')
-WHEN  ('?OK') ('First')
-WHEN  ('?Subtract') ('First')
-WHEN  ('?Tab1') ('First')
-WHEN  ('?loc:Expression') ('First')
-
-%ButtonRequest DEPEND %Control DEFAULT TIMES 31
-WHEN  ('?Addition') ('None')
-WHEN  ('?ArrayIndex') ('None')
-WHEN  ('?Cancel') ('None')
-WHEN  ('?Check') ('None')
-WHEN  ('?ChoiceList') ('None')
-WHEN  ('?ChoiceTypes') ('None')
-WHEN  ('?Clear') ('None')
-WHEN  ('?ClipboardContents') ('None')
-WHEN  ('?Concantenation') ('None')
-WHEN  ('?Division') ('None')
-WHEN  ('?Equal') ('None')
-WHEN  ('?Exponent') ('None')
-WHEN  ('?GreaterOrEqual') ('None')
-WHEN  ('?GreaterThan') ('None')
-WHEN  ('?Group1') ('None')
-WHEN  ('?Group2') ('None')
-WHEN  ('?Help') ('None')
-WHEN  ('?InsertValue') ('None')
-WHEN  ('?LOC:Expression') ('None')
-WHEN  ('?LessThan') ('None')
-WHEN  ('?LesserOrEqual') ('None')
-WHEN  ('?LogicalAND') ('None')
-WHEN  ('?LogicalNOT') ('None')
-WHEN  ('?LogicalOR') ('None')
-WHEN  ('?Modulus') ('None')
-WHEN  ('?Multiplication') ('None')
-WHEN  ('?NotEqual') ('None')
-WHEN  ('?OK') ('None')
-WHEN  ('?Subtract') ('None')
-WHEN  ('?Tab1') ('None')
-WHEN  ('?loc:Expression') ('None')
-
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 31
-WHEN  ('?Addition') (1)
-WHEN  ('?ArrayIndex') (1)
-WHEN  ('?Cancel') (1)
-WHEN  ('?Check') (1)
-WHEN  ('?ChoiceList') (1)
-WHEN  ('?ChoiceTypes') (1)
-WHEN  ('?Clear') (1)
-WHEN  ('?ClipboardContents') (1)
-WHEN  ('?Concantenation') (1)
-WHEN  ('?Division') (1)
-WHEN  ('?Equal') (1)
-WHEN  ('?Exponent') (1)
-WHEN  ('?GreaterOrEqual') (1)
-WHEN  ('?GreaterThan') (1)
-WHEN  ('?Group1') (1)
-WHEN  ('?Group2') (1)
-WHEN  ('?Help') (1)
-WHEN  ('?InsertValue') (1)
-WHEN  ('?LOC:Expression') (1)
-WHEN  ('?LessThan') (1)
-WHEN  ('?LesserOrEqual') (1)
-WHEN  ('?LogicalAND') (1)
-WHEN  ('?LogicalNOT') (1)
-WHEN  ('?LogicalOR') (1)
-WHEN  ('?Modulus') (1)
-WHEN  ('?Multiplication') (1)
-WHEN  ('?NotEqual') (1)
-WHEN  ('?OK') (1)
-WHEN  ('?Subtract') (1)
-WHEN  ('?Tab1') (1)
-WHEN  ('?loc:Expression') (1)
-
 %ReturnValue FIELD  ()
-%ButtonRunName DEPEND %Control DEFAULT TIMES 24
-WHEN  ('?Addition') ('')
-WHEN  ('?ArrayIndex') ('')
-WHEN  ('?Cancel') ('')
-WHEN  ('?Check') ('')
-WHEN  ('?Clear') ('')
-WHEN  ('?Concantenation') ('')
-WHEN  ('?Division') ('')
-WHEN  ('?Equal') ('')
-WHEN  ('?Exponent') ('')
-WHEN  ('?GreaterOrEqual') ('')
-WHEN  ('?GreaterThan') ('')
-WHEN  ('?Help') ('')
-WHEN  ('?InsertValue') ('')
-WHEN  ('?LessThan') ('')
-WHEN  ('?LesserOrEqual') ('')
-WHEN  ('?LogicalAND') ('')
-WHEN  ('?LogicalNOT') ('')
-WHEN  ('?LogicalOR') ('')
-WHEN  ('?Modulus') ('')
-WHEN  ('?Multiplication') ('')
-WHEN  ('?NotEqual') ('')
-WHEN  ('?OK') ('')
-WHEN  ('?Subtract') ('')
-WHEN  ('?loc:Expression') ('')
-
-%ButtonRunParameters DEPEND %Control DEFAULT TIMES 24
-WHEN  ('?Addition') ('')
-WHEN  ('?ArrayIndex') ('')
-WHEN  ('?Cancel') ('')
-WHEN  ('?Check') ('')
-WHEN  ('?Clear') ('')
-WHEN  ('?Concantenation') ('')
-WHEN  ('?Division') ('')
-WHEN  ('?Equal') ('')
-WHEN  ('?Exponent') ('')
-WHEN  ('?GreaterOrEqual') ('')
-WHEN  ('?GreaterThan') ('')
-WHEN  ('?Help') ('')
-WHEN  ('?InsertValue') ('')
-WHEN  ('?LessThan') ('')
-WHEN  ('?LesserOrEqual') ('')
-WHEN  ('?LogicalAND') ('')
-WHEN  ('?LogicalNOT') ('')
-WHEN  ('?LogicalOR') ('')
-WHEN  ('?Modulus') ('')
-WHEN  ('?Multiplication') ('')
-WHEN  ('?NotEqual') ('')
-WHEN  ('?OK') ('')
-WHEN  ('?Subtract') ('')
-WHEN  ('?loc:Expression') ('')
-
-%ButtonProcedure DEPEND %Control PROCEDURE TIMES 24
-WHEN  ('?Addition') ()
-WHEN  ('?ArrayIndex') ()
-WHEN  ('?Cancel') ()
-WHEN  ('?Check') ()
-WHEN  ('?Clear') ()
-WHEN  ('?Concantenation') ()
-WHEN  ('?Division') ()
-WHEN  ('?Equal') ()
-WHEN  ('?Exponent') ()
-WHEN  ('?GreaterOrEqual') ()
-WHEN  ('?GreaterThan') ()
-WHEN  ('?Help') ()
-WHEN  ('?InsertValue') ()
-WHEN  ('?LessThan') ()
-WHEN  ('?LesserOrEqual') ()
-WHEN  ('?LogicalAND') ()
-WHEN  ('?LogicalNOT') ()
-WHEN  ('?LogicalOR') ()
-WHEN  ('?Modulus') ()
-WHEN  ('?Multiplication') ()
-WHEN  ('?NotEqual') ()
-WHEN  ('?OK') ()
-WHEN  ('?Subtract') ()
-WHEN  ('?loc:Expression') ()
-
-%ButtonThread DEPEND %Control LONG TIMES 24
-WHEN  ('?Addition') (0)
-WHEN  ('?ArrayIndex') (0)
-WHEN  ('?Cancel') (0)
-WHEN  ('?Check') (0)
-WHEN  ('?Clear') (0)
-WHEN  ('?Concantenation') (0)
-WHEN  ('?Division') (0)
-WHEN  ('?Equal') (0)
-WHEN  ('?Exponent') (0)
-WHEN  ('?GreaterOrEqual') (0)
-WHEN  ('?GreaterThan') (0)
-WHEN  ('?Help') (0)
-WHEN  ('?InsertValue') (0)
-WHEN  ('?LessThan') (0)
-WHEN  ('?LesserOrEqual') (0)
-WHEN  ('?LogicalAND') (0)
-WHEN  ('?LogicalNOT') (0)
-WHEN  ('?LogicalOR') (0)
-WHEN  ('?Modulus') (0)
-WHEN  ('?Multiplication') (0)
-WHEN  ('?NotEqual') (0)
-WHEN  ('?OK') (0)
-WHEN  ('?Subtract') (0)
-WHEN  ('?loc:Expression') (0)
-
-%ThreadMaxInstance DEPEND %Control DEFAULT TIMES 24
-WHEN  ('?Addition') ('')
-WHEN  ('?ArrayIndex') ('')
-WHEN  ('?Cancel') ('')
-WHEN  ('?Check') ('')
-WHEN  ('?Clear') ('')
-WHEN  ('?Concantenation') ('')
-WHEN  ('?Division') ('')
-WHEN  ('?Equal') ('')
-WHEN  ('?Exponent') ('')
-WHEN  ('?GreaterOrEqual') ('')
-WHEN  ('?GreaterThan') ('')
-WHEN  ('?Help') ('')
-WHEN  ('?InsertValue') ('')
-WHEN  ('?LessThan') ('')
-WHEN  ('?LesserOrEqual') ('')
-WHEN  ('?LogicalAND') ('')
-WHEN  ('?LogicalNOT') ('')
-WHEN  ('?LogicalOR') ('')
-WHEN  ('?Modulus') ('')
-WHEN  ('?Multiplication') ('')
-WHEN  ('?NotEqual') ('')
-WHEN  ('?OK') ('')
-WHEN  ('?Subtract') ('')
-WHEN  ('?loc:Expression') ('')
-
-%ThreadParam1 DEPEND %Control FIELD TIMES 24
-WHEN  ('?Addition') ()
-WHEN  ('?ArrayIndex') ()
-WHEN  ('?Cancel') ()
-WHEN  ('?Check') ()
-WHEN  ('?Clear') ()
-WHEN  ('?Concantenation') ()
-WHEN  ('?Division') ()
-WHEN  ('?Equal') ()
-WHEN  ('?Exponent') ()
-WHEN  ('?GreaterOrEqual') ()
-WHEN  ('?GreaterThan') ()
-WHEN  ('?Help') ()
-WHEN  ('?InsertValue') ()
-WHEN  ('?LessThan') ()
-WHEN  ('?LesserOrEqual') ()
-WHEN  ('?LogicalAND') ()
-WHEN  ('?LogicalNOT') ()
-WHEN  ('?LogicalOR') ()
-WHEN  ('?Modulus') ()
-WHEN  ('?Multiplication') ()
-WHEN  ('?NotEqual') ()
-WHEN  ('?OK') ()
-WHEN  ('?Subtract') ()
-WHEN  ('?loc:Expression') ()
-
-%ThreadParam2 DEPEND %Control FIELD TIMES 24
-WHEN  ('?Addition') ()
-WHEN  ('?ArrayIndex') ()
-WHEN  ('?Cancel') ()
-WHEN  ('?Check') ()
-WHEN  ('?Clear') ()
-WHEN  ('?Concantenation') ()
-WHEN  ('?Division') ()
-WHEN  ('?Equal') ()
-WHEN  ('?Exponent') ()
-WHEN  ('?GreaterOrEqual') ()
-WHEN  ('?GreaterThan') ()
-WHEN  ('?Help') ()
-WHEN  ('?InsertValue') ()
-WHEN  ('?LessThan') ()
-WHEN  ('?LesserOrEqual') ()
-WHEN  ('?LogicalAND') ()
-WHEN  ('?LogicalNOT') ()
-WHEN  ('?LogicalOR') ()
-WHEN  ('?Modulus') ()
-WHEN  ('?Multiplication') ()
-WHEN  ('?NotEqual') ()
-WHEN  ('?OK') ()
-WHEN  ('?Subtract') ()
-WHEN  ('?loc:Expression') ()
-
-%ThreadParam3 DEPEND %Control FIELD TIMES 24
-WHEN  ('?Addition') ()
-WHEN  ('?ArrayIndex') ()
-WHEN  ('?Cancel') ()
-WHEN  ('?Check') ()
-WHEN  ('?Clear') ()
-WHEN  ('?Concantenation') ()
-WHEN  ('?Division') ()
-WHEN  ('?Equal') ()
-WHEN  ('?Exponent') ()
-WHEN  ('?GreaterOrEqual') ()
-WHEN  ('?GreaterThan') ()
-WHEN  ('?Help') ()
-WHEN  ('?InsertValue') ()
-WHEN  ('?LessThan') ()
-WHEN  ('?LesserOrEqual') ()
-WHEN  ('?LogicalAND') ()
-WHEN  ('?LogicalNOT') ()
-WHEN  ('?LogicalOR') ()
-WHEN  ('?Modulus') ()
-WHEN  ('?Multiplication') ()
-WHEN  ('?NotEqual') ()
-WHEN  ('?OK') ()
-WHEN  ('?Subtract') ()
-WHEN  ('?loc:Expression') ()
-
-%ThreadParam4 DEPEND %Control FIELD TIMES 24
-WHEN  ('?Addition') ()
-WHEN  ('?ArrayIndex') ()
-WHEN  ('?Cancel') ()
-WHEN  ('?Check') ()
-WHEN  ('?Clear') ()
-WHEN  ('?Concantenation') ()
-WHEN  ('?Division') ()
-WHEN  ('?Equal') ()
-WHEN  ('?Exponent') ()
-WHEN  ('?GreaterOrEqual') ()
-WHEN  ('?GreaterThan') ()
-WHEN  ('?Help') ()
-WHEN  ('?InsertValue') ()
-WHEN  ('?LessThan') ()
-WHEN  ('?LesserOrEqual') ()
-WHEN  ('?LogicalAND') ()
-WHEN  ('?LogicalNOT') ()
-WHEN  ('?LogicalOR') ()
-WHEN  ('?Modulus') ()
-WHEN  ('?Multiplication') ()
-WHEN  ('?NotEqual') ()
-WHEN  ('?OK') ()
-WHEN  ('?Subtract') ()
-WHEN  ('?loc:Expression') ()
-
-%ThreadBuffer DEPEND %Control FIELD TIMES 24
-WHEN  ('?Addition') ()
-WHEN  ('?ArrayIndex') ()
-WHEN  ('?Cancel') ()
-WHEN  ('?Check') ()
-WHEN  ('?Clear') ()
-WHEN  ('?Concantenation') ()
-WHEN  ('?Division') ()
-WHEN  ('?Equal') ()
-WHEN  ('?Exponent') ()
-WHEN  ('?GreaterOrEqual') ()
-WHEN  ('?GreaterThan') ()
-WHEN  ('?Help') ()
-WHEN  ('?InsertValue') ()
-WHEN  ('?LessThan') ()
-WHEN  ('?LesserOrEqual') ()
-WHEN  ('?LogicalAND') ()
-WHEN  ('?LogicalNOT') ()
-WHEN  ('?LogicalOR') ()
-WHEN  ('?Modulus') ()
-WHEN  ('?Multiplication') ()
-WHEN  ('?NotEqual') ()
-WHEN  ('?OK') ()
-WHEN  ('?Subtract') ()
-WHEN  ('?loc:Expression') ()
-
-%ButtonParameters DEPEND %Control DEFAULT TIMES 24
-WHEN  ('?Addition') ('')
-WHEN  ('?ArrayIndex') ('')
-WHEN  ('?Cancel') ('')
-WHEN  ('?Check') ('')
-WHEN  ('?Clear') ('')
-WHEN  ('?Concantenation') ('')
-WHEN  ('?Division') ('')
-WHEN  ('?Equal') ('')
-WHEN  ('?Exponent') ('')
-WHEN  ('?GreaterOrEqual') ('')
-WHEN  ('?GreaterThan') ('')
-WHEN  ('?Help') ('')
-WHEN  ('?InsertValue') ('')
-WHEN  ('?LessThan') ('')
-WHEN  ('?LesserOrEqual') ('')
-WHEN  ('?LogicalAND') ('')
-WHEN  ('?LogicalNOT') ('')
-WHEN  ('?LogicalOR') ('')
-WHEN  ('?Modulus') ('')
-WHEN  ('?Multiplication') ('')
-WHEN  ('?NotEqual') ('')
-WHEN  ('?OK') ('')
-WHEN  ('?Subtract') ('')
-WHEN  ('?loc:Expression') ('')
-
-%PreLookupKey DEPEND %Control KEY TIMES 4
-WHEN  ('?Check') ()
-WHEN  ('?Help') ()
-WHEN  ('?OK') ()
-WHEN  ('?loc:Expression') ()
-
-%PreLookupField DEPEND %Control COMPONENT TIMES 4
-WHEN  ('?Check') ()
-WHEN  ('?Help') ()
-WHEN  ('?OK') ()
-WHEN  ('?loc:Expression') ()
-
-%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 4
-WHEN  ('?Check') ()
-WHEN  ('?Help') ()
-WHEN  ('?OK') ()
-WHEN  ('?loc:Expression') ()
-
-%PostLookupKey DEPEND %Control KEY TIMES 4
-WHEN  ('?Check') ()
-WHEN  ('?Help') ()
-WHEN  ('?OK') ()
-WHEN  ('?loc:Expression') ()
-
-%PostLookupField DEPEND %Control COMPONENT TIMES 4
-WHEN  ('?Check') ()
-WHEN  ('?Help') ()
-WHEN  ('?OK') ()
-WHEN  ('?loc:Expression') ()
-
-%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 4
-WHEN  ('?Check') ()
-WHEN  ('?Help') ()
-WHEN  ('?OK') ()
-WHEN  ('?loc:Expression') ()
-
-%PostLookupParams DEPEND %Control DEFAULT TIMES 4
-WHEN  ('?Check') ('')
-WHEN  ('?Help') ('')
-WHEN  ('?OK') ('')
-WHEN  ('?loc:Expression') ('')
-
-%ChildFile DEPEND %Control FILE TIMES 4
-WHEN  ('?Check') ()
-WHEN  ('?Help') ()
-WHEN  ('?OK') ()
-WHEN  ('?loc:Expression') ()
-
-%ForceWindowRefresh DEPEND %Control LONG TIMES 4
-WHEN  ('?Check') (0)
-WHEN  ('?Help') (0)
-WHEN  ('?OK') (0)
-WHEN  ('?loc:Expression') (0)
-
-%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 4
-WHEN  ('?Check')TIMES 0
-WHEN  ('?Help')TIMES 0
-WHEN  ('?OK')TIMES 0
-WHEN  ('?loc:Expression')TIMES 0
-
-%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 4
-WHEN  ('?Check')TIMES 0
-WHEN  ('?Help')TIMES 0
-WHEN  ('?OK')TIMES 0
-WHEN  ('?loc:Expression')TIMES 0
-
-%CheckedHides DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 4
-WHEN  ('?Check')TIMES 0
-WHEN  ('?Help')TIMES 0
-WHEN  ('?OK')TIMES 0
-WHEN  ('?loc:Expression')TIMES 0
-
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 4
-WHEN  ('?Check')TIMES 0
-WHEN  ('?Help')TIMES 0
-WHEN  ('?OK')TIMES 0
-WHEN  ('?loc:Expression')TIMES 0
-
-%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
-
-%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 4
-WHEN  ('?Check')TIMES 0
-WHEN  ('?Help')TIMES 0
-WHEN  ('?OK')TIMES 0
-WHEN  ('?loc:Expression')TIMES 0
-
-%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 4
-WHEN  ('?Check')TIMES 0
-WHEN  ('?Help')TIMES 0
-WHEN  ('?OK')TIMES 0
-WHEN  ('?loc:Expression')TIMES 0
-
-%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 4
-WHEN  ('?Check')TIMES 0
-WHEN  ('?Help')TIMES 0
-WHEN  ('?OK')TIMES 0
-WHEN  ('?loc:Expression')TIMES 0
-
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 4
-WHEN  ('?Check')TIMES 0
-WHEN  ('?Help')TIMES 0
-WHEN  ('?OK')TIMES 0
-WHEN  ('?loc:Expression')TIMES 0
-
-%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
-%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('WindowManager')
-WHEN  ('WindowToolbar') ('ToolbarClass')
-
-%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('')
-WHEN  ('WindowToolbar') ('')
-
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
-WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeFieldEvent {9}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'TakeNewSelection       PROCEDURE(),BYTE,PROC,DERIVED', 'TakeSelected {11}PROCEDURE(),BYTE,PROC,DERIVED')
-
-%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('ThisWindow')
-WHEN  ('WindowToolbar') ('Toolbar')
-
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (1)
-WHEN  ('WindowToolbar') (1)
-
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (1)
-WHEN  ('WindowToolbar') (1)
-
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('')
-WHEN  ('WindowToolbar') ('')
-
-%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
-
-%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
-
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (0)
-WHEN  ('WindowToolbar') (0)
-
-%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
-
-%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
-
-%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
-
-%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
-
-%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
-WHEN  ('Default')TIMES 0
-WHEN  ('WindowToolbar')TIMES 0
-
-%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
-
-%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
-
-%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
-
-%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
-
-%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
-
-%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
-WHEN  ('Default')TIMES 0
-WHEN  ('WindowToolbar')TIMES 0
-
-%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
-
-%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
-
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 1
-WHEN  ('?Help')TIMES 0
-
-%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
-
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 1
-WHEN  ('?Help')TIMES 0
-
-%LookupAssign DEPEND %Control MULTI LONG TIMES 0
-
-%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
-
-%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
-
-%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
-
-%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
-
-%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
-
-%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
-
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('NO')
-WHEN  ('WindowToolbar') ('NO')
-
-%ProcedureDisableEnhanceFocus LONG  (0)
-%ProcedureUseEnterInsteadTabOverride LONG  (0)
-%WindowUseEnterInsteadTab LONG  (1)
-%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
-%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
-%WindowStyles MULTI LONG  ()
-%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleOtherListboxes MULTI DEFAULT  ()
-%ProcedureAutoBindFields MULTI LONG  ()
-%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
-
-%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
-
-%ProcedureAutoBindProcedures MULTI LONG  ()
-%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
-
-%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
-
-%ProcedureUserBindFields MULTI LONG  ()
-%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
-
-%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
-
-%ProcedureUserBindProcedures MULTI LONG  ()
-%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
-
-%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
-
-%ProcedureUserBindExpressions MULTI LONG  ()
-%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
-
-%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
-
-%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
-
-%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
-
-%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
-%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
-
-%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
-%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
-
-%ProcedureAutoBindValidToAddField LONG  (0)
-%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
-%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
-%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
-
-%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
-
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
-WHEN  ('?Sheet1') ('Default')
-
-%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
-
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
-
-%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
-
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
-
-%ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorTo DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
-
-%PreserveVarsLoc MULTI LONG  ()
-%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
-
-%ActiveImageEnable DEPEND %Control LONG TIMES 0
-
-%AIObjectName DEPEND %Control DEFAULT TIMES 0
-
-%AIEnableMimicControl DEPEND %Control LONG TIMES 0
-
-%AIMimicControl DEPEND %Control DEFAULT TIMES 0
-
-%AIImgRound DEPEND %Control LONG TIMES 0
-
-%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
-
-%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
-
-%AIDisableImg DEPEND %Control DEFAULT TIMES 0
-
-%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
-
-%AIHotImg DEPEND %Control DEFAULT TIMES 0
-
-%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
-
-%AIPressedImg DEPEND %Control DEFAULT TIMES 0
-
-%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
-
+%DeleteThreadQueueEntry LONG  (0)
+%DoNotUsePUSHPOP LONG  (0)
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
 [EMBED]
-EMBED %ProcedureRoutines
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-FillQueues              routine
- free(ChoiceTypeQueue)
- free(PROQueue)
- omit('JohnOmit')
- !JohnOmit
- GroupCounter = 0
- clear(ChoiceTypeQueue)
- PRSdisplay:PRSDisplayString = 'Tables'
- PRSdisplay:PRSTreeLevel = 1
- PRSdisplay:PRSIconLong = 3
- PRSdisplay:PRSPRL_SysID = 0
- PRSdisplay:PRSItemType = 'A'
- PRSdisplay:PRSGroupNumber = GroupCounter
- add(ChoiceTypeQueue)
- GroupCounter += 1
- clear(TableHolder)
- QueuePointer = 1
- QueueTop = records(loc:VarQueue)
- loop
-   get(loc:VarQueue, QueuePointer)
-   if clip(left(loc:PassedTable)) <> clip(left(TableHolder))
-     PRSdisplay:PRSDisplayString = loc:PassedTable
-     PRSdisplay:PRSTreeLevel = -2
-     PRSdisplay:PRSIconLong = 4
-     PRSdisplay:PRSItemType = 'B'
-     PRSdisplay:PRSGroupNumber = GroupCounter
-     add(ChoiceTypeQueue)
-     GroupCounter += 1
-     TableHolder = loc:PassedTable
-     clear(TableChoiceQueue)
-     TTableChoice = loc:PassedTable
-     add(TableChoiceQueue)
-   .
-   clear(FieldChoiceQueue)
-   FieldChoice = loc:PassedField
-   FTableChoice = loc:PassedTable
-   add(FieldChoiceQueue)
-   QueuePointer += 1
-   if QueuePointer > QueueTop
-     break
-   .
- .
- GroupCounter += 1
- clear(ChoiceTypeQueue)
- PRSdisplay:PRSDisplayString = 'Constants'
- PRSdisplay:PRSTreeLevel = 1
- PRSdisplay:PRSIconLong = 2
- PRSdisplay:PRSPRL_SysID = 0
- PRSdisplay:PRSItemType = 'A'
- PRSdisplay:PRSGroupNumber = GroupCounter
- add(ChoiceTypeQueue)
- GroupCounter += 1
- clear(ChoiceTypeQueue)
- PRSdisplay:PRSDisplayString = 'System Functions'
- PRSdisplay:PRSTreeLevel = 1
- PRSdisplay:PRSIconLong = 2
- PRSdisplay:PRSPRL_SysID = 0
- PRSdisplay:PRSItemType = 'A'
- PRSdisplay:PRSGroupNumber = GroupCounter
- add(ChoiceTypeQueue)
- sort(ChoiceTypeQueue,  +PRSdisplay:PRSGroupNumber, +PRSdisplay:PRSItemType,)
-!do GreenCheck
- ThisWindow.ForcedReset = true
- ThisWindow.Reset
- exit  !** Check EXIT allowed here **
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-CloseRoutine            routine
- free(ChoiceTypeQueue)
- free(FunctionQueue)
- free(ConstantChoiceQueue)
- free(ChoiceQueue)
- free(PROQueue)
- exit  !** Check EXIT allowed here **
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-DataCase                routine
-    case clip(left(ChoiceDisplayString))
-       of 'Text'
-         sReturnValue = ValueWindow('@s255')
-         if len(clip(left(sReturnValue))) > 0
-           if FunctionFlag > 0
-             FunctionFlag -= 1
-             setclipboard(' ''' & clip(left(sReturnValue)) & ''' ')
-           else
-             loc:Expression = clip(left(loc:Expression)) & ' ''' & clip(left(sReturnValue)) & ''' '
-             clear(ClipboardContents)
-             setclipboard('')
-           .
-         .
-       of 'Number'
-         sReturnValue = ValueWindow('@n-11.2')
-         if len(clip(left(sReturnValue))) > 0
-           if FunctionFlag > 0
-             FunctionFlag -= 1
-             setclipboard(' ' & clip(left(sReturnValue)) & ' ')
-           else
-             loc:Expression = clip(left(loc:Expression)) & ' ' & clip(left(sReturnValue)) & ' '
-             clear(ClipboardContents)
-             setclipboard('')
-           .
-         .
-       of 'Date'
-         sReturnValue = ValueWindow('@d2')
-         if len(clip(left(sReturnValue))) > 0
-           if FunctionFlag > 0
-             FunctionFlag -= 1
-             setclipboard(' ''' & clip(left(sReturnValue)) & ''' ')
-           else
-             loc:Expression = clip(left(loc:Expression)) & ' ''' & clip(left(sReturnValue)) & ''' '
-             clear(ClipboardContents)
-             setclipboard('')
-           .
-         .
-       of 'Time'
-         sReturnValue = ValueWindow('@t3')
-         if len(clip(left(sReturnValue))) > 0
-           if FunctionFlag > 0
-             FunctionFlag -= 1
-             setclipboard(' ''' & clip(left(sReturnValue)) & ''' ')
-           else
-             loc:Expression = clip(left(loc:Expression)) & ' ''' & clip(left(sReturnValue)) & ''' '
-             clear(ClipboardContents)
-             setclipboard('')
-           .
-         .
-    .
- exit  !** Check EXIT allowed here **
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-FunctionCase            routine
-    if FunctionFlag = false
-      loc:Expression = clip(left(loc:Expression)) & ' ' & clip(left(ChoiceDisplayString)) & ' '
-      clear(ClipboardContents)
-      setclipboard('')
-    else
-      setclipboard(' ' & clip(left(ChoiceDisplayString)) & ' ')
-      FunctionFlag -= 1
-    .
-    case clip(left(ChoiceDisplayString))
-          of'ABS(  )'
-            FunctionFlag += 1
-          of'AGE(  ,  )'
-            FunctionFlag += 2
-          of'ALL(  )'
-            FunctionFlag += 1
-          of'BAND(  ,  )'
-            FunctionFlag += 2
-          of'BEGINSWITH(  ,  )'
-            FunctionFlag += 2
-          of'BOR(  ,  )'
-            FunctionFlag += 2
-          of'BSHIFT(  ,  )'
-            FunctionFlag += 2
-          of'BXOR(  ,  )'
-            FunctionFlag += 2
-          of'CENTER(  )'
-            FunctionFlag += 1
-          of'CHR(  )'
-            FunctionFlag += 1
-          of'CLIP(  )'
-            FunctionFlag += 1
-          of'CLOCK()'
-            FunctionFlag += 1
-          of'CONTAINS(  ,  )'
-            FunctionFlag += 2
-          of'DATE(  ,  ,  )'
-            FunctionFlag += 3
-          of'DAY(  )'
-            FunctionFlag += 1
-          of'DEFORMAT(  )'
-            FunctionFlag += 1
-          of'ENDSWITH(  ,  )'
-            FunctionFlag += 2
-          of'FORMAT(  ,  )'
-            FunctionFlag += 2
-          of'INRANGE(  ,  ,  )'
-            FunctionFlag += 3
-          of'INSTRING(  ,  )'
-            FunctionFlag += 2
-          of'INT(  )'
-            FunctionFlag += 1
-          of'LEFT(  )'
-            FunctionFlag += 1
-          of'LEN(  )'
-            FunctionFlag += 1
-          of'LOG10(  )'
-            FunctionFlag += 1
-          of'LOGE(  )'
-            FunctionFlag += 1
-          of'LOWER(  )'
-            FunctionFlag += 1
-          of'MONTH(  )'
-            FunctionFlag += 1
-          of'NUMERIC(  )'
-            FunctionFlag += 1
-          of'RANDOM(  ,  )'
-            FunctionFlag += 2
-          of'RIGHT(  )'
-            FunctionFlag += 1
-          of'ROUND(  ,  )'
-            FunctionFlag += 2
-          of'SQRT(  )'
-            FunctionFlag += 1
-          of'SUB(  ,  ,  )'
-            FunctionFlag += 3
-          of'TODAY()'
-            FunctionFlag += 1
-          of'UPPER(  )'
-            FunctionFlag += 1
-          of'VAL(  )'
-            FunctionFlag += 1
-          of'YEAR(  )'
-            FunctionFlag += 1
-    .
- exit  !** Check EXIT allowed here **
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-SetupButton             routine
- ?check{prop:fontName} = 'MS Sans Serif'
- ?Check{prop:fontsize} = 8
- ?Check{prop:fontcolor} = color:black
- ?Check{prop:fontstyle} = font:regular
- ?Check{prop:icon} = ' '
- !FunctionFlag = false
- setclipboard('')
- clear(ClipboardContents)
- display(loc:expression)
- exit  !** Check EXIT allowed here **
-[END]
-EMBED %WindowManagerMethodCodeSection
-[INSTANCES]
-WHEN 'Init'
-[INSTANCES]
-WHEN '(),BYTE'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 9500
-PROPERTY:END
-if records( loc:VarQueue ) then
-  QueuePointer = 1
-  QueueTop = records( loc:VarQueue )
-  loop
-     get( loc:VarQueue, QueuePointer )
-     loc:PassedTable = upper( loc:PassedTable )
-     PassedBindFile( loc:PassedTable )
-     QueuePointer += 1
-     if QueuePointer > QueueTop then
-        break
-     .
-  .
-.
-bind(BoundGroup)
-loc:Expression = ReturnedExpression
-?ChoiceTypes{prop:iconlist,1} = '~Foldcomp.ico'
-?ChoiceTypes{prop:iconlist,2} = '~FoldNeed.ico'
-?ChoiceTypes{prop:iconlist,3} = '~FoldOpen.ico'
-?ChoiceTypes{prop:iconlist,4} = '~Folder.ico'
-FunctionString = 'ABS(  )'
-add(FunctionQueue)
-FunctionString = 'AGE(  ,  )'
-add(FunctionQueue)
-FunctionString = 'ALL(  )'
-add(FunctionQueue)
-FunctionString = 'BAND(  ,  )'
-add(FunctionQueue)
-FunctionString = 'BEGINSWITH(  ,  )'
-add(FunctionQueue)
-FunctionString = 'BOR(  ,  )'
-add(FunctionQueue)
-FunctionString = 'BSHIFT(  ,  )'
-add(FunctionQueue)
-FunctionString = 'BXOR(  ,  )'
-add(FunctionQueue)
-FunctionString = 'CENTER(  )'
-add(FunctionQueue)
-FunctionString = 'CHR(  )'
-add(FunctionQueue)
-FunctionString = 'CLIP(  )'
-add(FunctionQueue)
-FunctionString = 'CLOCK()'
-add(FunctionQueue)
-FunctionString = 'CONTAINS(  ,  )'
-add(FunctionQueue)
-FunctionString = 'DATE(  ,  ,  )'
-add(FunctionQueue)
-FunctionString = 'DAY(  )'
-add(FunctionQueue)
-FunctionString = 'DEFORMAT(  )'
-add(FunctionQueue)
-FunctionString = 'ENDSWITH(  ,  )'
-add(FunctionQueue)
-FunctionString = 'FORMAT(  ,  )'
-add(FunctionQueue)
-FunctionString = 'INRANGE(  ,  ,  )'
-add(FunctionQueue)
-FunctionString = 'INSTRING(  ,  )'
-add(FunctionQueue)
-FunctionString = 'INT(  )'
-add(FunctionQueue)
-FunctionString = 'LEFT(  )'
-add(FunctionQueue)
-FunctionString = 'LEN(  )'
-add(FunctionQueue)
-FunctionString = 'LOG10(  )'
-add(FunctionQueue)
-FunctionString = 'LOGE(  )'
-add(FunctionQueue)
-FunctionString = 'LOWER(  )'
-add(FunctionQueue)
-FunctionString = 'MONTH(  )'
-add(FunctionQueue)
-FunctionString = 'NUMERIC(  )'
-add(FunctionQueue)
-FunctionString = 'RANDOM(  ,  )'
-add(FunctionQueue)
-FunctionString = 'RIGHT(  )'
-add(FunctionQueue)
-FunctionString = 'ROUND(  ,  )'
-add(FunctionQueue)
-FunctionString = 'SQRT(  )'
-add(FunctionQueue)
-FunctionString = 'SUB(  ,  ,  )'
-add(FunctionQueue)
-FunctionString = 'TODAY()'
-add(FunctionQueue)
-FunctionString = 'UPPER(  )'
-add(FunctionQueue)
-FunctionString = 'VAL(  )'
-add(FunctionQueue)
-FunctionString = 'YEAR(  )'
-add(FunctionQueue)
-ConstantChoiceString = 'Text'
-add(ConstantChoiceQueue)
-ConstantChoiceString = 'Number'
-add(ConstantChoiceQueue)
-ConstantChoiceString = 'Time'
-add(ConstantChoiceQueue)
-ConstantChoiceString = 'Date'
-add(ConstantChoiceQueue)
-do Fillqueues
-disable(?Ok)
-[END]
-[END]
-[END]
-EMBED %ControlOtherEventHandling
-[INSTANCES]
-WHEN '?loc:Expression'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- case event()
-   of std:paste
-     if FunctionFlag = false
-       clear(ClipboardContents)
-       setclipboard('')
-     .
- .
-[END]
-WHEN '?ChoiceList'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- case event()
-   of event:AlertKey
-     get(ChoiceQueue ,choice(?ChoiceList))
-     if clip(left(PRSdisplay:PRSDisplayString)) = 'Constants'
-        do DataCase
-     elsif clip(left(PRSdisplay:PRSDisplayString)) = 'System Functions'
-        do FunctionCase
-     else
-        if FunctionFlag = 0
-          loc:Expression = clip(left(loc:Expression)) & ' ' & clip(left(ChoiceDisplayString)) & ' '
-          setclipboard('')
-        else
-          setclipboard(' ' & clip(left(ChoiceDisplayString)) & ' ')
-          FunctionFlag -= 1
-        .
-     .
- .
- if clipboard()
-   ClipboardContents = 'Please paste (Ctrl V) into its parameter location: ' & clip(left(clipboard()))
- else
-   clear(ClipboardContents)
- .
- display()
-[END]
-[END]
-EMBED %ControlPostEventHandling
-[INSTANCES]
-WHEN '?Check'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- bnd:BoundExpression = Loc:Expression
- MarkedFound = evaluate(bnd:BoundExpression)
- if not errorcode()
-   ?Check{prop:icon} = '~ok.ico'
-   enable(?Ok)
- else
-   ?Check{prop:icon} = '~Cancel.ico'
-   disable( ?Ok )
- .
- if FunctionFlag = false
-    clear(ClipboardContents)
-    setclipboard('')
- .
-[END]
-[END]
-WHEN '?ChoiceTypes'
-[INSTANCES]
-WHEN 'NewSelection'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- free(ChoiceQueue)
- get(ChoiceTypeQueue, choice(?ChoiceTypes))
- case clip(left(PRSdisplay:PRSDisplayString))
-   of 'Constants'
-     QueuePointer = 1
-     QueueTop = records(ConstantChoiceQueue)
-     loop
-       get(ConstantChoiceQueue, QueuePointer)
-       ChoiceDisplayString = ConstantChoiceString
-       add(ChoiceQueue)
-       QueuePointer += 1
-       if QueuePointer > Queuetop
-         break
-       .
-     .
-     ?InsertValue{prop:text} = 'Insert Constant'
-   of 'System Functions'
-     QueuePointer = 1
-     QueueTop = records(FunctionQueue)
-     loop
-       get(FunctionQueue, QueuePointer)
-       ChoiceDisplayString = FunctionString
-       add(ChoiceQueue)
-       QueuePointer += 1
-       if QueuePointer > Queuetop
-         break
-       .
-     .
-     ?InsertValue{prop:text} = 'Insert Function'
-   else
-     if PRSdisplay:PRSTreeLevel = -2
-       QueuePointer = 1
-       QueueTop = records(FieldChoiceQueue)
-       loop
-         get(FieldChoiceQueue, QueuePointer)
-         if clip(left(FTableChoice)) = clip(left(PRSdisplay:PRSDisplayString))
-           ChoiceDisplayString = FieldChoice
-           add(ChoiceQueue)
-         .
-         QueuePointer += 1
-         if QueuePointer > Queuetop
-           break
-         .
-       .
-     .
- .
- ?Check{prop:icon} = ' '
- ?check{prop:fontName} = 'MS Sans Serif'
- ?Check{prop:fontsize} = 8
- ?Check{prop:fontcolor} = color:black
- ?Check{prop:fontstyle} = font:regular
- display(?ChoiceList)
-[END]
-WHEN 'ScrollUp'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-            if choice( ?ChoiceTypes ) <> 1
-                select( ?ChoiceTypes, choice( ?ChoiceTypes ) - 1 )
-            .
-[END]
-WHEN 'ScrollDown'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-             if choice( ?ChoiceTypes ) < records( ChoiceTypeQueue )
-               select( ?ChoiceTypes, choice( ?ChoiceTypes ) + 1 )
-             .
-[END]
-WHEN 'PageUp'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-            if choice( ?ChoiceTypes ) > ?ChoiceTypes{PROP:Items}
-              select( ?ChoiceTypes, choice( ?ChoiceTypes ) - ?ChoiceTypes{PROP:Items} )
-            else
-              select( ?ChoiceTypes, 1 )
-            .
-[END]
-WHEN 'PageDown'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-             if choice( ?ChoiceTypes ) < ?ChoiceTypes{PROP:Items}
-                if choice( ?ChoiceTypes ) + ?ChoiceTypes{PROP:Items} < records( ChoiceTypeQueue )
-                    select( ?ChoiceTypes, choice( ?ChoiceTypes ) + ?ChoiceTypes{PROP:Items} )
-                else
-                    select( ?ChoiceTypes, records( ChoiceTypeQueue ) )
-                .
-             else
-                select( ?ChoiceTypes, records( ChoiceTypeQueue ) )
-             .
-[END]
-WHEN 'ScrollTop'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-            select( ?ChoiceTypes, 1 )
-[END]
-WHEN 'ScrollBottom'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-            select( ?ChoiceTypes, records( ChoiceTypeQueue ) )
-[END]
-WHEN 'Expanded'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- get(ChoiceTypeQueue, choice(?ChoiceTypes))
- if PRSdisplay:PRSItemType = 'A'
-   if PRSdisplay:PRSTreeLevel < 1
-     PRSdisplay:PRSTreeLevel = abs(PRSDisplay:PRSTreeLevel)
-     PRSdisplay:PRSIconLong = 3
-     put(ChoiceTypeQueue)
-   .
- .
- sort(ChoiceTypeQueue,  +PRSdisplay:PRSGroupNumber, +PRSdisplay:PRSItemType,)
- ThisWindow.ForcedReset = true
- ThisWindow.Reset
-[END]
-WHEN 'Contracted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- get(ChoiceTypeQueue, choice(?ChoiceTypes))
- if PRSdisplay:PRSItemType = 'A'
-   if PRSdisplay:PRSTreeLevel > -1
-     PRSdisplay:PRSTreeLevel = abs(prsdisplay:prstreelevel) * -1
-     PRSdisplay:PRSIconLong = 1
-     put(ChoiceTypeQueue)
-     HoldPRSGroupNumber = PRSdisplay:PRSGroupNumber
-     QueuePointer = 1
-     QueueTop = records(ChoiceTypeQueue)
-     loop
-       get(ChoiceTypeQueue, QueuePointer)
-       if PRSdisplay:PRSItemType = 'B' and PRSdisplay:PRSGroupNumber = HoldPRSGroupNumber
-         delete(ChoiceTypeQueue)
-         QueueTop -= 1
-       else
-         QueuePointer += 1
-       .
-       if QueuePointer > QueueTop
-         break
-       .
-     .
-   .
- .
- sort(ChoiceTypeQueue,  +PRSdisplay:PRSGroupNumber, +PRSdisplay:PRSItemType,)
- sort(PROQueue,  +PROGroupNumber, +PROItemType)
-!do GreenCheck
- ThisWindow.ForcedReset = true
- ThisWindow.Reset
-[END]
-WHEN 'Selected'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- ?check{prop:fontName} = 'MS Sans Serif'
- ?Check{prop:fontsize} = 8
- ?Check{prop:fontcolor} = color:black
- ?Check{prop:fontstyle} = font:regular
- ?Check{prop:icon} = ' '
- disable(?Ok)
- display()
-[END]
-[END]
-WHEN '?ChoiceList'
-[INSTANCES]
-WHEN 'ScrollUp'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-            if choice( ?ChoiceList ) <> 1
-                select( ?ChoiceList, choice( ?ChoiceList ) - 1 )
-            .
-[END]
-WHEN 'ScrollDown'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-             if choice( ?ChoiceList ) < records( ChoiceQueue )
-               select( ?ChoiceList, choice( ?ChoiceList ) + 1 )
-             .
-[END]
-WHEN 'PageUp'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-            if choice( ?ChoiceList ) > ?ChoiceList{PROP:Items}
-              select( ?ChoiceList, choice( ?ChoiceList ) - ?ChoiceList{PROP:Items} )
-            else
-              select( ?ChoiceList, 1 )
-            .
-[END]
-WHEN 'PageDown'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-             if choice( ?ChoiceList ) < ?ChoiceList{PROP:Items}
-                if choice( ?ChoiceList ) + ?ChoiceList{PROP:Items} < records( ChoiceQueue )
-                    select( ?ChoiceList, choice( ?ChoiceList ) + ?ChoiceList{PROP:Items} )
-                else
-                    select( ?ChoiceList, records( ChoiceQueue ) )
-                .
-             else
-                select( ?ChoiceList, records( ChoiceQueue ) )
-             .
-[END]
-WHEN 'ScrollTop'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-            select( ?ChoiceList, 1 )
-[END]
-WHEN 'ScrollBottom'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-            select( ?ChoiceList, records( ChoiceQueue ) )
-[END]
-WHEN 'Selected'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- ?check{prop:fontName} = 'MS Sans Serif'
- ?Check{prop:fontsize} = 8
- ?Check{prop:fontcolor} = color:black
- ?Check{prop:fontstyle} = font:regular
- ?Check{prop:icon} = ' '
- disable(?Ok)
- display()
-[END]
-[END]
-WHEN '?InsertValue'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- get(ChoiceQueue , choice(?ChoiceList))
- if clip(left(PRSdisplay:PRSDisplayString)) = 'Constants'
-    do DataCase
- elsif clip(left(PRSdisplay:PRSDisplayString)) = 'System Functions'
-    do FunctionCase
- else
-    if FunctionFlag = 0
-      loc:Expression = clip(left(loc:Expression)) & ' ' & clip(left(ChoiceDisplayString)) & ' '
-      setclipboard('')
-    else
-      setclipboard(' ' & clip(left(ChoiceDisplayString)) & ' ')
-      FunctionFlag -= 1
-    .
- .
- if clipboard()
-   ClipboardContents = 'Please paste (Ctrl V) into its parameter location: ' & clip(left(clipboard()))
- else
-   clear(ClipboardContents)
- .
- ?Check{prop:icon} = ' '
- ?check{prop:fontName} = 'MS Sans Serif'
- ?Check{prop:fontsize} = 8
- ?Check{prop:fontcolor} = color:black
- ?Check{prop:fontstyle} = font:regular
- display(loc:Expression)
-[END]
-[END]
-WHEN '?Addition'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' + '
- do SetupButton
-[END]
-[END]
-WHEN '?Subtract'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' - '
- do SetupButton
-[END]
-[END]
-WHEN '?Multiplication'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' * '
- do SetupButton
-[END]
-[END]
-WHEN '?Division'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' / '
- do SetupButton
-[END]
-[END]
-WHEN '?Modulus'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' % '
- do SetupButton
-[END]
-[END]
-WHEN '?Concantenation'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' & '
- do SetupButton
-[END]
-[END]
-WHEN '?Exponent'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' ^ '
- do SetupButton
-[END]
-[END]
-WHEN '?ArrayIndex'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' [ ] '
- do SetupButton
-[END]
-[END]
-WHEN '?Equal'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' = '
- do SetupButton
-[END]
-[END]
-WHEN '?LessThan'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' << '
- do SetupButton
-[END]
-[END]
-WHEN '?GreaterThan'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' >> '
- do SetupButton
-[END]
-[END]
-WHEN '?NotEqual'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' <<> '
- do SetupButton
-[END]
-[END]
-WHEN '?GreaterOrEqual'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' >= '
- do SetupButton
-[END]
-[END]
-WHEN '?LesserOrEqual'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' <<= '
- do SetupButton
-[END]
-[END]
-WHEN '?LogicalAND'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' and '
- do SetupButton
-[END]
-[END]
-WHEN '?LogicalNOT'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' not '
- do SetupButton
-[END]
-[END]
-WHEN '?LogicalOR'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- loc:Expression = clip(left(loc:Expression)) & ' or '
- do SetupButton
-[END]
-[END]
-WHEN '?Clear'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- ?check{prop:fontName} = 'MS Sans Serif'
- ?Check{prop:fontsize} = 8
- ?Check{prop:fontcolor} = color:black
- ?Check{prop:fontstyle} = font:regular
- ?Check{prop:icon} = ' '
- clear(ReturnedExpression)
- clear(LOC:Expression)
- clear(ClipboardContents)
- disable(?Ok)
- display()
-[END]
-[END]
-WHEN '?OK'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- ThisWindow.Response = RequestCompleted
- ReturnedExpression = Loc:Expression
- do CloseRoutine
- post(event:closewindow)
-[END]
-[END]
-WHEN '?Cancel'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- post(event:CloseWindow)
-[END]
-[END]
-[END]
-EMBED %DataSectionBeforeWindow
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-QueuePointer        long
-QueueTop            long
-QueuePointer2       long
-QueueTop2           long
-PROQueue          QUEUE,PRE()
-ProDisplayString     STRING(256)
-PROPRL_SysID         LONG
-PROItemType          STRING(1)
-PROGroupNumber       LONG
-PROLockType          string(1)
-                  END
-Loc:GroupNumber              long
-QueueRecordsWhacked          short
-HoldGroupNumber              long
-TableRecordFound             byte
-GroupCounter                 long
-HoldPRSGroupNumber           long
-MarkedFound                  byte
-sReturnValue                  string(255)
-TableHolder                  string(20)
-BoundGroup        GROUP,pre(bnd),BINDABLE                         !Bindable group
-BoundExpression            STRING(255)    !Dynamic name: FILE
-                        END
-FunctionFlag            byte
-[END]
-EMBED %EndOfProcedure
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- free(ChoiceTypeQueue)
- free(FunctionQueue)
- free(ConstantChoiceQueue)
- free(ChoiceQueue)
- free(PROQueue)
- if records( loc:VarQueue ) then
-    QueuePointer = 1
-    QueueTop = records( loc:VarQueue )
-    loop
-       get( loc:VarQueue, QueuePointer )
-       PassedUnBindFile( loc:PassedTable )
-       QueuePointer += 1
-       if QueuePointer > QueueTop then
-          break
-       .
-    .
- .
-[END]
 EMBED %DataSection
 [DEFINITION]
 [SOURCE]
 PROPERTY:BEGIN
-PRIORITY 90
-PROPERTY:END
-!region Notices
-! ================================================================================ 
-! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
-!EndRegion Notices
-[END]
-[END]
-[CALLS]
-ValueWindow
-[WINDOW]
-window  WINDOW('Expression Generator'),AT(,,335,210),FONT('MS Sans Serif',8,COLOR:Black,FONT:regular), |
-          DOUBLE,CENTER,GRAY,IMM,MASK,HLP('Browse Protocol Locking Configuration File'),SYSTEM
-          STRING(@s255),AT(44,2,270,9),USE(ClipboardContents),#ORIG(?String1)
-          SHEET,AT(4,2,328,186),USE(?Sheet1),#ORIG(?Sheet1)
-            TAB('General'),USE(?Tab1),#ORIG(?Tab1)
-            END
-          END
-          GROUP,AT(8,20,269,33),USE(?Group2),BOXED,#ORIG(?Group2)
-            TEXT,AT(13,26,260,24),USE(loc:Expression),VSCROLL,BOXED,#ORIG(loc:Expression)
-          END
-          BUTTON('&Check'),AT(280,24,48,14),USE(?Check),LEFT,ICON('OK.ICO'),#ORIG(?Button4)
-          LIST,AT(80,57,108,122),USE(?ChoiceTypes),HVSCROLL,FORMAT('102L(2)IT(B)@s50@?'),FROM(ChoiceTypeQueue), |
-            #FIELDS(PRSdisplay:PRSDisplayString),#ORIG(?List2)
-          LIST,AT(196,57,79,122),USE(?ChoiceList),HVSCROLL,ALRT(MouseLeft2),FORMAT('80L(2)@s20@'), |
-            FROM(ChoiceQueue),#FIELDS(ChoiceDisplayString),#ORIG(?List2)
-          BUTTON('Insert Constant'),AT(15,58,52,14),USE(?InsertValue),#ORIG(?Button5)
-          GROUP,AT(9,71,68,109),USE(?Group1),BOXED,#ORIG(?Group1)
-            BUTTON('+'),AT(13,78,14,14),USE(?Addition),#ORIG(?Button6)
-            BUTTON('-'),AT(29,78,14,14),USE(?Subtract),#ORIG(?Button7)
-            BUTTON('*'),AT(45,78,14,14),USE(?Multiplication),#ORIG(?Button8)
-            BUTTON('/'),AT(61,78,14,14),USE(?Division),#ORIG(?Button9)
-            BUTTON('%'),AT(13,93,14,14),USE(?Modulus),#ORIG(?Button10)
-            BUTTON('&&'),AT(29,93,14,14),USE(?Concantenation),#ORIG(?Button11)
-            BUTTON('^'),AT(45,93,14,14),USE(?Exponent),#ORIG(?Button12)
-            BUTTON('[.]'),AT(61,93,14,14),USE(?ArrayIndex),#ORIG(?Button13)
-            BUTTON('='),AT(13,109,14,14),USE(?Equal),#ORIG(?Button14)
-            BUTTON('<<'),AT(29,109,14,14),USE(?LessThan),#ORIG(?Button15)
-            BUTTON('>'),AT(45,109,14,14),USE(?GreaterThan),#ORIG(?Button16)
-            BUTTON('<<>'),AT(61,109,14,14),USE(?NotEqual),#ORIG(?Button17)
-            BUTTON('>='),AT(13,126,14,14),USE(?GreaterOrEqual),#ORIG(?Button18)
-            BUTTON('<<='),AT(29,126,14,14),USE(?LesserOrEqual),#ORIG(?Button19)
-            BUTTON('&And'),AT(45,126,28,14),USE(?LogicalAND),#ORIG(?Button20)
-            BUTTON('&Not'),AT(13,143,30,14),USE(?LogicalNOT),#ORIG(?Button22)
-            BUTTON('O&r'),AT(45,143,30,14),USE(?LogicalOR),#ORIG(?Button23)
-            BUTTON('Clear'),AT(17,162,48,14),USE(?Clear),#ORIG(?Button24)
-          END
-          BUTTON('  &OK'),AT(181,192,48,14),USE(?OK),LEFT,ICON('OK.ICO'),#ORIG(?Button2)
-          BUTTON('Cancel'),AT(233,192,48,14),USE(?Cancel),LEFT,ICON('CANCEL.ICO'),#ORIG(?Button8)
-          BUTTON('&Help'),AT(284,192,48,14),USE(?Help),LEFT,ICON('HELP.ICO'),STD(STD:Help), |
-            #ORIG(?Button3)
-        END
-
-[PROCEDURE]
-NAME ValueWindow
-PROTOTYPE '(STRING PictureString),STRING'
-PARAMETERS '(STRING PictureString) !,STRING'
-[COMMON]
-DESCRIPTION 'Expression Builder Value Entry Window'
-FROM ABC Window
-MODIFIED '2017/06/09' '22:18:52'
-[DATA]
-[SCREENCONTROLS]
-! PROMPT('LocalRequest:'),USE(?LocalRequest:Prompt)
-! ENTRY(@n-14),USE(LocalRequest)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(LocalRequest)
-LocalRequest             LONG
-!!> GUID('a8a14325-90b4-43f6-9f99-a924c182c3b3'),PROMPT('LocalRequest:'),HEADER('LocalRequest'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
-! ENTRY(@n3),USE(FilesOpened)
-[REPORTCONTROLS]
-! STRING(@n3),USE(FilesOpened)
-FilesOpened              BYTE
-!!> GUID('d5de3a36-0c97-44f2-a24e-f29518f65d23'),PROMPT('FilesOpened:'),HEADER('FilesOpened'),PICTURE(@n3)
-[SCREENCONTROLS]
-! PROMPT('NewThread:'),USE(?NewThread:Prompt)
-! ENTRY(@n-14),USE(NewThread)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(NewThread)
-NewThread                LONG,AUTO
-!!> GUID('5b2c728e-b0b8-449a-afa4-2c21603d239d'),PROMPT('NewThread:'),HEADER('NewThread'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('ThreadCount:'),USE(?ThreadCount:Prompt)
-! ENTRY(@n-14),USE(ThreadCount)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(ThreadCount)
-ThreadCount              LONG,AUTO
-!!> GUID('c2455580-5f7e-4254-bb5f-0dc2aca0cc93'),PROMPT('ThreadCount:'),HEADER('ThreadCount'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Record:'),USE(?loc:tq:Record:Prompt)
-! ENTRY(@s255),USE(loc:tq:Record)
-[REPORTCONTROLS]
-! STRING(@s255),USE(loc:tq:Record)
-loc:tq:Record            GROUP,PRE()
-!!> GUID('931a4a4d-e5d4-4602-952a-b237ff75af41'),PROMPT('loc:tq:Record:'),HEADER('loc:tq:Record'),PICTURE(@s255)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Number:'),USE(?loc:tq:Number:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Number)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Number)
-loc:tq:Number              LONG !thread number         (returned by START)
-!!> GUID('221f8de8-e92e-4eab-a9fa-de5452023962'),INITIAL('0'),PROMPT('loc:tq:Number:'),HEADER('loc:tq:Number'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Name:'),USE(?loc:tq:Name:Prompt)
-! ENTRY(@s30),USE(loc:tq:Name)
-[REPORTCONTROLS]
-! STRING(@s30),USE(loc:tq:Name)
-loc:tq:Name                STRING(30) !procedure name        (e.g., MasterList)
-!!> GUID('1a58b417-e7dd-4876-b818-0db1f479acfa'),PROMPT('loc:tq:Name:'),HEADER('loc:tq:Name'),PICTURE(@s30)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Instance:'),USE(?loc:tq:Instance:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Instance)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Instance)
-loc:tq:Instance            LONG !procedure instance
-!!> GUID('1ee2ac6e-a244-42ad-bc94-9a56f9baf847'),INITIAL('0'),PROMPT('loc:tq:Instance:'),HEADER('loc:tq:Instance'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:MaxInstance:'),USE(?loc:tq:MaxInstance:Prompt)
-! ENTRY(@n-14),USE(loc:tq:MaxInstance)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:MaxInstance)
-loc:tq:MaxInstance         LONG !maximum procedure instance
-!!> GUID('78aa8a0e-e003-4380-ae57-847f21c65e47'),INITIAL('0'),PROMPT('loc:tq:MaxInstance:'),HEADER('loc:tq:MaxInstance'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Param1:'),USE(?loc:tq:Param1:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Param1)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Param1)
-loc:tq:Param1              LONG !foreign key 1
-!!> GUID('dd22e589-7233-4004-8644-e557f868389f'),INITIAL('0'),PROMPT('loc:tq:Param1:'),HEADER('loc:tq:Param1'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Param2:'),USE(?loc:tq:Param2:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Param2)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Param2)
-loc:tq:Param2              LONG !foreign key 2
-!!> GUID('1ac78a81-9f73-47c4-ac5f-d3e76eb9d32e'),INITIAL('0'),PROMPT('loc:tq:Param2:'),HEADER('loc:tq:Param2'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Param3:'),USE(?loc:tq:Param3:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Param3)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Param3)
-loc:tq:Param3              LONG !foreign key 3
-!!> GUID('d8b71ff3-a36d-44d5-b4e4-a0039e1e5fed'),INITIAL('0'),PROMPT('loc:tq:Param3:'),HEADER('loc:tq:Param3'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Param4:'),USE(?loc:tq:Param4:Prompt)
-! ENTRY(@n-14),USE(loc:tq:Param4)
-[REPORTCONTROLS]
-! STRING(@n-14),USE(loc:tq:Param4)
-loc:tq:Param4              LONG !foreign key 4
-!!> GUID('16700948-382e-434b-8666-1a6ffe9c647e'),INITIAL('0'),PROMPT('loc:tq:Param4:'),HEADER('loc:tq:Param4'),PICTURE(@n-14)
-[SCREENCONTROLS]
-! PROMPT('loc:tq:Buffer:'),USE(?loc:tq:Buffer:Prompt)
-! TEXT,USE(loc:tq:Buffer),BOXED
-[REPORTCONTROLS]
-! TEXT,USE(loc:tq:Buffer),BOXED
-loc:tq:Buffer              STRING(256) !data buffer
-!!> GUID('770a6407-db86-408a-bc8f-d1be812a1735'),PROMPT('loc:tq:Buffer:'),HEADER('loc:tq:Buffer'),PICTURE(@s255)
-                         END
-!!> GUID('18564c36-dddd-4a7c-b09a-7bcc8ca084c6')
-[SCREENCONTROLS]
-! PROMPT('hWnd:'),USE(?hWnd:Prompt)
-! ENTRY(@n6),USE(hWnd)
-[REPORTCONTROLS]
-! STRING(@n6),USE(hWnd)
-hWnd                     USHORT,AUTO
-!!> GUID('5b3ff708-faeb-48bc-8eb6-79a8aae42cf9'),PROMPT('hWnd:'),HEADER('hWnd'),PICTURE(@n6)
-[SCREENCONTROLS]
-! PROMPT('Return String Value:'),USE(?ReturnStringValue:Prompt)
-! ENTRY(@s255),USE(ReturnStringValue),MSG('Return String Value')
-[REPORTCONTROLS]
-! STRING(@s255),USE(ReturnStringValue)
-ReturnStringValue        STRING(255) !Return String Value
-!!> GUID('d13b0d13-dcf4-4a65-9e32-0b3126645805'),PROMPT('Return String Value:'),HEADER('Return String Value'),MESSAGE('Return String Value'),PICTURE(@s255)
-[SCREENCONTROLS]
-! PROMPT('Return String Value:'),USE(?LocalString:Prompt)
-! ENTRY(@s255),USE(LocalString),MSG('Return String Value')
-[REPORTCONTROLS]
-! STRING(@s255),USE(LocalString)
-LocalString              STRING(255) !Return String Value
-!!> GUID('5a164242-478f-4138-b069-b34deae09b0e'),PROMPT('Return String Value:'),HEADER('Return String Value'),MESSAGE('Return String Value'),PICTURE(@s255)
-[SCREENCONTROLS]
-! PROMPT('Return String Value:'),USE(?LocalDate:Prompt)
-! ENTRY(@s255),USE(LocalDate),MSG('Return String Value')
-[REPORTCONTROLS]
-! STRING(@s255),USE(LocalDate)
-LocalDate                STRING(255) !Return String Value
-!!> GUID('eb740ff0-b8ec-4f7b-af6f-86387bea18be'),PROMPT('Return String Value:'),HEADER('Return String Value'),MESSAGE('Return String Value'),PICTURE(@s255)
-[SCREENCONTROLS]
-! PROMPT('Return String Value:'),USE(?LocalTime:Prompt)
-! ENTRY(@s7),USE(LocalTime),MSG('Return String Value'),INS
-[REPORTCONTROLS]
-! STRING(@s7),USE(LocalTime)
-LocalTime                STRING(7) !Return String Value
-!!> GUID('3cbd3904-9a37-4486-aabc-db5e35008b34'),PROMPT('Return String Value:'),HEADER('Return String Value'),MESSAGE('Return String Value'),PICTURE(@s7),TYPEMODE(INS)
-[SCREENCONTROLS]
-! PROMPT('Return Numeric Value:'),USE(?LocalNumber:Prompt)
-! ENTRY(@n-16.3),USE(LocalNumber),MSG('Return String Value')
-[REPORTCONTROLS]
-! STRING(@n-16.3),USE(LocalNumber)
-LocalNumber              DECIMAL(12,3) !Return String Value
-!!> GUID('55c895a9-2557-4116-8f4f-f2cdd2a37da1'),PROMPT('Return Numeric Value:'),HEADER('Return Numeric Value'),MESSAGE('Return String Value'),PICTURE(@n-16.3)
-[PROMPTS]
-%ReturnValue FIELD  (ReturnStringValue)
-%WindowOperationMode DEFAULT  ('Use WINDOW setting')
-%INISaveWindow LONG  (1)
-%ButtonAction DEPEND %Control DEFAULT TIMES 6
-WHEN  ('?CancelButton') ('No Special Action')
-WHEN  ('?LocalDate') ('No Special Action')
-WHEN  ('?LocalNumber') ('No Special Action')
-WHEN  ('?LocalString') ('No Special Action')
-WHEN  ('?OkButton') ('No Special Action')
-WHEN  ('?ReturnStringValue:Prompt') ('No Special Action')
-
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 6
-WHEN  ('?CancelButton') ('25000')
-WHEN  ('?LocalDate') ('25000')
-WHEN  ('?LocalNumber') ('25000')
-WHEN  ('?LocalString') ('25000')
-WHEN  ('?OkButton') ('25000')
-WHEN  ('?ReturnStringValue:Prompt') ('25000')
-
-%ThreadRestoreInstance DEPEND %Control DEFAULT TIMES 6
-WHEN  ('?CancelButton') ('First')
-WHEN  ('?LocalDate') ('First')
-WHEN  ('?LocalNumber') ('First')
-WHEN  ('?LocalString') ('First')
-WHEN  ('?OkButton') ('First')
-WHEN  ('?ReturnStringValue:Prompt') ('First')
-
-%ButtonRequest DEPEND %Control DEFAULT TIMES 6
-WHEN  ('?CancelButton') ('None')
-WHEN  ('?LocalDate') ('None')
-WHEN  ('?LocalNumber') ('None')
-WHEN  ('?LocalString') ('None')
-WHEN  ('?OkButton') ('None')
-WHEN  ('?ReturnStringValue:Prompt') ('None')
-
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 7
-WHEN  ('?CancelButton') (1)
-WHEN  ('?LocalDate') (0)
-WHEN  ('?LocalNumber') (0)
-WHEN  ('?LocalString') (0)
-WHEN  ('?LocalTime') (1)
-WHEN  ('?OkButton') (1)
-WHEN  ('?ReturnStringValue:Prompt') (1)
-
-%ButtonRunName DEPEND %Control DEFAULT TIMES 2
-WHEN  ('?CancelButton') ('')
-WHEN  ('?OkButton') ('')
-
-%ButtonRunParameters DEPEND %Control DEFAULT TIMES 2
-WHEN  ('?CancelButton') ('')
-WHEN  ('?OkButton') ('')
-
-%ButtonProcedure DEPEND %Control PROCEDURE TIMES 2
-WHEN  ('?CancelButton') ()
-WHEN  ('?OkButton') ()
-
-%ButtonThread DEPEND %Control LONG TIMES 2
-WHEN  ('?CancelButton') (0)
-WHEN  ('?OkButton') (0)
-
-%ThreadMaxInstance DEPEND %Control DEFAULT TIMES 2
-WHEN  ('?CancelButton') ('')
-WHEN  ('?OkButton') ('')
-
-%ThreadParam1 DEPEND %Control FIELD TIMES 2
-WHEN  ('?CancelButton') ()
-WHEN  ('?OkButton') ()
-
-%ThreadParam2 DEPEND %Control FIELD TIMES 2
-WHEN  ('?CancelButton') ()
-WHEN  ('?OkButton') ()
-
-%ThreadParam3 DEPEND %Control FIELD TIMES 2
-WHEN  ('?CancelButton') ()
-WHEN  ('?OkButton') ()
-
-%ThreadParam4 DEPEND %Control FIELD TIMES 2
-WHEN  ('?CancelButton') ()
-WHEN  ('?OkButton') ()
-
-%ThreadBuffer DEPEND %Control FIELD TIMES 2
-WHEN  ('?CancelButton') ()
-WHEN  ('?OkButton') ()
-
-%ButtonParameters DEPEND %Control DEFAULT TIMES 2
-WHEN  ('?CancelButton') ('')
-WHEN  ('?OkButton') ('')
-
-%PreLookupKey DEPEND %Control KEY TIMES 4
-WHEN  ('?LocalDate') ()
-WHEN  ('?LocalNumber') ()
-WHEN  ('?LocalString') ()
-WHEN  ('?LocalTime') ()
-
-%PreLookupField DEPEND %Control COMPONENT TIMES 4
-WHEN  ('?LocalDate') ()
-WHEN  ('?LocalNumber') ()
-WHEN  ('?LocalString') ()
-WHEN  ('?LocalTime') ()
-
-%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 4
-WHEN  ('?LocalDate') ()
-WHEN  ('?LocalNumber') ()
-WHEN  ('?LocalString') ()
-WHEN  ('?LocalTime') ()
-
-%PostLookupKey DEPEND %Control KEY TIMES 4
-WHEN  ('?LocalDate') ()
-WHEN  ('?LocalNumber') ()
-WHEN  ('?LocalString') ()
-WHEN  ('?LocalTime') ()
-
-%PostLookupField DEPEND %Control COMPONENT TIMES 4
-WHEN  ('?LocalDate') ()
-WHEN  ('?LocalNumber') ()
-WHEN  ('?LocalString') ()
-WHEN  ('?LocalTime') ()
-
-%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 4
-WHEN  ('?LocalDate') ()
-WHEN  ('?LocalNumber') ()
-WHEN  ('?LocalString') ()
-WHEN  ('?LocalTime') ()
-
-%PostLookupParams DEPEND %Control DEFAULT TIMES 4
-WHEN  ('?LocalDate') ('')
-WHEN  ('?LocalNumber') ('')
-WHEN  ('?LocalString') ('')
-WHEN  ('?LocalTime') ('')
-
-%ChildFile DEPEND %Control FILE TIMES 4
-WHEN  ('?LocalDate') ()
-WHEN  ('?LocalNumber') ()
-WHEN  ('?LocalString') ()
-WHEN  ('?LocalTime') ()
-
-%ForceWindowRefresh DEPEND %Control LONG TIMES 4
-WHEN  ('?LocalDate') (0)
-WHEN  ('?LocalNumber') (0)
-WHEN  ('?LocalString') (0)
-WHEN  ('?LocalTime') (0)
-
-%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
-
-%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
-
-%CheckedHides DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
-
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 1
-WHEN  ('?CancelButton')TIMES 0
-
-%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
-
-%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
-
-%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
-
-%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
-
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 1
-WHEN  ('?CancelButton')TIMES 0
-
-%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
-%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('WindowManager')
-WHEN  ('WindowToolbar') ('ToolbarClass')
-
-%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('')
-WHEN  ('WindowToolbar') ('')
-
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
-WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED')
-
-%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('ThisWindow')
-WHEN  ('WindowToolbar') ('Toolbar')
-
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (1)
-WHEN  ('WindowToolbar') (1)
-
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (1)
-WHEN  ('WindowToolbar') (1)
-
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('')
-WHEN  ('WindowToolbar') ('')
-
-%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
-
-%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
-
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (0)
-WHEN  ('WindowToolbar') (0)
-
-%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
-
-%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
-
-%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
-
-%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
-
-%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
-WHEN  ('Default')TIMES 0
-WHEN  ('WindowToolbar')TIMES 0
-
-%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
-
-%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
-
-%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
-
-%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
-
-%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
-
-%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
-WHEN  ('Default')TIMES 0
-WHEN  ('WindowToolbar')TIMES 0
-
-%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
-
-%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
-
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 1
-WHEN  ('?CancelButton')TIMES 0
-
-%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
-
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 1
-WHEN  ('?CancelButton')TIMES 0
-
-%LookupAssign DEPEND %Control MULTI LONG TIMES 0
-
-%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
-
-%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
-
-%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
-
-%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
-
-%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
-
-%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
-
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('NO')
-WHEN  ('WindowToolbar') ('NO')
-
-%ProcedureDisableEnhanceFocus LONG  (0)
-%ProcedureUseEnterInsteadTabOverride LONG  (0)
-%WindowUseEnterInsteadTab LONG  (1)
-%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
-%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
-%WindowStyles MULTI LONG  ()
-%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleOtherListboxes MULTI DEFAULT  ()
-%ProcedureAutoBindFields MULTI LONG  ()
-%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
-
-%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
-
-%ProcedureAutoBindProcedures MULTI LONG  ()
-%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
-
-%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
-
-%ProcedureUserBindFields MULTI LONG  ()
-%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
-
-%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
-
-%ProcedureUserBindProcedures MULTI LONG  ()
-%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
-
-%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
-
-%ProcedureUserBindExpressions MULTI LONG  ()
-%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
-
-%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
-
-%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
-
-%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
-
-%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
-%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
-
-%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
-%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
-
-%ProcedureAutoBindValidToAddField LONG  (0)
-%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
-%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
-%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
-
-%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
-
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
-
-%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
-
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
-
-%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
-
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
-
-%ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorTo DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
-
-%PreserveVarsLoc MULTI LONG  ()
-%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
-
-%ActiveImageEnable DEPEND %Control LONG TIMES 0
-
-%AIObjectName DEPEND %Control DEFAULT TIMES 0
-
-%AIEnableMimicControl DEPEND %Control LONG TIMES 0
-
-%AIMimicControl DEPEND %Control DEFAULT TIMES 0
-
-%AIImgRound DEPEND %Control LONG TIMES 0
-
-%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
-
-%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
-
-%AIDisableImg DEPEND %Control DEFAULT TIMES 0
-
-%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
-
-%AIHotImg DEPEND %Control DEFAULT TIMES 0
-
-%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
-
-%AIPressedImg DEPEND %Control DEFAULT TIMES 0
-
-%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
-
-[EMBED]
-EMBED %BeforeAccept
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- case upper(sub(PictureString,2,1))
-   of 'S'
-     Window{Prop:text} = 'Constant Text'
-     ?LocalString{PROP:HIDE} = FALSE
-     ?LocalNumber{PROP:HIDE} = true
-     ?LocalDate{prop:hide} = true
-     ?LocalTime{prop:hide} = true
-     select(?LocalString)
-   of 'N'
-     Window{Prop:text} = 'Constant Number'
-     ?LocalNumber{PROP:HIDE} = false
-     ?LocalString{PROP:HIDE} = true
-     ?LocalDate{prop:hide} = true
-     ?LocalTime{prop:hide} = true
-     select(?LocalNumber)
-   of 'D'
-     Window{Prop:text} = 'Constant Date'
-     LocalDate = format(today(), @d2)
-     ?LocalDate{prop:hide} = false
-     ?LocalString{PROP:HIDE} = true
-     ?LocalTime{prop:hide} = true
-     ?LocalNumber{PROP:HIDE} = true
-     select(?LocalDate)
-   of 'T'
-     Window{Prop:text} = 'Constant Time'
-     LocalTime = format(clock(),@t3)
-     ?LocalTime{prop:hide} = false
-     ?LocalNumber{PROP:HIDE} = true
-     ?LocalDate{prop:hide} = true
-     ?LocalString{PROP:HIDE} = true
-     select(?LocalTime)
- .
- display
-[END]
-EMBED %ControlPostEventHandling
-[INSTANCES]
-WHEN '?OkButton'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- case upper(sub(PictureString,2,1))
-   of 'S'
-     ReturnStringValue = LocalString
-   of 'N'
-     ReturnStringValue = LocalNumber
-   of 'D'
-     ReturnStringValue = LocalDate
-   of 'T'
-     ReturnStringValue = LocalTime
- .
- post(event:CloseWindow)
-[END]
-[END]
-WHEN '?CancelButton'
-[INSTANCES]
-WHEN 'Accepted'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- clear(ReturnStringValue)
- post(event:CloseWindow)
-[END]
-[END]
-[END]
-EMBED %DataSection
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 90
+PRIORITY 1300
 PROPERTY:END
 !region Notices
 ! ================================================================================ 
@@ -3029,44 +76,391 @@ PROPERTY:END
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
-PRIORITY 90
+PRIORITY 4000
 PROPERTY:END
-!region Notices
-! ================================================================================ 
-! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
-!EndRegion Notices
+stringSlice     cstring(21)
+intAmount       ulong   ! maximum amount of check to print is determined by ulong max val of 4,294,967,295
+DecimalDigits   short   ! for non-currency numbers on the right of the decimal point
+DecimalText     cstring(31)
+tenths          cstring(4)  ! non-currency decimal string
+hundredths      cstring(4)  ! non-currency decimal string
+Thousandths     cstring(4)  ! non-currency decimal string
+TenThousandths  cstring(4)  ! non-currency decimal string
+Cents           byte
+DollarText      cstring(31)
+CentText        cstring(31)
+DollarsAndCents decimal(19,2)
+NonCurrencyAmount decimal(19,4)
+tensTemp        cstring(4)
+unit            cstring(4)
+tens            cstring(4)
+hundreds        cstring(4)
+Thousands       cstring(4)
+TenThousands    cstring(4)
+HundredThousand cstring(4)
+Million         cstring(4)
+TenMillion      cstring(4)
+HundredMillion  cstring(4)
+Billion         cstring(4)
+TenBillion      cstring(4)
+HundredBillion  cstring(4)
+count           short
+Textlength      short
+CaseValue       cstring(3)
+ReturnedText    cstring(21)
+loc:Format      cstring(8)
+!------------------------------------------------------------------------
 [END]
-[END]
-[WINDOW]
-window  WINDOW('Caption'),AT(,,219,41),FONT('MS Sans Serif',8,COLOR:Black,FONT:regular),DOUBLE, |
-          CENTER,GRAY,MASK,MODAL,SYSTEM
-          PROMPT('&Value:'),AT(2,7,,9),USE(?ReturnStringValue:Prompt),#LINK(?LocalString), |
-            #ORIG(?ReturnStringValue:Prompt)
-          ENTRY(@s255),AT(28,7),USE(LocalString),MSG('Return String Value'),#LINK(?ReturnStringValue:Prompt), |
-            #ORIG(ReturnStringValue)
-          ENTRY(@K<#:##^MK),AT(28,6),USE(LocalTime),INS,HIDE,MSG('Return String Value'),#ORIG(LocalTime)
-          ENTRY(@K<#/<#/####K),AT(28,6),USE(LocalDate),INS,HIDE,MSG('Return String Value'), |
-            #ORIG(LocalDate)
-          ENTRY(@n-16.3),AT(28,7),USE(LocalNumber),INS,HIDE,MSG('Return String Value'),#ORIG(LocalNumber)
-          BUTTON('&OK'),AT(168,4,48,14),USE(?OkButton),DEFAULT
-          BUTTON('Cancel'),AT(168,23,48,14),USE(?CancelButton)
-        END
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ IF ~OMITTED(4)
+    loc:format = pFormat
+ ELSE
+    loc:Format = 'Alpha'
+ END
 
+ IF loc:Format = 'Numeric'
+    intAmount = 0
+    Cents = 0
+    DollarsAndCents = pAmount   ! the passed amount(a REAL) is assigned to a Decimal(13,2)
+    intAmount = DollarsAndCents ! the integer amount is assigned here
+    Cents = (DollarsAndCents-intAmount)*100  ! dollar amount is subtracted and cents assigned.
+    IF Cents = 0
+       CentText = 'NO/100'
+    ELSE
+       CentText = Cents & '/100'
+    END
+    TextAmount = FORMAT(intAmount,@N10.0)
+    TextAmount = TextAmount & clip(DollarText) & ' DOLLARS AND ' & CLIP(CentText) !'This is the Amount in Text'
+    Textlength = LEN(CLIP(LEFT(TextAmount)))
+    IF Textlength < 80
+       I# = 80 - Textlength
+       TextAmount = ALL('*',I#) & CLIP(LEFT(TextAmount))
+    END
+ ELSE
+    IF pFlag = TRUE  ! do currency
+       intAmount = 0
+       Cents = 0
+       DollarsAndCents = pAmount   ! the passed amount(a REAL) is assigned to a Decimal(13,2)
+       intAmount = DollarsAndCents ! the integer amount is assigned here
+       Cents = (DollarsAndCents-intAmount)*100  ! dollar amount is subtracted and cents assigned.
+       IF Cents = 0
+          CentText = 'NO/100'
+       ELSE
+          CentText = Cents & '/100'
+       END
+       TextAmount = intAmount
+       DO conversion
+       TextAmount = TextAmount & CLIP(DollarText) & ' AND ' & CLIP(CentText) !'This is the Amount in Text'
+    ELSE ! do non-currency
+       intAmount = 0
+       NonCurrencyAmount =  0
+       DecimalDigits = 0
+       DecimalText = ''
+       NonCurrencyAmount = pAmount ! the REAL data is cast to decimal(19,4)
+       intAmount = NonCurrencyAmount ! the integer amount is assigned here
+       DecimalText = (NonCurrencyAmount-intAmount)!*10000  ! integer amount is subtracted and decimal assigned.
+       TextAmount = intAmount
+       DO conversion
+       DO NonCurrencyDecimal
+       IF (NonCurrencyAmount-intAmount)*10000 <> 0
+          TextAmount = TextAmount & ' POINT' & CLIP(DecimalText)
+       END
+    END
+ END
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Conversion      routine
+ count = 0
+ unit = '0'
+ tens = '0'
+ hundreds = '0'
+ Thousands = '0'
+ TenThousands = '0'
+ HundredThousand = '0'
+ Million = '0'
+ TenMillion = '0'
+ HundredMillion = '0'
+ Billion = '0'
+ TenBillion = '0'
+ HundredBillion = '0'
+ Textlength = len(TextAmount)
+ loop Textlength times
+    count += 1
+    execute count
+      unit = TextAmount[Textlength]
+      tens = TextAmount[(Textlength-count)+1]
+      hundreds = TextAmount[(Textlength-count)+1]
+      Thousands = TextAmount[(Textlength-count)+1]
+      TenThousands = TextAmount[(Textlength-count)+1]
+      HundredThousand = TextAmount[(Textlength-count)+1]
+      Million = TextAmount[(Textlength-count)+1]
+      TenMillion = TextAmount[(Textlength-count)+1]
+      HundredMillion = TextAmount[(Textlength-count)+1]
+      Billion = TextAmount[(Textlength-count)+1]    ! max value is 4 plus Billion
+   !   TenBillion = TextAmount[(Textlength-count)+1]
+   !   HundredBillion = TextAmount[(Textlength-count)+1]
+    end
+ end
+ TextAmount = ''
+ if intAmount <> 0
+    Do Billions
+    Do Millions
+    Do Thousands
+    Do Hundreds
+ else
+    TextAmount = 'ZERO'
+ end
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+NonCurrencyDecimal        Routine
+ count = 0
+ Textlength = 0
+ Tenths = '0'
+ Hundredths = '0'
+ Thousandths = '0'
+ TenThousandths = '0'
+ CaseValue = ''
+ Textlength = len(clip(DecimalText))
+ Textlength -= 2
+! message('Textlength: ' & Textlength)
+ loop Textlength times  ! works left to right from the decimal
+    count += 1
+    execute count
+      Tenths = DecimalText[count+2]   ! add 2 to count in order to skip the '0.' of the number
+      Hundredths = DecimalText[count+2]
+      Thousandths = DecimalText[count+2]
+      TenThousandths = DecimalText[count+2]
+    end
+ end
+ DecimalText = ''
+ if Tenths <> '' and Textlength >= 1
+    CaseValue = clip(tenths)
+    Do TextRoutine
+    CaseValue = ''
+    DecimalText = clip(DecimalText) & ' '  & clip(ReturnedText)
+ end
+ if Hundredths <> '' and Textlength >= 2
+    CaseValue = clip(hundredths)
+    Do TextRoutine
+    CaseValue = ''
+    DecimalText = clip(DecimalText) & ' '  & clip(ReturnedText)
+ end
+ if Thousandths <> '' and Textlength >= 3
+    CaseValue = clip(Thousandths)
+    Do TextRoutine
+    CaseValue = ''
+    DecimalText = clip(DecimalText) & ' '  & clip(ReturnedText)
+ end
+ if TenThousandths <> '' and Textlength >= 4
+    CaseValue = clip(TenThousandths)
+    Do TextRoutine
+    CaseValue = ''
+    DecimalText = clip(DecimalText) & ' '  & clip(ReturnedText)
+ end
+!----------------------------------------------------------------------
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Billions        Routine
+ if HundredBillion <> '0'
+    CaseValue = clip(HundredBillion)
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText) & ' HUNDRED '
+ end
+ if TenBillion <> '0'
+    if TenBillion = '1'
+       CaseValue = clip(TenBillion) & clip(Billion)
+       Billion = '0'
+    end
+    if TenBillion <> '1' and TenBillion <> '0'
+       CaseValue = clip(TenBillion) & '0'
+    end
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText)
+ end
+ if Billion <> '0'
+    CaseValue = clip(Billion)
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText)
+ end
+! Add Billion to text
+  if HundredBillion <> '0' or TenBillion <> '0' or Billion <> '0'
+     TextAmount = clip(TextAmount) & ' BILLION '
+  end
+!------------------------------------------------------------------------
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Millions        Routine
+ if HundredMillion <> '0'
+    CaseValue = clip(HundredMillion)
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText) & ' HUNDRED '
+ end
+ if TenMillion <> '0'
+    if TenMillion = '1'
+       CaseValue = clip(TenMillion) & clip(Million)
+       Million = '0'
+    end
+    if TenMillion <> '1' and TenMillion <> '0'
+       CaseValue = clip(TenMillion) & '0'
+    end
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText)
+ end
+ if Million <> '0'
+    CaseValue = clip(Million)
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText)
+ end
+! Add million to text
+  if HundredMillion <> '0' or TenMillion <> '0' or Million <> '0'
+     TextAmount = clip(TextAmount) & ' MILLION '
+  end
+!------------------------------------------------------------------------
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Thousands        Routine
+ if HundredThousand <> '0'
+    CaseValue = clip(HundredThousand)
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText) & ' HUNDRED '
+ end
+ if TenThousands <> '0'
+    if TenThousands = '1'
+       CaseValue = clip(TenThousands) & clip(Thousands)
+       Thousands = '0'
+    end
+    if TenThousands <> '1' and TenThousands <> '0'
+       CaseValue = clip(TenThousands) & '0'
+    end
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText)
+ end
+ if Thousands <> '0'
+    CaseValue = clip(Thousands)
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText)
+ end
+! Add Thousand to text
+ if HundredThousand <> '0' or TenThousands <> '0' or Thousands <> '0'
+    TextAmount = clip(TextAmount) & ' THOUSAND '
+ end
+!-------------------------------------------------------------------------
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Hundreds        Routine
+ if hundreds <> '0'
+    CaseValue = clip(hundreds)
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText) & ' HUNDRED '
+ end
+ if tens <> '0'
+    if tens = '1'
+       CaseValue = clip(tens) & clip(unit)
+       unit = '0'.
+    if tens <> '1' and tens <> '0'
+       CaseValue = clip(tens) & '0'
+    end
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText)
+ end
+ if unit <> '0'
+    CaseValue = clip(Unit)
+    Do TextRoutine
+    CaseValue = ''
+    TextAmount = clip(TextAmount) & ' '  & clip(ReturnedText)
+ end
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+TextRoutine         Routine
+ ReturnedText = ''
+ Case CaseValue
+    of  '0'
+        ReturnedText = 'ZERO'
+    of  '1'
+        ReturnedText = 'ONE'
+    of  '2'
+        ReturnedText = 'TWO'
+    of  '3'
+        ReturnedText = 'THREE'
+    of  '4'
+        ReturnedText = 'FOUR'
+    of  '5'
+        ReturnedText = 'FIVE'
+    of  '6'
+        ReturnedText = 'SIX'
+    of  '7'
+        ReturnedText = 'SEVEN'
+    of  '8'
+        ReturnedText = 'EIGHT'
+    of  '9'
+        ReturnedText = 'NINE'
+    of  '10'
+        ReturnedText = 'TEN'
+    of  '11'
+        ReturnedText = 'ELEVEN'
+    of  '12'
+        ReturnedText = 'TWELVE'
+    of  '13'
+        ReturnedText = 'THIRTEEN'
+    of  '14'
+        ReturnedText = 'FOURTEEN'
+    of  '15'
+        ReturnedText = 'FIFTEEN'
+    of  '16'
+        ReturnedText = 'SIXTEEN'
+    of  '17'
+        ReturnedText = 'SEVENTEEN'
+    of  '18'
+        ReturnedText = 'EIGHTEEN'
+    of  '19'
+        ReturnedText = 'NINETEEN'
+    of  '20'
+        ReturnedText = 'TWENTY'
+    of  '30'
+        ReturnedText = 'THIRTY'
+    of  '40'
+        ReturnedText = 'FORTY'
+    of  '50'
+        ReturnedText = 'FIFTY'
+    of  '60'
+        ReturnedText = 'SIXTY'
+    of  '70'
+        ReturnedText = 'SEVENTY'
+    of  '80'
+        ReturnedText = 'EIGHTY'
+    of  '90'
+        ReturnedText = 'NINETY'
+ end
+[END]
+[END]
 [END]

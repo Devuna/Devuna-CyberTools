@@ -1,4 +1,4 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{4A35CAF6-0355-42F2-B180-2C28A0956CD2}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +13,6 @@
     <Model>Dll</Model>
     <stack_size>16384</stack_size>
     <CopyCore>True</CopyCore>
-    <ApplicationIcon>CyberTools.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>True</DebugSymbols>
@@ -91,9 +90,6 @@
       <Generated>true</Generated>
     </Compile>
     <Compile Include="CyberTools018.clw">
-      <Generated>true</Generated>
-    </Compile>
-    <Compile Include="CyberTools019.clw">
       <Generated>true</Generated>
     </Compile>
     <Compile Include="CYBERTOOLS_BC.CLW">

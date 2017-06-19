@@ -1,7 +1,7 @@
 [MODULE]
 [COMMON]
 FROM ABC GENERATED
-MODIFIED '2017/06/09' '22:12:56'
+MODIFIED '2017/06/09' '22:13:06'
 [EMBED]
 EMBED %StartOfModule
 [DEFINITION]
@@ -33,17 +33,40 @@ PROPERTY:END
 [END]
 [END]
 [PROCEDURE]
-NAME Word:SpellCheck
-PROTOTYPE '(*CSTRING p_TextToCheck, BYTE p_Quiet=0)'
-PARAMETERS '(*CSTRING p_TextToCheck, BYTE p_Quiet)'
+NAME srcURLHandler
+PROTOTYPE '(UNSIGNED wHandle, STRING URL),UNSIGNED,PROC'
+PARAMETERS '(UNSIGNED wHandle, STRING URL)'
 [COMMON]
-DESCRIPTION 'Spell Check using word'
 FROM ABC Source
-MODIFIED '2017/06/09' '22:59:58'
+MODIFIED '2017/06/09' '22:58:37'
 [PROMPTS]
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
 [EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+    URLBuffer = CLIP(URL)
+    EmptyString=''
+    ShellExecute(whandle, 0, URLBuffer, 0, EmptyString, 1)
+
+    GetWindowText(wHandle,szCurrentText,SIZE(szCurrentText))
+    hCurrWnd = GetWindow(wHandle,GW_HWNDFIRST)
+    LOOP WHILE hCurrWnd <> 0
+      IF GetWindowText(hCurrWnd,szWindowText,SIZE(szWindowText))
+         IF (szWindowText <> szCurrentText) AND IsWindowVisible(hCurrWnd) AND ~hTopWnd
+            hTopWnd = hCurrWnd
+            BREAK
+         END
+      END
+      hCurrWnd = GetWindow(hCurrWnd,GW_HWNDNEXT)
+    END
+
+    RETURN hTopWnd
+[END]
 EMBED %DataSection
 [DEFINITION]
 [SOURCE]
@@ -75,52 +98,14 @@ PROPERTY:END
 PROPERTY:BEGIN
 PRIORITY 3500
 PROPERTY:END
-WordOle         LONG 
-saveClipboard   &CSTRING
-[END]
-EMBED %ProcessedCode
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 5000
-PROPERTY:END
-    IF CLIP(p_TextToCheck) <> ''                                      !make sure something to check
-       WordOle = CREATE(0,CREATE:Ole)                                    !create an ole control
-       IF WordOle <> 0
-          SETCURSOR(CURSOR:WAIT)                                            !display hourglass cursor
-          WordOle{PROP:Create} = 'Word.Document'                            !in place activation of word
-          IF WordOle{PROP:Ole} = FALSE AND WordOle{PROP:Object} = ''        !if instantiation fails
-             DESTROY(WordOle)                                                  !destroy the control
-             MESSAGE('Could not locate MS Word on your computer. Request Cancelled!','Notification...', ICON:Exclamation,BUTTON:Cancel)   !message user
-          ELSE                                                              !intantiated ok
-             WordOle{'Application.Visible'} = False                            !Hide WORD From User
-             WordOle{'Application.Documents.Add'}                              !add a document
-             saveClipboard &= NEW CSTRING(LEN(CLIPBOARD())+1)                  !allocate storage to save current clipboard contents
-             saveClipboard = CLIPBOARD()                                       !save current clipboard contents
-             SETCLIPBOARD(p_TextToCheck)                                       !set the clipboard contents
-             WordOle{'Application.Selection.Paste'}                            !Paste Text Into WORD
-             WordOle{'Application.ActiveDocument.CheckGrammar'}                !Activate The Spell Checker
-             WordOle{'Application.Visible'} = False                            !Hide WORD From User
-             WordOle{'Application.ActiveDocument.Select'}                      !Select The Corrected Text
-             WordOle{'Application.Selection.Cut'}                              !Cut The Text To Clipboard
-             p_TextToCheck = CLIPBOARD()                                       !Assign Text to string
-             SETCLIPBOARD(saveClipboard)                                       !Restore clipboard contents
-             DISPOSE(saveClipboard)                                            !release storage
-             saveClipboard &= NULL                                             !clear reference
-             WordOle{'Application.ActiveDocument.Close(0)'}                    !Close & DO NOT Save Changes
-             WordOle{'Application.Quit'}                                       !Quit
-             WordOle{PROP:DeActivate}                                          !deactivate ole
-             DESTROY(WordOle)                                                  !destroy the control
-             IF ~p_Quiet                                                       !verbose mode
-                MESSAGE('The spelling and grammer check is complete','Microsoft Office Word', ICON:Exclamation,BUTTON:OK)   !message user
-             END
-          END                                                                  
-          SETCURSOR()                                                          !reset the cursor
-       ELSE
-          ASSERT(WordOle <> 0)                                           !something is wrong
-       END
-    END
-    RETURN
+GW_HWNDFIRST         EQUATE(0)
+GW_HWNDNEXT          EQUATE(2)
+URLBuffer            CSTRING(256)
+EmptyString          CSTRING(254)
+hCurrWnd             UNSIGNED
+hTopWnd              UNSIGNED(0)
+szCurrentText        CSTRING(256)
+szWindowText         CSTRING(256)
 [END]
 [END]
 [END]
