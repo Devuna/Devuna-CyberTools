@@ -33,12 +33,6 @@
 
 >ds_Halt(UNSIGNED Level=0,<STRING HaltText>),name('ds\_Halt')                             !
 
-## Expression Builder functions
-
->ExpressionBuilder(*QUEUE loc:VarQueue, *CSTRING loc:PassedTable, *CSTRING loc:PassedField, *CSTRING ReturnedExpression, BindFile PassedBindFile, UnBindfile PassedUnbindFile)   !Protocol Locking Configuration Database Table
-
->ValueWindow(STRING PictureString),STRING                                                !Expression Builder Value Entry Window
-
 ## GUID functions
 
 >GUIDFromString(*CSTRING szString),STRING
