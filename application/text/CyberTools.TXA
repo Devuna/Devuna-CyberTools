@@ -1,4 +1,4 @@
-f[APPLICATION]
+[APPLICATION]
 VERSION 34
 TODO ABC ToDo
 PROCEDURE Main
@@ -736,25 +736,24 @@ PROPERTY:BEGIN
 PRIORITY 3240
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -802,25 +801,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -1641,25 +1639,24 @@ PROPERTY:BEGIN
 PRIORITY 90
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -2600,25 +2597,24 @@ PROPERTY:BEGIN
 PRIORITY 90
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -2654,25 +2650,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -5566,25 +5561,24 @@ PROPERTY:BEGIN
 PRIORITY 90
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -5731,25 +5725,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -6113,25 +6106,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -6157,25 +6149,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -6256,25 +6247,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -6302,25 +6292,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -6385,25 +6374,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -6539,25 +6527,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -6588,25 +6575,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -6640,25 +6626,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -6934,25 +6919,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -6996,25 +6980,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7031,25 +7014,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7075,25 +7057,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -7189,25 +7170,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7290,25 +7270,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7326,25 +7305,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7445,25 +7423,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7509,25 +7486,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7590,25 +7566,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7655,25 +7630,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7717,25 +7691,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7797,25 +7770,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7867,25 +7839,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -7921,25 +7892,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -8016,25 +7986,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -8054,25 +8023,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -8098,25 +8066,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -8219,25 +8186,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -8318,25 +8284,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -8416,25 +8381,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -8460,25 +8424,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -8882,25 +8845,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -8971,25 +8933,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -9062,25 +9023,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -9162,25 +9122,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -9202,25 +9161,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -9284,25 +9242,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -9323,25 +9280,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -9586,25 +9542,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -9899,7 +9854,7 @@ FederalHolidaysCAN       routine
  end
 
 !Fixed Public Holidays
- 
+
 !January 1st - New Year's Day                       - see Note 1
 !The Monday on or preceding 24 May Victoria Day
 !July 1st - Canada Day                              - see Note 1
@@ -9946,7 +9901,7 @@ FederalHolidaysUSA         routine
 !Columbus Day                           - 2nd Monday in October
 !Veterans' Day                          - 11 November
 !Thanksgiving                           - 4th Thursday in November
-!Christmas Day                          - 25 December 
+!Christmas Day                          - 25 December
 
  do NewYearsDay
  do LabourDay
@@ -10569,7 +10524,7 @@ r:mod      byte
  code
  l:date = date(2,28,r:yr)
  if l:lYear % 4 = 0      !if a leap year
-    l:date += 1          
+    l:date += 1
  end
 
  loop                                   !Heritage Day
@@ -10712,7 +10667,7 @@ USA     routine
 
  of 'SD'                    !South Dakota
     do NativeDay            !2nd Monday in October Native American Day
- 
+
 
  of 'TN'                    !Tennessee
     do ColumbusDay          !Columbus Day
@@ -11232,7 +11187,7 @@ PROPERTY:END
 Nevada      routine
 !31 October Nevada Day
 !Friday after Thanksgiving Family Day
- 
+
  do SecondThanksgiving
 
  l:date = date(10,31,r:yr)           !Nevada Day
@@ -11257,7 +11212,7 @@ NewJersey       routine
 !   In both odd and even years - New Jersey has State elections in odd years
 !   and Federal elections are of course in even years.
 !   Both types of election are a holiday.
- 
+
  do LincolnsBirthday
 
  l:date = date(11,2,r:yr)              !November Election Day - regardless of year
@@ -11280,7 +11235,7 @@ RhodeIsland         routine
 !4 May Rhode Island Independence Day
 !2nd Monday in August Victory Day
 !Tuesday on or after 2 November Election Day
- 
+
  do NovElectionDay
 
  l:date = date(5,4,r:yr)           !Rhode Island Independence Day
@@ -11323,8 +11278,8 @@ Texas       routine
 !31 March César Chávez Day
 
  do SecondThanksgiving
- do XmasEveDay        
- do BoxingDay         
+ do XmasEveDay
+ do BoxingDay
 
  l:date = date(1,19,r:yr)           !Confederate Heroes' Day
  if l:date % 7 = 6                  !if a Saturday
@@ -11419,7 +11374,7 @@ Vermont     routine
 !12 February Lincoln's Birthday
 !1st Tuesday in March Town Meeting Day
 !16 August Bennington Battle Day
- 
+
  do LincolnsBirthday
 
  l:date = date(3,1,r:yr)            !Town Meeting Day
@@ -11487,7 +11442,7 @@ WestVirginia        routine
 !20 June West Virginia Day
 !24 December Christmas Eve
 !31 December New Year's Eve
- 
+
  do LincolnsBirthday
  do XmasEveDay
 
@@ -11522,25 +11477,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -12078,7 +12032,7 @@ WHEN '(),BYTE'
 PROPERTY:BEGIN
 PRIORITY 8001
 PROPERTY:END
-lCalendarDate = PassedDate  
+lCalendarDate = PassedDate
 [END]
 [END]
 [END]
@@ -12090,7 +12044,7 @@ WHEN 'CloseWindow'
 PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
-RetVal = GlobalResponse      
+RetVal = GlobalResponse
 [END]
 WHEN 'OpenWindow'
 [DEFINITION]
@@ -12111,25 +12065,24 @@ PROPERTY:BEGIN
 PRIORITY 90
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -12216,25 +12169,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -12257,25 +12209,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -12569,25 +12520,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -12618,25 +12568,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -12667,25 +12616,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -12716,25 +12664,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -12765,25 +12712,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -12828,25 +12774,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -12882,25 +12827,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -12923,25 +12867,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -13011,25 +12954,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -13046,25 +12988,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -13087,31 +13028,30 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
 PRIORITY 3500
 PROPERTY:END
-WordOle         LONG 
+WordOle         LONG
 saveClipboard   &CSTRING
 [END]
 EMBED %ProcessedCode
@@ -13150,7 +13090,7 @@ PROPERTY:END
              IF ~p_Quiet                                                       !verbose mode
                 MESSAGE('The spelling and grammer check is complete','Microsoft Office Word', ICON:Exclamation,BUTTON:OK)   !message user
              END
-          END                                                                  
+          END
           SETCURSOR()                                                          !reset the cursor
        ELSE
           ASSERT(WordOle <> 0)                                           !something is wrong
@@ -13172,25 +13112,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -13236,25 +13175,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -13283,25 +13221,24 @@ PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [END]
 [END]
@@ -13322,25 +13259,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -13381,25 +13317,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -13448,25 +13383,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
@@ -13508,25 +13442,24 @@ PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
 !region Notices
-! ================================================================================ 
+! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools) 
-! 
-!    Devuna-CyberTools is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-CyberTools is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
-! 
-!    You should have received a copy of the GNU General Public License 
-!    along with this file.  If not, see <http://www.gnu.org/licenses/>. 
-! ================================================================================ 
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-CyberTools (https://github.com/Devuna/Devuna-CyberTools)
+!
+!    Devuna-CyberTools is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-CyberTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with this file.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
 !EndRegion Notices
 [SOURCE]
 PROPERTY:BEGIN
